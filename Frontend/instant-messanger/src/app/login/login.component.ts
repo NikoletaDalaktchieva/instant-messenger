@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GoogleLoginProvider, AuthService } from 'angular-6-social-login';
-import { Socialusers } from './Socialusers';
-import { SocialloginService } from './SocialloginService';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,13 +9,20 @@ export class LoginComponent implements OnInit {
   title = 'Instant messanger';
   singUp = false;
 
-  constructor(
-    public OAuth: AuthService,
-    private SocialloginService: SocialloginService, private router: Router) {
+  constructor() {
   }
 
   ngOnInit(): void {
   }
+
+  openRegister(){
+    this.singUp = true;
+  }
+
+  openLogin(){
+    this.singUp = false;
+  }
+
 
   loginUser(email: string, u_password: string) {
     alert(email + '\n' + u_password);
@@ -31,28 +34,5 @@ export class LoginComponent implements OnInit {
     //call server
   }
 
-  //google
-  public socialSignIn() {
-    let socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
 
-    this.OAuth.signIn(socialPlatformProvider).then(socialusers => {
-      console.log('google', socialusers);
-      console.log(socialusers);
-      this.Savesresponse(socialusers);
-
-    });
-  }
-
-
-  Savesresponse(socialusers: Socialusers) {
-
-    this.SocialloginService.Savesresponse(socialusers).subscribe((res: any) => {
-      debugger;
-      console.log(res);
-      //response = res.userDetail;
-      localStorage.setItem('socialusers', JSON.stringify(res));
-      console.log(localStorage.setItem('socialusers', JSON.stringify(res)));
-      this.router.navigate([`/Dashboard`]);
-    })
-  }
 }

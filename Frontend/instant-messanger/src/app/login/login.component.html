@@ -7,7 +7,7 @@
 
         <div class="auth-actions" *ngIf="!singUp">
             <button class="auth-button" (click)="loginUser(email.value, password.value)">Login</button>
-            <a title="Create account" class="auth-link">Create account</a>
+            <a title="Create account" class="auth-link" (click)="openRegister()">Create account</a>
         </div>
 
         <div id="sign-up-container" *ngIf="singUp">
@@ -16,7 +16,8 @@
             <div class="auth-actions">
                 <button class="auth-button"
                     (click)="registerUser(username.value, email.value, password.value, confirmed_password.value)">Register</button>
-            </div>
+                    <a title="Already have account" class="auth-link" (click)="openLogin()">Already have account</a>
+                </div>
         </div>
     </form>
 </div>
