@@ -13,10 +13,10 @@ body {
     grid-area: header1;
     align-self: flex-start;
     grid-template-rows: 20% 20% 40%;
-    height: 670px;
+    height: 41.875rem;
     padding-left: 5%;
     padding-top: 2%;
-    border: 2px solid rgba(61, 134, 128, 0.315);
+    border: 0.125rem solid rgba(61, 134, 128, 0.315);
     border-radius: 1%;
     background-color: transparent;
 }
@@ -30,8 +30,8 @@ body {
 .personal-info img{
     align-self: flex-start;
     justify-self: space-around;
-    border: 2px solid #eaecfe;
-    border-radius: 25px;
+    border: 0.125rem solid #eaecfe;
+    border-radius: 1.563rem;
     width: 90%;
     height: 90%;
 }
@@ -65,11 +65,11 @@ body {
     background-color: #e7e6e9;
     text-align: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    border: 2px solid #eaecfe;
-    border-radius: 12px;
-    padding: 2px 0;
+    border: 0.125rem solid #eaecfe;
+    border-radius: 0.75rem;
+    padding: 0.125rem 0;
     top: 50%;
-    margin-left: 10px;
+    margin-left: 0.625rem;
   }
   
   #settings:hover .tooltiptext {
@@ -88,8 +88,8 @@ body {
     align-self: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
     width: 70%;
-    border: 2px solid #eaecfe;
-    border-radius: 12px;
+    border: 0.125rem solid #eaecfe;
+    border-radius: 0.75rem;
 }   
 
 input::placeholder {
@@ -108,8 +108,8 @@ input::placeholder {
     width: 70%;
     height: 40%;  
     justify-self: space-around; 
-    border: 1px solid #eaecfe;
-    border-radius: 25px;
+    border: 0.063rem solid #eaecfe;
+    border-radius: 1.563rem;
 }
 
 .chat-history {
@@ -125,15 +125,15 @@ input::placeholder {
     grid-template-columns: 30% 70%;
     background-color: initial;
     cursor: pointer;
-    border: 2px solid rgba(61, 134, 128, 0.315);
+    border: 0.125rem solid rgba(61, 134, 128, 0.315);
     border-radius: 3%;
     background-color: #a295cf;
 }
 
 .history-list img{
     justify-self: space-around;
-    border: 2px solid #444446;
-    border-radius: 25px;
+    border: 0.125rem solid #444446;
+    border-radius: 1.563rem;
     width: 70%;
 }
 
@@ -150,23 +150,23 @@ input::placeholder {
     height: 100%;
     width: 100%;
     align-self: flex-start;
-    grid-template-columns: 900px;
+    grid-template-columns: 56.25rem;
     background-image: url(chat-back.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    border: 1px solid rgba(61, 134, 128, 0.315);
+    border: 0.063rem solid rgba(61, 134, 128, 0.315);
     border-radius: 3%;
 }
 
 .chat-module-info {
     grid-area: header3;
     display: grid;
-    border: 2px solid rgba(61, 134, 128, 0.315);
+    border: 0.125rem solid rgba(61, 134, 128, 0.315);
     border-radius: 1%;
     height: 100%;
     width: 100%;
     align-self: flex-start;
-    grid-template-columns: 220px;
+    grid-template-columns: 13.75rem;
     background-size: 100% 100%;
     padding-right: 2%;
 }
