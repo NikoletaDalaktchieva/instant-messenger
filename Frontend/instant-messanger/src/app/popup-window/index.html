@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href = "pop-up-style.css" rel = "stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <button class ="data-user-target">Pop-up</button>
+
+    <div class = "popup" id="usr-popup">
+
+        <div class = "popup-header">
+            <div class = "title">Choose users</div>
+            <button class="data-user-close-button">&times;</button>
+        </div>
+
+        <div class = "search-box">
+            <input type ="search" id = 'usr-search-box' placeholder="Search"></input>
+        </div>
+
+        <div class = "popup-body">
+            <div>
+                <div class = "users-list">
+                   
+                        <div class = "person">
+                            <img src = "./chat-head.jpg" class = "person-img">
+                            <div class = "person-name">Misho Tashev</div>
+                            <input class = "single-usr-check" type="checkbox" unchecked>
+                        </div>
+                    
+                        <div class = "person">
+                            <img src = "./chat-head.jpg">
+                            <div class = "person-name">Harislav Petkov</div>
+                            <input class = "single-usr-check" type="checkbox" unchecked>
+                        </div>
+                        
+                </div>
+            </div>
+        </div>
+
+        <div class = "popup-footer">
+            <button id = "acceptButton">OK</button>
+            <button id = "declineButton">Cancel</button>
+        </div>
+
+    </div>
+
+    <div id = "overlay"></div>
+
+    <script src = "pop-up.js"></script>
+</body>
+</html>
