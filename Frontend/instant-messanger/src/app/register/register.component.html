@@ -1,0 +1,16 @@
+<div class="auth">
+    <form class="auth-form" id="login-form">
+        <h1 class="auth-title">{{title}}</h1>
+
+        <input type="text" placeholder="Email" class="auth-input" #email required />
+        <input type="text" placeholder="Username" class="auth-input" #username req required />
+        <input type="password" placeholder="Password" class="auth-input" #password required />
+        <input type="text" placeholder="Confirm password" class="auth-input" #confirmed_password required />
+        <div class="auth-actions">
+            <button class="auth-button"
+                (click)="registerUser(username.value, email.value, password.value, confirmed_password.value)">Register</button>
+            <a title="Already have account" class="auth-link">Already have account</a>
+        </div>
+
+    </form>
+</div>

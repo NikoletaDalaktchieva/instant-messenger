@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
   title = 'Instant messanger';
-  singUp = false;
 
   constructor() {
   }
@@ -15,24 +14,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openRegister(){
-    this.singUp = true;
-  }
-
-  openLogin(){
-    this.singUp = false;
-  }
-
-
   loginUser(email: string, u_password: string) {
     alert(email + '\n' + u_password);
     //call server
   }
-
-  registerUser(username: string, email: string, password: string, confirmed_password: string) {
-    alert(username + '\n' + email + '\n' + password + '\n' + confirmed_password);
-    //call server
-  }
-
-
 }
