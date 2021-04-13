@@ -12,9 +12,8 @@ import { RegisterComponent } from './register/register.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
-    PopupWindowComponent,
-    LoginComponent
+    RegisterComponent,
+    PopupWindowComponent
   ],
   imports: [
     BrowserModule,
