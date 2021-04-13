@@ -8,6 +8,7 @@ import { PopupWindowComponent } from './popup-window/popup-window.component';
 import { LoginComponent } from './login/login.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { RegisterComponent } from './register/register.component';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
     MainPageComponent,
     RegisterComponent,
-    PopupWindowComponent
+    PopupWindowComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
