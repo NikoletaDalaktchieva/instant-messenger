@@ -22,11 +22,6 @@
   width: 90%;
 }
 
-#sign-up-container {
-  flex-direction: column;
-  display: flex;
-}
-
 .auth-title {
   font-size: 2.5rem;
   font-weight: 100;
