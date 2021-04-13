@@ -1,30 +1,43 @@
 body {
     display: grid;
-    grid-template-columns: 17% 68% 13%;
-    grid-template-rows: auto;
-    grid-template-areas:
-            "header1"  "header2"  "header3";
-    padding-top: 0.05%;
-    justify-content: space-evenly;
     background: -webkit-linear-gradient(right, #a2f2f1, #b19afe);
+    position: relative;
 }
 
-.main-page {
-    grid-area: header1;
+.container {
+    display: grid;
+    background: -webkit-linear-gradient(right, #a2f2f1, #b19afe);
+    grid-template-columns: auto auto auto;
+    grid-template-rows: 1;
+    grid-column-gap: 1%;
+    align-items: center;
+    justify-content: space-evenly;
+    height: auto;
+}
+
+section {
+    display: grid;
+    padding: 10px;
+    background-color: #c8bbf3;
+    border-radius: 10px;
+    height: auto;
+    width: auto;
+}
+
+.main-page-container {   
+    display: grid;
+    grid-template-rows: auto auto auto;
     align-self: flex-start;
-    grid-template-rows: 20% 20% 40%;
-    height: 41.875rem;
-    padding-left: 5%;
+    padding-left: 0.5%;
     padding-top: 2%;
-    border: 0.125rem solid rgba(61, 134, 128, 0.315);
-    border-radius: 1%;
-    background-color: transparent;
+    max-width: 30%;
+    height: auto;
 }
 
 .personal-info {
     display: grid;
-    grid-template-columns: 25% 50% 25%;
-    justify-content: center;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 0.5%;
 }
 
 .personal-info img{
@@ -32,44 +45,44 @@ body {
     justify-self: space-around;
     border: 0.125rem solid #eaecfe;
     border-radius: 1.563rem;
-    width: 90%;
-    height: 90%;
+    max-width: 150%;
+    height: auto;
 }
 
-.personal-info #name {
-    text-align: center;
-    text-decoration: none;
-    font-size: 17px;
+#name {
+    align-self: center;
+    font-size: 1.5vw;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-weight: normal;
+    padding-left: 50px;
 }
 
-#settings {
+.personal-info #settings {
     background-color: initial;
-    align-self: baseline;
+    align-self: flex-start;
     border-radius: 50%;
     width: 40%;
     cursor: pointer;
     border: none;
 }
 
-#settings img { 
-    width: 160%;
-    height: 150%;
+.personal-info #settings img { 
+    max-width: 60%;
+    height: auto;
+    border: none;
 }
 
 .tooltiptext {
     visibility: hidden;
-    width: 7%;
+    max-width: 7%;
     color: rgb(19, 18, 18);
     background-color: #e7e6e9;
     text-align: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
     border: 0.125rem solid #eaecfe;
     border-radius: 0.75rem;
-    padding: 0.125rem 0;
-    top: 50%;
-    margin-left: 0.625rem;
+    padding: 3px;
+    margin: 8px 10px;
   }
   
   #settings:hover .tooltiptext {
@@ -78,95 +91,94 @@ body {
 
 .main-search {
     display: flex;
+    grid-template-columns: auto auto;
     flex-direction: row;
-    justify-items: start;
-    padding-top: 10%;
+    margin-bottom: 10px;
 }
 
-#search-bar {
-    text-align: left;
-    align-self: center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    width: 70%;
+input {
+    box-shadow: rgb(119, 126, 224);
     border: 0.125rem solid #eaecfe;
     border-radius: 0.75rem;
+}
+
+.main-search #search-bar {
+    align-self: center;
+    text-align: left;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.5vw;
+    max-width: 70%;
+    height: auto;
+
 }   
 
 input::placeholder {
-    font-size: 16px;
+    font-size: 1vw;
 }
 
-#chat {
+.main-search #chat {
     background-color: initial;
     align-self: baseline;
-    width: 30%;
+    max-width: 40%;
     cursor: pointer;
     border: none;
 }
 
-.main-search img{ 
-    width: 70%;
-    height: 40%;  
+.main-search #chat img{ 
+    max-width: 40%;
+    height: auto;  
     justify-self: space-around; 
     border: 0.063rem solid #eaecfe;
-    border-radius: 1.563rem;
+    border-radius: 2.5rem;
 }
 
 .chat-history {
     display: grid;
-    grid-template-rows: repeat(20%);
-    grid-row-gap: 5%;
-    padding-top: 5%;
-    padding-right: 3%;
+    grid-template-rows: auto;
+    grid-row-gap: 2%;
+    border-radius: 1.563rem;
+    background-color: #a295cf;
+    width: auto;
+    height: auto;
 }
 
 .history-list{
     display: grid;
-    grid-template-columns: 30% 70%;
-    background-color: initial;
+    grid-template-columns: auto auto;
     cursor: pointer;
-    border: 0.125rem solid rgba(61, 134, 128, 0.315);
-    border-radius: 3%;
-    background-color: #a295cf;
+    border-radius: 1.563rem;
+    background-color: #ada0df;
+    width: auto;
 }
 
 .history-list img{
     justify-self: space-around;
     border: 0.125rem solid #444446;
     border-radius: 1.563rem;
-    width: 70%;
+    max-width: 30%;
+    height: auto;
 }
 
 .history-list #name {
-    font-size: 17px;
-    font-family: Arial, Helvetica, sans-serif;
+    align-self: center;
+    font-size: 1.3vw;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-weight: normal;
-    text-align: center;   
+    padding-right: 50px;
+    
 }
 
 .chat-module {
-    grid-area: header2;
-    display: grid;   
-    height: 100%;
-    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
     align-self: flex-start;
-    grid-template-columns: 56.25rem;
-    background-image: url(chat-back.jpg);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    border: 0.063rem solid rgba(61, 134, 128, 0.315);
-    border-radius: 3%;
+    width: 40%;
+    padding-left: 0.5%;
+    padding-top: 2%;
 }
 
 .chat-module-info {
-    grid-area: header3;
-    display: grid;
-    border: 0.125rem solid rgba(61, 134, 128, 0.315);
-    border-radius: 1%;
-    height: 100%;
-    width: 100%;
+    display:grid;
     align-self: flex-start;
-    grid-template-columns: 13.75rem;
-    background-size: 100% 100%;
-    padding-right: 2%;
+    width: 30%;
 }
