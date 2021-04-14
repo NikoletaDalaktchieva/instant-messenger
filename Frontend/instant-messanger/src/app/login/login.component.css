@@ -56,7 +56,7 @@
   align-items: center;
   margin-top: 3rem;
   width: 100%;
-  max-width: 10rem;
+  max-width: 12rem;
 }
 
 .auth-button {
@@ -81,10 +81,19 @@
   font-size: 1rem;
   color: #4154e0;
   text-decoration: none;
-  margin-top: 1.75rem;
+  margin-top: 1rem;
 }
 
 .auth-link:hover,
 .auth-link:focus {
   text-decoration: underline;
+}
+
+#google-login {
+  background-color: #DF4B38;
+  margin-top: 0.5rem;
+}
+
+#google-icon {
+  width: 1.3rem;
 }

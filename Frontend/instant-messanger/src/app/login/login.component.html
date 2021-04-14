@@ -6,6 +6,15 @@
 
     <section class="auth-actions">
         <button class="auth-button" (click)="loginUser(email.value, password.value)">Login</button>
+        <button type="button" (click)="loginWithGoogle()" class="auth-button" id="google-login">
+            <img id="google-icon" alt="Google login"
+                src="https://www.convinceandconvert.com/wp-content/uploads/2014/04/official-google-plus-logo-tile.png" />
+            Login with Google
+        </button>
         <a routerLink="/register" title="Create account" class="auth-link">Create account</a>
+
+
+
     </section>
+
 </form>
