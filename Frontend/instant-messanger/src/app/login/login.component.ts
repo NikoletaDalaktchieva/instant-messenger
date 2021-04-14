@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(email: string, password: string) {
-    alert(email + '\n' + password);
+    //alert(email + '\n' + password);
+    this.router.navigateByUrl('chat');
   }
 }
