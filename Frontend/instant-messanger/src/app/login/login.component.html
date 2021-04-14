@@ -1,13 +1,11 @@
-<div class="auth">
-    <form class="auth-form" id="login-form">
-        <h1 class="auth-title">{{title}}</h1>
+<form class="auth-form" id="login-form">
+    <h1 class="auth-title">{{title}}</h1>
 
-        <input type="text" placeholder="Email" class="auth-input" #email required />
-        <input type="password" placeholder="Password" class="auth-input" #password required />
+    <input type="text" placeholder="Email" class="auth-input" #email required />
+    <input type="password" placeholder="Password" class="auth-input" #password required />
 
-        <section class="auth-actions">
-            <button class="auth-button" (click)="loginUser(email.value, password.value)">Login</button>
-            <a routerLink="/register" title="Create account" class="auth-link">Create account</a>
-        </section>
-    </form>
-</div>
+    <section class="auth-actions">
+        <button class="auth-button" (click)="loginUser(email.value, password.value)">Login</button>
+        <a routerLink="/register" title="Create account" class="auth-link">Create account</a>
+    </section>
+</form>
