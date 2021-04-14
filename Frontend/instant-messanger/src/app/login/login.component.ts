@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,15 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
   title = 'Instant messanger';
-
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {
   }
 
-  loginUser(email: string, u_password: string) {
-    alert(email + '\n' + u_password);
-    //call server
+  loginUser(email: string, password: string) {
+    alert(email + '\n' + password);
   }
 }
