@@ -6,7 +6,6 @@ body {
 
 .container {
     display: grid;
-    background: -webkit-linear-gradient(right, #a2f2f1, #b19afe);
     grid-template-columns: auto auto auto;
     grid-template-rows: 1;
     grid-column-gap: 1%;
@@ -32,6 +31,7 @@ section {
     padding-top: 2%;
     max-width: 30%;
     height: auto;
+    width: auto;
 }
 
 .personal-info {
