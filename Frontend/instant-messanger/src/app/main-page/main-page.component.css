@@ -136,6 +136,7 @@ input::placeholder {
     background-color: #a295cf;
     height: auto;
     width: 80%;
+    overflow-y: scroll;
 }
 
 .history-list{
