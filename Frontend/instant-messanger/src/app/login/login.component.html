@@ -1,13 +1,20 @@
-<div class="auth">
-    <form class="auth-form" id="login-form">
-        <h1 class="auth-title">{{title}}</h1>
+<form class="auth-form" id="login-form">
+    <h1 class="auth-title">{{title}}</h1>
 
-        <input type="text" placeholder="Email" class="auth-input" #email required />
-        <input type="password" placeholder="Password" class="auth-input" #password required />
+    <input type="text" placeholder="Email" class="auth-input" #email required />
+    <input type="password" placeholder="Password" class="auth-input" #password required />
 
-        <div class="auth-actions">
-            <button class="auth-button" (click)="loginUser(email.value, password.value)">Login</button>
-            <a title="Create account" class="auth-link">Create account</a>
-        </div>
-    </form>
-</div>
+    <section class="auth-actions">
+        <button class="auth-button" (click)="loginUser(email.value, password.value)">Login</button>
+        <button type="button" (click)="loginWithGoogle()" class="auth-button" id="google-login">
+            <img id="google-icon" alt="Google login"
+                src="https://www.convinceandconvert.com/wp-content/uploads/2014/04/official-google-plus-logo-tile.png" />
+            Login with Google
+        </button>
+        <a routerLink="/register" title="Create account" class="auth-link">Create account</a>
+
+
+
+    </section>
+
+</form>
