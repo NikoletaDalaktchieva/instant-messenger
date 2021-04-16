@@ -1,13 +1,11 @@
 body {
     display: grid;
     background: -webkit-linear-gradient(right, #a2f2f1, #b19afe);
-    position: relative;
 }
 
 .container {
     display: grid;
     grid-template-columns: auto auto auto;
-    grid-template-rows: 1;
     grid-column-gap: 1%;
     align-items: center;
     justify-content: space-evenly;
@@ -17,7 +15,6 @@ body {
 section {
     display: grid;
     padding: 10px;
-    background-color: #c8bbf3;
     border-radius: 10px;
     height: auto;
     width: auto;
@@ -28,10 +25,9 @@ section {
     grid-template-rows: auto auto auto;
     align-self: flex-start;
     padding-left: 0.5%;
-    padding-top: 2%;
+    padding-top: 1%;
     max-width: 30%;
     height: auto;
-    width: auto;
 }
 
 .personal-info {
@@ -45,13 +41,13 @@ section {
     justify-self: space-around;
     border: 0.125rem solid #eaecfe;
     border-radius: 1.563rem;
-    max-width: 150%;
+    max-width: 100%;
     height: auto;
 }
 
 #name {
-    align-self: center;
-    font-size: 1.5vw;
+    align-self: baseline;
+    font-size: 1.3vw;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-weight: normal;
     padding-left: 50px;
@@ -106,7 +102,7 @@ input {
     align-self: center;
     text-align: left;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1.5vw;
+    font-size: 1.2vw;
     max-width: 70%;
     height: auto;
 
@@ -119,7 +115,7 @@ input::placeholder {
 .main-search #chat {
     background-color: initial;
     align-self: baseline;
-    max-width: 40%;
+    max-width: 30%;
     cursor: pointer;
     border: none;
 }
@@ -138,8 +134,8 @@ input::placeholder {
     grid-row-gap: 2%;
     border-radius: 1.563rem;
     background-color: #a295cf;
-    width: auto;
     height: auto;
+    width: 80%;
 }
 
 .history-list{
@@ -155,24 +151,23 @@ input::placeholder {
     justify-self: space-around;
     border: 0.125rem solid #444446;
     border-radius: 1.563rem;
-    max-width: 30%;
+    max-width: 40%;
     height: auto;
 }
 
 .history-list #name {
     align-self: center;
-    font-size: 1.3vw;
+    font-size: 1.2vw;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-weight: normal;
-    padding-right: 50px;
-    
+    padding-right: 50px;  
 }
 
 .chat-module {
     display: grid;
     grid-template-columns: auto auto;
     align-self: flex-start;
-    width: 40%;
+    max-width: 40%;
     padding-left: 0.5%;
     padding-top: 2%;
 }
@@ -180,5 +175,5 @@ input::placeholder {
 .chat-module-info {
     display:grid;
     align-self: flex-start;
-    width: 30%;
+    max-width: 30%;
 }
