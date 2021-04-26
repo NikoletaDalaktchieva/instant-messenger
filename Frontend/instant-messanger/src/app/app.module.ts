@@ -11,11 +11,11 @@ import { GoogleLoginProvider } from 'angularx-social-login';
 import { LoginComponent } from './login/login.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { RegisterComponent } from './register/register.component';
-<<<<<<< HEAD
+
 import { ChatComponent } from './chat/chat.component';
-=======
+
 import { PopupWindowComponent } from './popup-window/popup-window.component';
->>>>>>> origin/develop
+
 
 @NgModule({
   declarations: [
@@ -24,10 +24,10 @@ import { PopupWindowComponent } from './popup-window/popup-window.component';
     MainPageComponent,
     RegisterComponent,
     PopupWindowComponent,
-<<<<<<< HEAD
+
     ChatComponent
-=======
->>>>>>> origin/develop
+
+
   ],
   imports: [
     BrowserModule,
