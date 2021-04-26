@@ -1,7 +1,12 @@
 body {
   background-image: linear-gradient(-100deg, #A2F2F1 0%, #B19AFE 100%);
   color: #333;
-  font-size: 0.875rem;
-  width: 100%;
-  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, sans-serif;
+  outline: none;
 }
