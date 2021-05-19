@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+
+import { Router } from '@angular/router';
 import { AppComponent } from "./app.component";
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -7,9 +9,10 @@ import { HttpErrorResponse } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-  constructor(private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
   logIn(name: string, password: string) {
+    var result;
     new Promise((res, rej) => {
       this.http.post(AppComponent.url + "/user/login",
         {
@@ -17,7 +20,12 @@ export class UserService {
           password: password
         }).
         subscribe(
-          result => { console.log(result); },
+          response => {
+            result = response;
+            if (result.result == "OK") {
+              this.router.navigateByUrl('chat');
+            }
+          },
           error => { this.handleError(error); },
           () => { }
         );
