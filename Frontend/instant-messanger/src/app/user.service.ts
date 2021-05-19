@@ -11,7 +11,7 @@ export class UserService {
 
   logIn(name: string, password: string) {
     new Promise((res, rej) => {
-      this.http.post(AppComponent.url + "/users/login",
+      this.http.post(AppComponent.url + "/user/login",
         {
           user: name,
           password: password
