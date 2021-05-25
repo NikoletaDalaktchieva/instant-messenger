@@ -2,81 +2,25 @@
     <section class="main-page-container">
         <div class="personal-info">
             <img src="assets/person-photo.jpg" alt="Personal picture">
-            <h1 id="name">Person name</h1>
-            <button id="settings" type="button">
+            <h1 id="nameInfo">Person name</h1>
+            <button id="settings" (click)="getSettings($event)">
                 <img src="assets/button-settings.jpg" alt="Settings">
                 <span class="tooltiptext">Settings</span>
             </button>
         </div>
-        <div class="main-search">
-            <input type="text" id="search-bar" placeholder="Search">
-            <button id="chat">
-                <img src="assets/chat-button.jpg" alt="Chat">
-            </button>
-        </div>
-        <div class="chat-history">
-            <div class="history-list">
-                <img src="assets/chat-icon.jpg" alt="Person icon"/>
-                <h2 id="name">Person1</h2>
-            </div>
 
-            <div class="history-list">
-                <img src="assets/chat-icon.jpg" alt="Person icon">
-                <h2 id="name">Person2</h2>
-            </div>
+        <input type="text" id="search-bar" placeholder="Search" ngModel="" #search>
 
-            <div class="history-list">
-                <img src="assets/chat-icon.jpg" alt="Person icon">
-                <h2 id="name">Person3</h2>
-            </div>
-
-            <div class="history-list">
-                <img src="assets/chat-icon.jpg" alt="Person icon">
-                <h2 id="name">Person4</h2>
-            </div>
-
-            <div class="history-list">
-                <img src="assets/chat-icon.jpg" alt="Person icon">
-                <h2 id="name">Person5</h2>
-            </div>
-
-            <div class="history-list">
-                <img src="assets/chat-icon.jpg" alt="Person icon">
-                <h2 id="name">Person6</h2>
-            </div>
-
-            <div class="history-list">
-                <img src="assets/chat-icon.jpg" alt="Person icon">
-                <h2 id="name">Person7</h2>
-            </div>
-
-            <div class="history-list">
-                <img src="assets/chat-icon.jpg" alt="Person icon">
-                <h2 id="name">Person8</h2>
-            </div>
-
-            <div class="history-list">
-                <img src="assets/chat-icon.jpg" alt="Person icon">
-                <h2 id="name">Person8</h2>
-            </div>
-
-            <div class="history-list">
-                <img src="assets/chat-icon.jpg" alt="Person icon">
-                <h2 id="name">Person8</h2>
-            </div>
-
-            <div class="history-list">
-                <img src="assets/chat-icon.jpg" alt="Person icon">
-                <h2 id="name">Person8</h2>
-            </div>
-
-            <div class="history-list">
-                <img src="assets/chat-icon.jpg" alt="Person icon">
-                <h2 id="name">Person8</h2>
-            </div>
+        <div class="chat-history" *ngFor="let user of users">
+            <ng-template [ngIf]="user.name.startsWith(search.value)">
+                <div class="history-list" (click)="openChat()">
+                    <img src="assets/chat-icon.jpg" alt="Person icon" />
+                    <h2 id="name">{{ user.name }}</h2>
+                </div>
+            </ng-template>
         </div>
     </section>
 
-    <section class="chat-module"><app-chat></app-chat></section>
+    <section class="chat-module">DIV</section>
     <section class="chat-module-info">Chat info</section>
 </main>

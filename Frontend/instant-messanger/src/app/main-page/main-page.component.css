@@ -1,11 +1,7 @@
-body {
-    display: grid;
-    background: -webkit-linear-gradient(right, #a2f2f1, #b19afe);
-}
-
 .container {
     display: grid;
     grid-template-columns: auto auto auto;
+    background: -webkit-linear-gradient(right, #a2f2f1, #b19afe);
     grid-column-gap: 1%;
     align-items: center;
     justify-content: space-evenly;
@@ -45,7 +41,7 @@ section {
     height: auto;
 }
 
-#name {
+#nameInfo {
     align-self: baseline;
     font-size: 1.3vw;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
@@ -102,15 +98,20 @@ input {
     align-self: center;
     text-align: left;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1.2vw;
+    font-size: 1.1rem;
     max-width: 70%;
     height: auto;
 
 }   
 
 input::placeholder {
-    font-size: 1vw;
+    font-size: 1.1rem;
 }
+
+#search-bar:focus {
+    border-color: #d09cf3;
+    box-shadow: 0 1px 0 0 #9b53cc;
+  }
 
 .main-search #chat {
     background-color: initial;
@@ -131,10 +132,10 @@ input::placeholder {
 .chat-history {
     display: grid;
     grid-template-rows: auto;
-    grid-row-gap: 2%;
-    border-radius: 1.563rem;
+    /*grid-row-gap: 1%;*/
+    border-radius: 1.0rem;
     background-color: #a295cf;
-    height: auto;
+    height: 60%;
     width: 80%;
     overflow-y: scroll;
 }
@@ -143,21 +144,24 @@ input::placeholder {
     display: grid;
     grid-template-columns: auto auto;
     cursor: pointer;
-    border-radius: 1.563rem;
+    border-radius: 1.0rem;
     background-color: #ada0df;
     width: auto;
+    height: 80%;
 }
 
 .history-list img{
-    justify-self: space-around;
+    justify-self: baseline;
     border: 0.125rem solid #444446;
     border-radius: 1.563rem;
-    max-width: 40%;
+    max-width: 50%;
+    max-height: 80%;
     height: auto;
 }
 
 .history-list #name {
     align-self: center;
+    justify-self: baseline;
     font-size: 1.2vw;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-weight: normal;
