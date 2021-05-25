@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SocialAuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 
 @Component({
   selector: 'app-login',
@@ -7,32 +11,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
   title = 'Instant messanger';
-  singUp = false;
+  socialUser: SocialUser = new SocialUser;
 
-  constructor() {
+  constructor(private router: Router,
+    private formBuilder: FormBuilder,
+    private socialAuthService: SocialAuthService,
+  ) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+
+    this.socialAuthService.authState.subscribe((user) => {
+      this.socialUser = user;
+    });
   }
 
-  openRegister(){
-    this.singUp = true;
+
+  loginUser(email: string, password: string) {
+    //alert(email + '\n' + password);
+    this.router.navigateByUrl('chat');
   }
 
-  openLogin(){
-    this.singUp = false;
+  loginWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 
-
-  loginUser(email: string, u_password: string) {
-    alert(email + '\n' + u_password);
-    //call server
+  logOut(): void {
+    this.socialAuthService.signOut();
   }
-
-  registerUser(username: string, email: string, password: string, confirmed_password: string) {
-    alert(username + '\n' + email + '\n' + password + '\n' + confirmed_password);
-    //call server
-  }
-
 
 }
