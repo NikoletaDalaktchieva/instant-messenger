@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from "../app.component";
 
 @Component({
   selector: 'app-register',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./../login/login.component.css']
 })
 export class RegisterComponent implements OnInit {
-  title = 'Instant messanger';
+  title = AppComponent.title;
   constructor() { }
 
   ngOnInit(): void {
