@@ -5,7 +5,11 @@ router.post('/login', (req, res) => {
   new Promise((resolve, reject) => {
     console.log(new Date().toLocaleString())
     console.log(req.body)
-    res.json({result:"OK"});
+    if (req.body.user == '') {
+      res.json({ result: 0, message : 'User not found' });
+    } else {
+      res.json({ result: 1 });
+    }
   });
 });
 
