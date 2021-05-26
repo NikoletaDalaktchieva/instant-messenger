@@ -24,17 +24,18 @@ router.post('/login', (request, respond) => {
 
 
 //Create user on register
-router.post('/', (req, res) => {
+router.post('/', (request, respond) => {
+  console.log('here');
   new Promise((resolve, reject) => {
     MongoClient.connect(url, function (err, db) {
       if (err) return respond.status(502).send();
       var dbo = db.db(dbName);
-      dbo.collection(collection).insertMany([
-        req.body
-      ], function (err, res) {
-        if (err) return respond.status(502).send();
-        else respond.json({ result: 1 });;
-      });
+      dbo.collection(collection).insertOne(
+        request.body
+        , function (err, res) {
+          if (err) return respond.status(502).send();
+          else respond.json({ result: 1 });;
+        });
       db.close();
 
     });

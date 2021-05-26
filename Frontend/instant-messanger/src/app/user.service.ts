@@ -36,6 +36,28 @@ export class UserService {
   }
 
   create(user: string, email: string, password: string) {
+    var result;
+    new Promise((res, rej) => {
+      this.http.post(AppComponent.url + "/user",
+        {
+          user: user,
+          email: email,
+          password: password
+        }).
+        subscribe(
+          response => {
+            result = response;
+            if (result.result == 1) {
+              this.router.navigateByUrl('chat');
+            } else {
+              console.log(result.message);
+              AppComponent.showError(result.message);
+            }
+          },
+          error => { AppComponent.showError(); },
+          () => { }
+        );
+    });
 
   }
 }
