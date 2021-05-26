@@ -10,13 +10,11 @@ router.post('/login', (request, respond) => {
   new Promise((resolve, reject) => {
     MongoClient.connect(url, function (err, db) {
       if (err) return respond.status(502).send();
-      console.log('here');
       var dbo = db.db(dbName);
       dbo.collection(collection).findOne({ "user": request.body.user, "password": request.body.password }, function (err, res) {
-        console.log(res)
         if (err) return respond.status(502).send();
         else if (res == null) respond.json({ result: 0, message: 'User not Found' });
-        else return respond.json({ result: 1 });
+        else return respond.json({ result: 1 , id: res._id});
       });
     });
   });
@@ -25,7 +23,6 @@ router.post('/login', (request, respond) => {
 
 //Create user on register
 router.post('/', (request, respond) => {
-  console.log('here');
   new Promise((resolve, reject) => {
     MongoClient.connect(url, function (err, db) {
       if (err) return respond.status(502).send();
@@ -34,7 +31,7 @@ router.post('/', (request, respond) => {
         request.body
         , function (err, res) {
           if (err) return respond.status(502).send();
-          else respond.json({ result: 1 });;
+          else respond.json({ result: 1, id: res.insertedId });;
         });
       db.close();
 

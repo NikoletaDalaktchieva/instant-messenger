@@ -21,6 +21,7 @@ export class UserService {
         subscribe(
           response => {
             result = response;
+            console.log(result);
             if (result.result == 1) {
               this.router.navigateByUrl('chat');
             } else {
@@ -47,7 +48,9 @@ export class UserService {
         subscribe(
           response => {
             result = response;
+            console.log(result);
             if (result.result == 1) {
+              console.log(result.id);
               this.router.navigateByUrl('chat');
             } else {
               console.log(result.message);
