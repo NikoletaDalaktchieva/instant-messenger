@@ -34,4 +34,8 @@ export class UserService {
     });
 
   }
+
+  create(user: string, email: string, password: string) {
+
+  }
 }
