@@ -9,39 +9,24 @@ import { USERS } from '../user';
 })
 
 export class MainPageComponent implements OnInit {
+  
+  users = USERS;
+  
+  userSearch = '';
 
   constructor(private router: Router) { }
 
-  users = USERS;
   
-
   ngOnInit(): void {
 
   }
-
-  inputText = document.getElementById("search-bar");
-  personName = document.getElementById("name");
-  btnSettings = document.getElementById("settings")?.addEventListener("click", (e: Event) => this.getSettings(e));
 
   getSettings(event) {
     alert("There is no such name in the history list!");
   }
 
-  btnChat = document.getElementById("chat")?.addEventListener("click", (e: Event) => this.openChat());
-
   openChat() {
     alert("Click");
-    //this.router.navigateByUrl('chat');
+    this.router.navigate(['register']);
   }
-
-  clickButtonFunction(event) {
-    if (this.inputText?.isEqualNode(this.personName)) {
-      //this.openChat(this.inputText);
-    } else {
-      alert("Settings!");
-      console.log(event);
-    }
-  }
-
-
 }
