@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
   socialUser: SocialUser = new SocialUser;
 
   constructor(private userService: UserService,
-    private router: Router,
     private formBuilder: FormBuilder,
     private socialAuthService: SocialAuthService,
   ) {

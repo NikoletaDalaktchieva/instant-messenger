@@ -3,6 +3,10 @@
 
     <input type="text" placeholder="Username or Email" class="auth-input" #name required />
     <input type="password" placeholder="Password" class="auth-input" #password required />
+    <section class="checkbox">
+        <input type="checkbox">
+        <label class="auth-text">Save my password</label>
+    </section>
 
     <section class="auth-actions">
         <button class="auth-button" (click)="loginUser(name.value, password.value)">Login</button>
@@ -12,7 +16,6 @@
             Login with Google
         </button>
         <a routerLink="/register" title="Create account" class="auth-link">Create account</a>
-
 
 
     </section>
