@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { USERS } from '../user';
+import { USERS } from '../../../../../Backend/user';
 
 @Component({
   selector: 'app-main-page',
