@@ -1,1 +1,40 @@
-<p>popup-window works!</p>
+
+<div class = "popup" id="usr-popup">
+
+    <div class = "popup-header">
+        <div class = "title">Choose users</div>
+        <button class="data-user-close-button">&times;</button>
+    </div>
+
+    <div class = "search-box">
+        <input type ="search" id = 'usr-search-box' placeholder="Search">
+    </div>
+
+    <div class = "popup-body">
+        <div>
+            <div class = "users-list">
+                   
+                    <div class = "person">
+                        <img src = "assets/chat-button.jpg" class = "person-img">
+                        <div class = "person-name">Misho Tashev</div>
+                        <input class = "single-usr-check" type="checkbox" unchecked>
+                    </div>
+                    
+                    <div class = "person">
+                        <img src = "assets/chat-button.jpg" class = "person-img">
+                        <div class = "person-name">Harislav Petkov</div>
+                        <input class = "single-usr-check" type="checkbox" unchecked>
+                    </div>
+                        
+            </div>
+        </div>
+    </div>
+
+    <div class = "popup-footer">
+        <button id = "acceptButton">OK</button>
+        <button id = "declineButton" (click)="closePopup()">Cancel</button>
+    </div>
+
+</div>
+
+<div id = "overlay"></div>
