@@ -1,11 +1,7 @@
-body {
-    display: grid;
-    background: -webkit-linear-gradient(right, #a2f2f1, #b19afe);
-}
-
 .container {
     display: grid;
     grid-template-columns: auto auto auto;
+    background: -webkit-linear-gradient(right, #a2f2f1, #b19afe);
     grid-column-gap: 1%;
     align-items: center;
     justify-content: space-evenly;
@@ -24,8 +20,8 @@ section {
     display: grid;
     grid-template-rows: auto auto auto;
     align-self: flex-start;
-    padding-left: 0.5%;
-    padding-top: 1%;
+    padding-left: 2%;
+    padding-top: 2%;
     max-width: 30%;
     height: auto;
 }
@@ -33,24 +29,23 @@ section {
 .personal-info {
     display: grid;
     grid-template-columns: auto auto auto;
-    grid-column-gap: 0.5%;
+    padding-bottom: 3%;
 }
 
 .personal-info img{
-    align-self: flex-start;
-    justify-self: space-around;
     border: 0.125rem solid #eaecfe;
     border-radius: 1.563rem;
-    max-width: 100%;
+    width: auto;
+    max-width: 150%;
     height: auto;
 }
 
-#name {
-    align-self: baseline;
-    font-size: 1.3vw;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+#nameInfo {
+    font-size: 1.4vw;
+    font-family: Verdana, Tahoma, sans-serif;
     font-weight: normal;
-    padding-left: 50px;
+    padding-left: 30%;
+    padding-top: 5%;
 }
 
 .personal-info #settings {
@@ -60,104 +55,107 @@ section {
     width: 40%;
     cursor: pointer;
     border: none;
+    padding-right: 15%;
 }
 
 .personal-info #settings img { 
-    max-width: 60%;
+    width: auto;
+    max-width: 50%;
     height: auto;
     border: none;
 }
 
 .tooltiptext {
     visibility: hidden;
-    max-width: 7%;
-    color: rgb(19, 18, 18);
+    color: rgb(49, 48, 48);
     background-color: #e7e6e9;
     text-align: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    border: 0.125rem solid #eaecfe;
-    border-radius: 0.75rem;
-    padding: 3px;
-    margin: 8px 10px;
+    font-size: 1.0rem;
+    border-radius: 0.5rem;
+    padding-bottom: 10%;
   }
   
   #settings:hover .tooltiptext {
     visibility: visible;
   }
 
-.main-search {
-    display: flex;
-    grid-template-columns: auto auto;
-    flex-direction: row;
-    margin-bottom: 10px;
-}
-
 input {
     box-shadow: rgb(119, 126, 224);
     border: 0.125rem solid #eaecfe;
-    border-radius: 0.75rem;
+    border-radius: 0.65rem;
+    padding: auto;
+    margin-top: 1%;
+    margin-bottom: 2%;
 }
 
-.main-search #search-bar {
-    align-self: center;
+#search-bar {
     text-align: left;
+    width: 70%;
+    height: 100%;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1.2vw;
-    max-width: 70%;
-    height: auto;
-
+    font-size: 1.1rem;
 }   
 
 input::placeholder {
-    font-size: 1vw;
+    font-size: 1.1rem;
 }
 
-.main-search #chat {
+#search-bar:focus {
+    border-color: #d09cf3;
+    box-shadow: 0 1px 0 0 #9b53cc;
+  }
+
+/* #chat {
     background-color: initial;
     align-self: baseline;
     max-width: 30%;
     cursor: pointer;
     border: none;
-}
+} */
 
-.main-search #chat img{ 
+/* #chat img{ 
     max-width: 40%;
     height: auto;  
     justify-self: space-around; 
     border: 0.063rem solid #eaecfe;
     border-radius: 2.5rem;
-}
+} */
 
 .chat-history {
     display: grid;
     grid-template-rows: auto;
-    grid-row-gap: 2%;
-    border-radius: 1.563rem;
-    background-color: #a295cf;
-    height: auto;
-    width: 80%;
-    overflow-y: scroll;
+    grid-row-gap: 1%;
+    border-radius: 1.0rem;
+    height: 80%;
+    width: 70%;
+    /* overflow-y: scroll;   */
+    margin-bottom: 2%;
+    padding-top: 5%;
 }
 
 .history-list{
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 50% 50%;
+    grid-column-gap: 1%;
     cursor: pointer;
-    border-radius: 1.563rem;
-    background-color: #ada0df;
-    width: auto;
+    border-radius: 1.0rem;
+    background-color: #ada0df; 
 }
 
 .history-list img{
-    justify-self: space-around;
+    align-self: flex-start;
+    justify-self: baseline;
     border: 0.125rem solid #444446;
     border-radius: 1.563rem;
-    max-width: 40%;
+    width: auto;
+    max-width: 50%;
     height: auto;
 }
 
 .history-list #name {
     align-self: center;
+    justify-self: baseline;
     font-size: 1.2vw;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-weight: normal;
