@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { SocialAuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
+
+import { AppComponent } from "../app.component";
+import { UserService } from "../user.service";
 
 @Component({
   selector: 'app-login',
@@ -10,10 +13,11 @@ import { SocialAuthService, GoogleLoginProvider, SocialUser } from 'angularx-soc
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  title = 'Instant messanger';
+  title = AppComponent.title;
   socialUser: SocialUser = new SocialUser;
 
-  constructor(private router: Router,
+  constructor(private userService: UserService,
+    private router: Router,
     private formBuilder: FormBuilder,
     private socialAuthService: SocialAuthService,
   ) {
@@ -31,9 +35,8 @@ export class LoginComponent implements OnInit {
   }
 
 
-  loginUser(email: string, password: string) {
-    //alert(email + '\n' + password);
-    this.router.navigateByUrl('chat');
+  loginUser(name: string, password: string) {
+    this.userService.logIn(name, password);
   }
 
   loginWithGoogle(): void {

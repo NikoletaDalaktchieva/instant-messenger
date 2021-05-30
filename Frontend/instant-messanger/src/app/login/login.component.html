@@ -1,12 +1,12 @@
-<form class="auth-form" id="login-form">
+<section class="auth-form" id="login-form">
     <h1 class="auth-title">{{title}}</h1>
 
-    <input type="text" placeholder="Email" class="auth-input" #email required />
+    <input type="text" placeholder="Username or Email" class="auth-input" #name required />
     <input type="password" placeholder="Password" class="auth-input" #password required />
 
     <section class="auth-actions">
-        <button class="auth-button" (click)="loginUser(email.value, password.value)">Login</button>
-        <button type="button" (click)="loginWithGoogle()" class="auth-button" id="google-login">
+        <button class="auth-button" (click)="loginUser(name.value, password.value)">Login</button>
+        <button (click)="loginWithGoogle()" class="auth-button" id="google-login">
             <img id="google-icon" alt="Google login"
                 src="https://www.convinceandconvert.com/wp-content/uploads/2014/04/official-google-plus-logo-tile.png" />
             Login with Google
@@ -17,4 +17,4 @@
 
     </section>
 
-</form>
+</section>
