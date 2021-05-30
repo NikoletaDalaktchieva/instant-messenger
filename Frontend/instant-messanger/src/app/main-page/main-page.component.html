@@ -15,7 +15,7 @@
             <ng-container *ngIf="user.name.startsWith(userSearch)">
                 <div class="history-list" (click)="openChat()">
                     <img src="assets/chat-icon.jpg" alt="Person icon" />
-                    <h2 id="name">{{ user.name }}</h2>
+                    <a id="name" [title]="user.name">{{ user.name }}</a>
                 </div>
             </ng-container>
         </div>

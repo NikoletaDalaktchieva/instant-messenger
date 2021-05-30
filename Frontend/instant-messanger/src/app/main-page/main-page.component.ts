@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { USERS } from '../../../../../Backend/user';
+import { User, USERS } from 'src/user';
+
+import { AppComponent } from "../app.component";
+import { UserService } from "../user.service";
 
 @Component({
   selector: 'app-main-page',
@@ -9,14 +12,13 @@ import { USERS } from '../../../../../Backend/user';
 })
 
 export class MainPageComponent implements OnInit {
-  
   users = USERS;
-  
   userSearch = '';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userService: UserService) {
+    this.loadUsers();
+  }
 
-  
   ngOnInit(): void {
 
   }
@@ -25,8 +27,12 @@ export class MainPageComponent implements OnInit {
     alert("There is no such name in the history list!");
   }
 
+  loadUsers() : void {
+    this.userService.load();
+  }
+
   openChat() {
     alert("Click");
-    this.router.navigate(['register']);
+    this.router.navigate(['chat']);
   }
 }

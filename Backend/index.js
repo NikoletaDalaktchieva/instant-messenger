@@ -17,6 +17,11 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/', (req, res) => {
+    console.log("Users list works");
+    res.json({ result: "OK" });
+});
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}...`);

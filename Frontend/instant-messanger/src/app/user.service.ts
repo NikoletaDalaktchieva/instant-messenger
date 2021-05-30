@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-
 import { Router } from '@angular/router';
 import { AppComponent } from "./app.component";
 
@@ -61,6 +60,31 @@ export class UserService {
           () => { }
         );
     });
+  }
+
+  load() {
+    var result;
+
+    this.http.get(AppComponent.url + "/user"
+    ).
+      subscribe(
+        response => {
+          result = response;
+          console.log(result);
+          if (result.result == true) {
+            console.log(result.users);
+          } else {
+            console.log(result.message);
+            AppComponent.showError(result.message);
+          }
+        },
+        error => { AppComponent.showError(); },
+        () => { }
+      );
 
   }
+
+
+
 }
+
