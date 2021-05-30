@@ -17,7 +17,24 @@ app.get('/', (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}...`);
+const port = process.env.PORT || 8080;
+const httpServer = require('http').createServer(app);
+httpServer.listen(port, () => console.log(`listening on port ${port}`));
+
+//TODO move to chat service
+const io = require('socket.io')(httpServer, {
+  cors: {origin : '*'}
+});
+
+io.on('connection', (socket) => {
+  console.log('a user connected');
+
+  socket.on('message', (message) => {
+    console.log(message);
+    io.emit('message', `${socket.id.substr(0, 2)} said ${message}`);
+  });
+
+  socket.on('disconnect', () => {
+    console.log('a user disconnected!');
+  });
 });

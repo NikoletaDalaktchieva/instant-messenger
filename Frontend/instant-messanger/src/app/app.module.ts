@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
@@ -25,15 +25,13 @@ import { PopupWindowComponent } from './popup-window/popup-window.component';
     MainPageComponent,
     RegisterComponent,
     PopupWindowComponent,
-
-    ChatComponent
-
-
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     SocialLoginModule,
     HttpClientModule,
   ],
