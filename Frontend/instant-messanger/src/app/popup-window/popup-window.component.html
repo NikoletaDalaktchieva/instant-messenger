@@ -7,7 +7,7 @@
     </div>
 
     <div class = "search-box">
-        <input type ="search" id = 'usr-search-box' placeholder="Search"></input>
+        <input type ="search" id = 'usr-search-box' placeholder="Search">
     </div>
 
     <div class = "popup-body">
@@ -15,13 +15,13 @@
             <div class = "users-list">
                    
                     <div class = "person">
-                        <img src = "./chat-head.jpg" class = "person-img">
+                        <img src = "assets/chat-button.jpg" class = "person-img">
                         <div class = "person-name">Misho Tashev</div>
                         <input class = "single-usr-check" type="checkbox" unchecked>
                     </div>
                     
                     <div class = "person">
-                        <img src = "./chat-head.jpg">
+                        <img src = "assets/chat-button.jpg" class = "person-img">
                         <div class = "person-name">Harislav Petkov</div>
                         <input class = "single-usr-check" type="checkbox" unchecked>
                     </div>
@@ -32,7 +32,7 @@
 
     <div class = "popup-footer">
         <button id = "acceptButton">OK</button>
-        <button id = "declineButton">Cancel</button>
+        <button id = "declineButton" (click)="closePopup()">Cancel</button>
     </div>
 
 </div>
