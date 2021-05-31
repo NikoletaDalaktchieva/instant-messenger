@@ -1,6 +1,6 @@
 const User = require('../models/user');
 
-exports.create = function(req, res) {
+exports.create = async function(req, res) {
     const user = new User({
         name: req.body.user,
         email: req.body.email,
