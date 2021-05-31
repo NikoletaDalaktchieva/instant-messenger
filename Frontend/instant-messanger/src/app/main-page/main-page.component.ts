@@ -27,8 +27,25 @@ export class MainPageComponent implements OnInit {
     alert("There is no such name in the history list!");
   }
 
-  loadUsers() : void {
-    this.userService.load();
+  loadUsers(): void {
+    var result;
+    this.userService.load().
+      subscribe(
+        response => {
+          result = response;
+          console.log(result);
+          if (result.result == true) {
+            console.log(result.users);
+            this.users = result.users;
+          } else {
+            console.log(result.message);
+            AppComponent.showError(result.message);
+          }
+        },
+        error => { AppComponent.showError(); },
+        () => { }
+      );
+
   }
 
   openChat() {

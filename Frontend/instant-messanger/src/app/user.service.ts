@@ -60,24 +60,6 @@ export class UserService {
   }
 
   load() {
-    var result;
-
-    this.http.get(AppComponent.url + "/user"
-    ).
-      subscribe(
-        response => {
-          result = response;
-          console.log(result);
-          if (result.result == true) {
-            console.log(result.users);
-          } else {
-            console.log(result.message);
-            AppComponent.showError(result.message);
-          }
-        },
-        error => { AppComponent.showError(); },
-        () => { }
-      );
-
+    return this.http.get(AppComponent.url + "/user")
   }
 }
