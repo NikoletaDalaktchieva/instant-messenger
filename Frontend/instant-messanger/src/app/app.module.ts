@@ -1,22 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
-import { GoogleLoginProvider } from 'angularx-social-login';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
 import { LoginComponent } from './login/login.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { RegisterComponent } from './register/register.component';
-
 import { ChatComponent } from './chat/chat.component';
-
 import { PopupWindowComponent } from './popup-window/popup-window.component';
-
 
 @NgModule({
   declarations: [
@@ -33,6 +26,7 @@ import { PopupWindowComponent } from './popup-window/popup-window.component';
     ReactiveFormsModule,
     FormsModule,
     SocialLoginModule,
+    FormsModule,
     HttpClientModule,
   ],
   providers: [
@@ -49,7 +43,7 @@ import { PopupWindowComponent } from './popup-window/popup-window.component';
           }
         ]
       } as SocialAuthServiceConfig,
-    }    
+    }
   ],
   bootstrap: [AppComponent]
 })
