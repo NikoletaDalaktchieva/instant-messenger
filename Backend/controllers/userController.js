@@ -16,3 +16,14 @@ exports.create = async function (req, res) {
         }
     );
 }
+
+exports.getUsers = async function (req, res) {
+    User.find({})
+        .populate('user')
+        .exec(function(error, list_users) {
+            if(error) {
+                res.status(500).json({ result: false, message: "Cannot get user list", error: error }); 
+            }
+            res.status(200).json({result: true, user_list: list_users} );
+        })
+}

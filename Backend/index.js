@@ -10,7 +10,6 @@ app.use(cors({
 app.use('/user', userRouter);
 require('dotenv').config();
 
-
 //Set up mongoose connection
 var mongoose = require('mongoose');
 var mongoDB = process.env.DB_URL;
