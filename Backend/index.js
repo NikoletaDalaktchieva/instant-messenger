@@ -1,12 +1,16 @@
 const express = require('express');
 const cors = require('cors');
 const { userRouter } = require('./routes/userRouter');
+const { chatRouter } = require('./routes/chatRouter');
+const { messageRouter } = require('./routes/messageRouter');
 const app = express();
 app.use(express.json());
 app.use(cors({
   origin: '*'
 }));
 app.use('/user', userRouter);
+app.use('/chat', chatRouter);
+app.use('/message', messageRouter);
 require('dotenv').config();
 
 //Set up mongoose connection
