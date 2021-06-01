@@ -1,4 +1,3 @@
-var mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors');
 const { userRouter } = require('./routes/userRouter');
@@ -10,12 +9,11 @@ app.use(cors({
 app.use('/user', userRouter);
 require('dotenv').config();
 
-
 //Set up mongoose connection
-var mongoose = require('mongoose');
-var mongoDB = process.env.DB_URL;
+const mongoose = require('mongoose');
+const mongoDB = process.env.DB_URL;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
-var db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
