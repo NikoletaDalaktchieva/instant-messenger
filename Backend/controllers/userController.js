@@ -1,6 +1,6 @@
 const User = require('../models/user');
 
-exports.create = async function (req, res) {
+exports.create = function (req, res) {
     const user = new User({
         name: req.body.user,
         email: req.body.email,
@@ -17,7 +17,7 @@ exports.create = async function (req, res) {
     );
 }
 
-exports.getUsers = async function (req, res) {
+exports.getUsers = function (req, res) {
     User.find({})
         .populate('user')
         .exec(function(error, list_users) {
