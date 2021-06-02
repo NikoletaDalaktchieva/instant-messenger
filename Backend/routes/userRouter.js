@@ -20,20 +20,7 @@ router.post('/', userController.create);
 //   });
 // });
 
-
-// router.get('/', (request, respond) => {
-//   MongoClient.connect(process.env.DB_URL, function (err, db) {
-//     if (err) return respond.status(500).send();
-//     var dbo = db.db(process.env.DB_NAME);
-//     dbo.collection(collection).find({}).toArray(function (err, res) {
-//       if (err) return respond.status(500).send()
-//       else if (res == null) respond.json({ result: false, message: 'Users Not Found' });
-//       else respond.json({ result: true, users: res });
-//     });
-//     db.close();
-//   });
-// });
-
+router.get('/', userController.getUsers);
 
 module.exports.userRouter = router;
 

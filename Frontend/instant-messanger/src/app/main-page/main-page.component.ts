@@ -16,25 +16,17 @@ export class MainPageComponent implements OnInit {
   userSearch = '';
 
   constructor(private router: Router, private userService: UserService) {
-    this.loadUsers();
+    
   }
 
   ngOnInit(): void {
-
-  }
-
-  getSettings(event) {
-    alert("There is no such name in the history list!");
-  }
-
-  loadUsers(): void {
     var result;
     this.userService.load().
       subscribe(
         response => {
           result = response;
           console.log(result);
-          if (result.result == true) {
+          if (result.result === true) {
             console.log(result.users);
             this.users = result.users;
           } else {
@@ -45,9 +37,13 @@ export class MainPageComponent implements OnInit {
         error => { AppComponent.showError(); },
         () => { }
       );
-
+    
+    }
+  
+  getSettings(event) {
+    alert("There is no such name in the history list!");
   }
-
+    
   openChat() {
     alert("Click");
     this.router.navigate(['chat']);
