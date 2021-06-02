@@ -14,6 +14,7 @@ import { ChatService } from '../chat.service';
 
 export class MainPageComponent implements OnInit {
   users = USERS;
+  title = "Undefine"
   userSearch = '';
   newMessage: string = "";
   messageList: string[] = [];
@@ -60,8 +61,8 @@ export class MainPageComponent implements OnInit {
     alert("There is no such name in the history list!");
   }
 
-  openChat() {
-    alert("Click");
-    this.router.navigate(['chat']);
+  openChat(id: any, name: string) {
+    this.title = name;
+    this.chatService.setId(id)
   }
 }

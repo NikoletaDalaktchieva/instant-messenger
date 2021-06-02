@@ -13,7 +13,7 @@
 
         <div class="chat-history" *ngFor="let user of users">
             <ng-container *ngIf="user.name.startsWith(userSearch)">
-                <div class="history-list" (click)="openChat()">
+                <div class="history-list" (click)="openChat(user.id, user.name)">
                     <img src="assets/chat-icon.jpg" alt="Person icon" />
                     <a id="name" [title]="user.name">{{ user.name }}</a>
                 </div>
@@ -22,7 +22,7 @@
     </section>
 
     <section class="chat-module">
-        <h1>Hello</h1>
+        <h1>{{title}}</h1>
         <div *ngFor="let message of messageList">
             <li>
                 {{message}}

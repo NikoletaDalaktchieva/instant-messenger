@@ -9,14 +9,18 @@ import { AppComponent } from './app.component';
 })
 export class ChatService {
 
-  id = 1;
+  id = 0;
+  socket = io(AppComponent.url);
   public message$: BehaviorSubject<string> = new BehaviorSubject('');
+
   constructor() {
-    this.id = Math.floor(Math.random() * (3 - 1) + 1);
-    console.log("id is " + this.id);
   }
 
-  socket = io(AppComponent.url);
+
+  public setId(id: any) {
+    this.id = id;
+  }
+
 
   public sendMessage(message: any) {
     this.socket.emit('message', this.id, message);
