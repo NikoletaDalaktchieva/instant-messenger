@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-import { ChatService } from './chat.service';
 
 @Component({
   selector: 'app-root',
@@ -14,24 +13,5 @@ export class AppComponent {
 
   static showError(text = 'Something went wrong!') {
     Swal.fire(text, '', 'error')
-  }
-
-  
-  newMessage: string = "";
-  messageList: string[] = [];
-
-  constructor(private chatService: ChatService) {
-  }
-
-  ngOnInit() {
-    this.chatService.getNewMessage().subscribe((message: string) => {
-      this.messageList.push(message);
-    })
-  }
-
-  
-  sendMessage() {
-    this.chatService.sendMessage(this.newMessage);
-    this.newMessage = '';
   }
 }

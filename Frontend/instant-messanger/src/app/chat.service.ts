@@ -9,21 +9,28 @@ import { AppComponent } from './app.component';
 })
 export class ChatService {
 
+  id = 1;
   public message$: BehaviorSubject<string> = new BehaviorSubject('');
-  constructor() {}
+  constructor() {
+    this.id = Math.floor(Math.random() * (3 - 1) + 1);
+    console.log("id is " + this.id);
+  }
 
   socket = io(AppComponent.url);
 
   public sendMessage(message: any) {
-    this.socket.emit('message', message);
+    this.socket.emit('message', this.id, message);
   }
 
   public getNewMessage = () => {
-    this.socket.on('message', (message) =>{
-      console.log(message);
-      this.message$.next(message);
+    this.socket.on('message', (roomNo, message) => {
+      if (roomNo === this.id) {
+        console.log(roomNo);
+        console.log(message);
+        this.message$.next(message);
+      }
     });
-    
+
     return this.message$.asObservable();
   };
 }

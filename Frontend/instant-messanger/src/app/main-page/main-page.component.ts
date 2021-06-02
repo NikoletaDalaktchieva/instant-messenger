@@ -4,6 +4,7 @@ import { User, USERS } from 'src/user';
 
 import { AppComponent } from "../app.component";
 import { UserService } from "../user.service";
+import { ChatService } from '../chat.service';
 
 @Component({
   selector: 'app-main-page',
@@ -14,36 +15,51 @@ import { UserService } from "../user.service";
 export class MainPageComponent implements OnInit {
   users = USERS;
   userSearch = '';
+  newMessage: string = "";
+  messageList: string[] = [];
 
-  constructor(private router: Router, private userService: UserService) {
-    
+  constructor(private chatService: ChatService, private router: Router, private userService: UserService) {
   }
 
-  ngOnInit(): void {
-    var result;
-    this.userService.load().
-      subscribe(
-        response => {
-          result = response;
-          console.log(result);
-          if (result.result === true) {
-            console.log(result.users);
-            this.users = result.users;
-          } else {
-            console.log(result.message);
-            AppComponent.showError(result.message);
-          }
-        },
-        error => { AppComponent.showError(); },
-        () => { }
-      );
-    
-    }
-  
+  ngOnInit() {
+
+    this.chatService.getNewMessage().subscribe((message: string) => {
+      this.messageList.push(message);
+    })
+
+    // var result;
+    // this.userService.load().
+    //   subscribe(
+    //     response => {
+    //       result = response;
+    //       console.log(result);
+    //       if (result.result === true) {
+    //         console.log(result.users);
+    //         this.users = result.users;
+    //       } else {
+    //         console.log(result.message);
+    //         AppComponent.showError(result.message);
+    //       }
+    //     },
+    //     error => { AppComponent.showError(); },
+    //     () => { }
+    //   );
+  }
+
+
+  sendMessage() {
+    this.chatService.sendMessage(this.newMessage);
+    this.newMessage = '';
+  }
+
+
+
+
+
   getSettings(event) {
     alert("There is no such name in the history list!");
   }
-    
+
   openChat() {
     alert("Click");
     this.router.navigate(['chat']);

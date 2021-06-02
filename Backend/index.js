@@ -1,3 +1,4 @@
+var mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors');
 const { userRouter } = require('./routes/userRouter');
@@ -9,11 +10,12 @@ app.use(cors({
 app.use('/user', userRouter);
 require('dotenv').config();
 
+
 //Set up mongoose connection
-const mongoose = require('mongoose');
-const mongoDB = process.env.DB_URL;
+var mongoose = require('mongoose');
+var mongoDB = process.env.DB_URL;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
-const db = mongoose.connection;
+var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 const port = process.env.PORT || 8080;
@@ -28,10 +30,14 @@ const io = require('socket.io')(httpServer, {
 io.on('connection', (socket) => {
   console.log('a user connected');
 
-  socket.on('message', (message) => {
+  socket.on('message', (roomNo, message) => {
     console.log(message);
-    io.emit('message', `${socket.id} said ${message}`);
+    io.emit('message', roomNo, `${socket.id} said ${message}`);
   });
+
+  // socket.on("message", (anotherSocketId, msg) => {
+  //   socket.to(anotherSocketId).emit("message", anotherSocketId, msg);
+  // });
 
   socket.on('disconnect', () => {
     console.log('a user disconnected!');
