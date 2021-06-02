@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-//const MongoClient = require('mongodb').MongoClient;
 const messageController = require("../controllers/messageController");
 
-router.get('/', messageController.getMessage);
+// ? chat_id
+router.get('/:id', messageController.getMessage);
 
 module.exports.messageRouter = router;
