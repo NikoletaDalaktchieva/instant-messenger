@@ -21,17 +21,7 @@
         </div>
     </section>
 
-    <section class="chat-module">
-        <h1>{{title}}</h1>
-        <div *ngFor="let message of messageList">
-            <li>
-                {{message}}
-            </li>
-        </div>
-
-        <input [(ngModel)]="newMessage" (keyup)="$event.keyCode == 13 && sendMessage()" />
-        <button (click)="sendMessage()">Send Message</button>
-    </section>
+    <section class="chat-module"><app-chat></app-chat></section>
     <section class="chat-module-info">Chat info</section>
     <p>{{userSearch}}</p>
 </main>

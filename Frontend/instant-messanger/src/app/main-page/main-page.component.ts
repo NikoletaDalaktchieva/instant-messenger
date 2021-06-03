@@ -16,17 +16,13 @@ export class MainPageComponent implements OnInit {
   users = USERS;
   title = "Undefine"
   userSearch = '';
-  newMessage: string = "";
-  messageList: string[] = [];
 
   constructor(private chatService: ChatService, private router: Router, private userService: UserService) {
   }
 
   ngOnInit() {
 
-    this.chatService.getNewMessage().subscribe((message: string) => {
-      this.messageList.push(message);
-    })
+  
 
     // var result;
     // this.userService.load().
@@ -46,13 +42,6 @@ export class MainPageComponent implements OnInit {
     //     () => { }
     //   );
   }
-
-
-  sendMessage() {
-    this.chatService.sendMessage(this.newMessage);
-    this.newMessage = '';
-  }
-
 
 
 
