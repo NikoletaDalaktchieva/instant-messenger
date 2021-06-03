@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User, USERS } from 'src/user';
 
-import { AppComponent } from "../app.component";
-import { UserService } from "../user.service";
+import { UserService } from "../services/user.service";
+import { ErrorService } from "../services/error.service";
 
 @Component({
   selector: 'app-main-page',
@@ -15,7 +15,7 @@ export class MainPageComponent implements OnInit {
   users = USERS;
   userSearch = '';
 
-  constructor(private router: Router, private userService: UserService) {
+  constructor(private router: Router, private userService: UserService, private errorService: ErrorService) {
     
   }
 
@@ -31,10 +31,10 @@ export class MainPageComponent implements OnInit {
             this.users = result.users;
           } else {
             console.log(result.message);
-            AppComponent.showError(result.message);
+            this.errorService.showError(result.message);
           }
         },
-        error => { AppComponent.showError(); },
+        error => { this.errorService.showError(); },
         () => { }
       );
     
