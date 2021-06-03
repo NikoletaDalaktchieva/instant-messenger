@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Router } from '@angular/router';
 import { AppComponent } from "./app.component";
+import * as moment from "moment"
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,7 @@ export class UserService {
           result = response;
           console.log(result);
           if (result.result) {
+            this.setSession
             this.router.navigateByUrl('chat');
           } else {
             console.log(result.message);
@@ -30,6 +32,8 @@ export class UserService {
         error => { AppComponent.showError(); },
         () => { }
       );
+
+      
   }
 
   create(user: string, email: string, password: string) {
@@ -62,4 +66,11 @@ export class UserService {
   load() {
     return this.http.get(AppComponent.url + "/user")
   }
+
+  private setSession(authResult) {
+    const expiresAt = moment().add(authResult.expiresIn,'second');
+  
+    localStorage.setItem('id_token', authResult.idToken);
+    localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
+  }  
 }
