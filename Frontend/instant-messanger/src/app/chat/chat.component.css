@@ -40,6 +40,8 @@ a#create-group{
 }   
 
 #chatbox {
+    overflow: scroll;
+    scroll-snap-type: y proximity;
     text-align: left;
     margin-left: 60px;
     background: -webkit-linear-gradient(right, #aef8f8, #abcaf8); 

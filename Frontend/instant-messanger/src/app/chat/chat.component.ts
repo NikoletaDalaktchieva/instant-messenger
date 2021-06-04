@@ -1,5 +1,5 @@
 
-import { Component, OnInit, Input  } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ChatService } from '../services/chat.service';
 import { MessageService } from '../services/message.service';
 import { UserService } from "../services/user.service";
@@ -23,7 +23,7 @@ export class ChatComponent implements OnInit {
     private chatService: ChatService,
     private messageService: MessageService,
     private errorService: ErrorService,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.chatService.getNewMessage().subscribe((message: Message) => {
@@ -31,10 +31,14 @@ export class ChatComponent implements OnInit {
     })
   }
 
+  ngOnDestroy(): void {
+    this.chatService.socketDisconect();
+  }
+
   @Input()
   get chat(): any { return this._chat; }
   set chat(chat: any) {
-    this._chat = (chat) || '<no chat set>';
+    this._chat = (chat);
     this.chatService.setChatId(chat._id)
     this.loadMessages();
   }
@@ -42,7 +46,7 @@ export class ChatComponent implements OnInit {
   loadMessages() {
     var result;
     this.messageService.load(this.chat._id)
-    .subscribe(
+      .subscribe(
         response => {
           result = response;
           console.log(result);
@@ -67,8 +71,8 @@ export class ChatComponent implements OnInit {
   }
 
   sendMessage() {
+    if(this.newMessage === '') return;  
     this.chatService.sendMessage(this.newMessage);
     this.newMessage = '';
-    console.log("text");
   }
 }

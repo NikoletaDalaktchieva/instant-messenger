@@ -51,4 +51,9 @@ export class ChatService {
 
     return this.message$.asObservable();
   };
+
+  public socketDisconect() {
+    console.log('disconect')
+    this.socket.disconnect();
+  }
 }
