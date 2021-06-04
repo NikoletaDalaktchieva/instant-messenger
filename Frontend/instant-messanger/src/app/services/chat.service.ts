@@ -10,14 +10,11 @@ import { HttpClient } from "@angular/common/http";
 })
 export class ChatService {
 
-  chat = {
-    id : null,
-    name : null
-  };
+  roomId = null;
   socket = io(AppComponent.url);
   public message$: BehaviorSubject<string> = new BehaviorSubject('');
 
-  constructor( private http: HttpClient) {
+  constructor(private http: HttpClient) {
   }
 
   load() {
@@ -25,20 +22,24 @@ export class ChatService {
   }
 
 
-  public setChat(chat: any) {
-    this.chat = chat;
+  public setChatId(roomId: any) {
+    this.roomId = roomId;
   }
 
 
   public sendMessage(message: any) {
-    if(this.chat.id === null) return;
-    this.socket.emit('message', this.chat, message);
+    if (this.roomId === null) return;
+    const user = {
+      _id: localStorage.getItem('id_user'),
+      name: localStorage.getItem('name_user')
+    }
+    this.socket.emit('message', this.roomId, user, message);
   }
 
   public getNewMessage = () => {
-    this.socket.on('message', (room, message) => {
-      console.log(room._id);
-      if (room._id === this.chat.id) {   
+    this.socket.on('message', (roomId, user, message) => {
+      console.log(roomId);
+      if (roomId === this.roomId) {
         console.log(message);
         this.message$.next(message);
       }

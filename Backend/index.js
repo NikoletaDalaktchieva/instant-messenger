@@ -38,7 +38,7 @@ io.on('connection', (socket) => {
 
   socket.on('message', (roomId, user, message) => {
     console.log(message);
-    io.emit('message', roomId, `${user.name} said ${message}`);
+    io.emit('message', roomId, user, message);
     messageController.create(roomId, user._id, message);
   });
 
