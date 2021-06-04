@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors');
-const jwt_decode = require('jwt-decode');
 const jwt = require('jsonwebtoken')
 const { userRouter } = require('./routes/userRouter');
 const { chatRouter } = require('./routes/chatRouter');
 const { messageRouter } = require('./routes/messageRouter');
 const messageController = require('./controllers/messageController');
 const { authMiddleware } = require('./middleware/authMiddleware');
+const jwt_decode = require('jwt-decode');
 const app = express();
 app.use(express.json());
 app.use(cors({
@@ -38,9 +38,7 @@ io.on('connection', (socket) => {
   console.log('a user connected');
 
   socket.on('message', (tokenId, roomId, message) => {
-    const token = jwt_decode(tokenId);
-    io.emit('message', roomId, token.name, message);
-    messageController.create(roomId, token.id, message);
+    messageController.create(roomId, tokenId, message, io, roomId);
   });
   socket.on('disconnect', () => {
     console.log('a user disconnected!');

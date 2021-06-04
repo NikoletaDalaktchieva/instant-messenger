@@ -1,5 +1,6 @@
 const mongoose = require('mongoose'), Schema = mongoose.Schema;
 const Message = require('../models/messageSchema');
+const jwt_decode = require('jwt-decode');
 
 exports.getMessage = function (req, res) {
     const id = req.params.id;
@@ -25,20 +26,24 @@ exports.sortMessagesByDate = function (req, res) {
         })
 }
 
-exports.create = function (chatId, userId, text) {
+exports.create = function (chatId, tokenId, text, io, roomId) {
+    const token = jwt_decode(tokenId);
     const message = new Message({
         text: text,
         chat: chatId,
-        sender: userId,
+        sender: token.id,
         dispatchDate: Date.now(),
     });
     message.save().then(
         (created) => {
-            console.log(created);
+            console.log(created)
+            io.emit('message', roomId, token.name, created);
         }
     ).catch(
         (error) => {
+            
             console.log(error)
+            return error;
         }
     );
 }
