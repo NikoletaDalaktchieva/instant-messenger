@@ -40,8 +40,8 @@ export class ChatComponent implements OnInit {
 
   loadMessages() {
     var result;
-    this.messageService.load(this.chat._id).
-      subscribe(
+    this.messageService.load(this.chat._id)
+    .subscribe(
         response => {
           result = response;
           console.log(result);
@@ -65,10 +65,8 @@ export class ChatComponent implements OnInit {
       );
   }
 
-
   sendMessage() {
     this.chatService.sendMessage(this.newMessage);
     this.newMessage = '';
   }
-
 }

@@ -7,8 +7,11 @@ import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
-  constructor(private router: Router, private http: HttpClient, private errorService: ErrorService) { }
+  constructor(private router: Router, 
+    private http: HttpClient, 
+    private errorService: ErrorService) { }
 
   logIn(name: string, password: string) {
     return this.http.post(environment.serveUrl + "/user/login",
@@ -28,7 +31,7 @@ export class UserService {
   }
 
   load() {
-    return this.http.get(environment.serveUrl + "/user")
+    return this.http.get(environment.serveUrl + "/user");
   }
 
   setSession(authResult) {
@@ -49,7 +52,6 @@ export class UserService {
   }
 
   isLoggedOut() {
-    return  localStorage.getItem('id_token') === undefined || localStorage.getItem('id_token') === null;;
+    return  localStorage.getItem('id_token') === undefined || localStorage.getItem('id_token') === null;
   }
-
 }

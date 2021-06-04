@@ -23,9 +23,7 @@ export class MainPageComponent implements OnInit {
     private errorService: ErrorService,
   ) { }
 
-
   ngOnInit(): void {
-
     if (!this.userService.isLoggedIn()) {
       this.router.navigateByUrl('login');
     } else {
@@ -36,8 +34,8 @@ export class MainPageComponent implements OnInit {
   loadChats() {
     this.userName = localStorage.getItem('id_name');
     var result;
-    this.chatService.load().
-      subscribe(
+    this.chatService.load()
+    .subscribe(
         response => {
           result = response;
           if (result.result) {
@@ -66,7 +64,7 @@ export class MainPageComponent implements OnInit {
   }
 
   getSettings(event) {
-    alert("There is no such name in the history list!");
+    alert("Not implemented!");
   }
 
   logout() {
@@ -74,4 +72,3 @@ export class MainPageComponent implements OnInit {
     this.router.navigateByUrl('login');
   }
 }
-

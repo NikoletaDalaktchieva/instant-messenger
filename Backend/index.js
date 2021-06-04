@@ -19,7 +19,6 @@ app.use('/message', authMiddleware, messageRouter);
 app.use(authMiddleware)
 require('dotenv').config();
 
-
 //Set up mongoose connection
 const mongoDB = process.env.DB_URL;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });

@@ -1,4 +1,4 @@
-import { User } from 'src/user';
+import { User } from './userModel';
 import { Chat } from './chatModel';
 
 export class Message {
@@ -13,5 +13,4 @@ export class Message {
         this.sender = sender;
         this.dispatchDate = dispatchDate;
     }
-
 }

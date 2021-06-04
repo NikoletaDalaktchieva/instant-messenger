@@ -9,7 +9,6 @@ export class MessageService {
 
   constructor(private http: HttpClient) { }
 
-
   load(chatId) {
     var headers_object = new HttpHeaders({
       'Authorization': "" + localStorage.getItem('id_token')
@@ -18,7 +17,6 @@ export class MessageService {
     const httpOptions = {
       headers: headers_object
     };
-    return this.http.get(environment.serveUrl + "/message?chatId" + chatId, httpOptions)
+    return this.http.get(environment.serveUrl + "/message?chatId" + chatId, httpOptions);
   }
-
 }
