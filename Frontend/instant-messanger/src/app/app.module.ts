@@ -24,6 +24,7 @@ import { PopupWindowComponent } from './popup-window/popup-window.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     SocialLoginModule,
     FormsModule,
     HttpClientModule,
