@@ -60,7 +60,7 @@ export class MainPageComponent implements OnInit {
         () => { }
       );
   }
-  
+
   openChat(chat: any) {
     this.currentChat = chat;
   }

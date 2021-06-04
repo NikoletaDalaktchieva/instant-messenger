@@ -18,6 +18,9 @@ export class LoginComponent implements OnInit {
   title = environment.appTitle;
   socialUser: SocialUser = new SocialUser;
 
+  name = '';
+  password = '';
+
   constructor(private userService: UserService,
     private socialAuthService: SocialAuthService,
     private router: Router,

@@ -1,4 +1,4 @@
-const Chat = require('../models/chat');
+const Chat = require('../models/chatSchema');
 
 exports.getChat = function (req, res) {
     Chat.find({})

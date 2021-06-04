@@ -16,6 +16,10 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private errorService: ErrorService) { }
 
+  email = '';
+  username = '';
+  password = '';
+  confirmed_password = '';
   ngOnInit(): void {
     if (this.userService.isLoggedIn()) {
       this.router.navigateByUrl('');

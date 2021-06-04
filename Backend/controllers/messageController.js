@@ -1,8 +1,5 @@
-const Message = require('../models/message');
-const io = require('socket.io')
 const mongoose = require('mongoose'), Schema = mongoose.Schema;
-const Chat = require('../models/chat');
-const user = require('../models/user');
+const Message = require('../models/messageSchema');
 
 exports.getMessage = function (req, res) {
     const id = req.params.id;
@@ -15,8 +12,10 @@ exports.getMessage = function (req, res) {
 }
 
 exports.sortMessagesByDate = function (req, res) {
-    Message.find()
-        .sort({ name: 1 })
+    console.log('Here:', req.query.chatId);
+    const sortDate = { dispatchDate: 1 }
+    Message.find({ 'chat': req.query.chatId })
+        .sort(sortDate)
         .populate('message')
         .exec(function (error, list_messages) {
             if (error) {
