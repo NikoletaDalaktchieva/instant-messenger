@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 import { User, USERS } from 'src/user';
 import { UserService } from "../services/user.service";
 import { ErrorService } from "../services/error.service";
-import { AppComponent } from "../app.component";
-import { ChatService } from '../services/chat.service';
+import { ChatService } from '../chat.service';
 
 @Component({
   selector: 'app-main-page',
@@ -14,7 +13,7 @@ import { ChatService } from '../services/chat.service';
 
 export class MainPageComponent implements OnInit {
   users = USERS;
-  title = "Undefine"
+  title = "Undefine";
   userSearch = '';
   newMessage: string = "";
   messageList: string[] = [];
