@@ -1,6 +1,7 @@
 const Chat = require('../models/chat');
 
 exports.getChat = function (req, res) {
+    console.log('chat');
     Chat.find({})
         .populate('chat')
         .exec(function (error, list_chats) {

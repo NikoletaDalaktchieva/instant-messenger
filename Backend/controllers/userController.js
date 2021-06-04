@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
-const messageController = require('../controllers/messageController');
 
 exports.create = function (req, res) {
     console.log(req);
@@ -31,20 +30,15 @@ exports.login = function (req, res) {
                 res.json({ result: false, message: 'User not Found' });
             }
             else {
-                res.json(jsonTokenBody(user))
+                const token = jwt.sign({
+                    id: user.id,
+                    name: user.name,
+                }, 'scrt', {
+                    expiresIn: '1h'
+                });
+                res.json({ result: true, user: user, token: token })
             }
         });
-}
-
-function jsonTokenBody(user) {
-    const jwtBearerToken = jwt.sign({
-        name: user.name,
-    }, 'secreett', {
-        expiresIn: '1h'
-    }, {
-        algorithm: 'HS256'
-    });
-    return { result: true, user: user, idToken: jwtBearerToken, expiresIn: 120 };
 }
 
 exports.getUsers = function (_req, res) {

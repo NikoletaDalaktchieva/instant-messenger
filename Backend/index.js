@@ -12,9 +12,9 @@ app.use(cors({
   origin: '*'
 }));
 app.use('/user', userRouter);
-app.use('/chat', chatRouter);
-app.use('/message', messageRouter);
-app.use(authMiddleware);
+app.use('/chat', authMiddleware, chatRouter);
+app.use('/message',authMiddleware, messageRouter);
+app.use(authMiddleware)
 require('dotenv').config();
 
 
@@ -31,7 +31,6 @@ httpServer.listen(port, () => console.log(`listening on port ${port}`));
 const io = require('socket.io')(httpServer, {
   cors: { origin: '*' }
 });
-
 
 io.on('connection', (socket) => {
   console.log('a user connected');

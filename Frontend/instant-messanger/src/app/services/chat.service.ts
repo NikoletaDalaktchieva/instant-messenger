@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { io } from "socket.io-client";
 import { AppComponent } from '../app.component';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 
 @Injectable({
@@ -18,7 +18,15 @@ export class ChatService {
   }
 
   load() {
-    return this.http.get(AppComponent.url + "/chat")
+    console.log(localStorage.getItem('id_token'))
+    var headers_object = new HttpHeaders({
+      'Authorization': "" + localStorage.getItem('id_token')
+    });
+
+    const httpOptions = {
+      headers: headers_object
+    };
+    return this.http.get(AppComponent.url + "/chat", httpOptions)
   }
 
 

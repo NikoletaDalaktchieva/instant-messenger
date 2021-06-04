@@ -34,31 +34,24 @@ export class UserService {
   }
 
   setSession(authResult) {
-    console.log('setSession')
-    const expiresAt = moment().add(authResult.expiresIn, 'second');
-
-    localStorage.setItem('id_token', authResult.idToken);
+    localStorage.setItem('id_token', authResult.token);
     localStorage.setItem('id_user', authResult.user._id);
     localStorage.setItem('id_name', authResult.user.name);
-    localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()))
-    console.log(localStorage.getItem("expires_at"))
   }
 
 
   logout() {
-    console.log('logut')
     localStorage.removeItem("id_token");
-    localStorage.removeItem("expires_at");
     localStorage.removeItem('id_user');
     localStorage.removeItem('id_name');
   }
 
   public isLoggedIn() {
-    return moment().isBefore(this.getExpiration());
+    return ! this.isLoggedOut();
   }
 
   isLoggedOut() {
-    return !this.isLoggedIn();
+    return  localStorage.getItem('id_token') === undefined || localStorage.getItem('id_token') === null;;
   }
 
   getExpiration() {
