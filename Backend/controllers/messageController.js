@@ -19,11 +19,5 @@ exports.sortMessagesByDate = function (req, res) {
                 res.status(500).json({ result: false, message: 'Cannot get message list!', error: error });
             }
             res.status(200).json({ result: true, message_list: list_messages });
-<<<<<<< HEAD
-        });
-}
-
-=======
         })
 }
->>>>>>> origin/develop
