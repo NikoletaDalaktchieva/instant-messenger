@@ -11,15 +11,9 @@ import { UserService } from "../services/user.service";
 })
 
 export class MainPageComponent implements OnInit {
-<<<<<<< HEAD
   chats;
   chatSearch = '';
   userName;
-=======
-  users = USERS;
-  title = "Undefine"
-  userSearch = '';
->>>>>>> develop
 
   constructor(private userService: UserService,
     private router: Router,
@@ -64,37 +58,13 @@ export class MainPageComponent implements OnInit {
       );
   }
 
-<<<<<<< HEAD
   openChat(chat: any) {
     this.chatService.setChatId(chat._id)
-=======
-  ngOnInit() {
-
-  
-
-    // var result;
-    // this.userService.load().
-    //   subscribe(
-    //     response => {
-    //       result = response;
-    //       console.log(result);
-    //       if (result.result === true) {
-    //         console.log(result.users);
-    //         this.users = result.users;
-    //       } else {
-    //         console.log(result.message);
-    //         AppComponent.showError(result.message);
-    //       }
-    //     },
-    //     error => { AppComponent.showError(); },
-    //     () => { }
-    //   );
   }
 
 
   getSettings(event) {
     alert("There is no such name in the history list!");
->>>>>>> develop
   }
 
   logout() {
