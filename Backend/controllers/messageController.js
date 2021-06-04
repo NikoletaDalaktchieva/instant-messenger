@@ -1,4 +1,5 @@
 const Message = require('../models/message');
+const io = require('socket.io')
 
 exports.getMessage = function (req, res) {
     const id = req.params.id;
@@ -21,3 +22,12 @@ exports.sortMessagesByDate = function (req, res) {
             res.status(200).json({ result: true, message_list: list_messages });
         })
 }
+
+exports.create = function(room, user, message){
+  console.log(room);
+  console.log(user); 
+  console.log(message);
+}
+
+
+  

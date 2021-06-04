@@ -44,7 +44,7 @@ exports.login = function (req, res) {
 
                   res.setHeader('Authorization-token', jwtBearerToken);
 
-                return res.json({ result: true, id: user._id });
+                return res.json({ result: true, id: user });
             }
         });
 }
