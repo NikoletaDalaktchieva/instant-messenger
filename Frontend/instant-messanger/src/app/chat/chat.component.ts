@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,Input, OnInit, Output,EventEmitter } from '@angular/core';
 import { ChatService } from '../chat.service';
 
 @Component({
@@ -10,6 +10,7 @@ export class ChatComponent implements OnInit {
 
   newMessage: string = "";
   messageList: string[] = [];
+  searchMessage: string = "";
 
   constructor(private chatService: ChatService) { }
 

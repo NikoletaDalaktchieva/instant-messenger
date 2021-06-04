@@ -9,3 +9,4 @@ exports.getMessage = function (req, res) {
             res.status(200).json({ result: true, message_list: list_messages });
         });
 }
+
