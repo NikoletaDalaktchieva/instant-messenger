@@ -1,5 +1,8 @@
 const Message = require('../models/message');
 const io = require('socket.io')
+const mongoose = require('mongoose'), Schema = mongoose.Schema;
+const Chat = require('../models/chat');
+const user = require('../models/user');
 
 exports.getMessage = function (req, res) {
     const id = req.params.id;
@@ -23,11 +26,20 @@ exports.sortMessagesByDate = function (req, res) {
         })
 }
 
-exports.create = function(room, user, message){
-  console.log(room);
-  console.log(user); 
-  console.log(message);
+exports.create = function (chatId, userId, text) {
+    const message = new Message({
+        text: text,
+        chat: chatId,
+        sender: userId,
+        dispatchDate: Date.now(),
+    });
+    message.save().then(
+        (created) => {
+            console.log(created);
+        }
+    ).catch(
+        (error) => {
+            console.log(error)
+        }
+    );
 }
-
-
-  

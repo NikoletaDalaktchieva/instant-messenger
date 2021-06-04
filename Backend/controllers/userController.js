@@ -1,8 +1,9 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
+const messageController = require('../controllers/messageController');
 
 exports.create = function (req, res) {
-    User.init();
+    console.log(req);
     const user = new User({
         name: req.body.user,
         email: req.body.email,
@@ -36,14 +37,13 @@ exports.login = function (req, res) {
             else {
                 const jwtBearerToken = jwt.sign({
                     name: user.name,
-                  }, 'secreett', {
+                }, 'secreett', {
                     expiresIn: '1h'
-                  }, {
-                      algorithm : 'HS256'
-                  });
+                }, {
+                    algorithm: 'HS256'
+                });
 
-                  res.setHeader('Authorization-token', jwtBearerToken);
-
+                res.setHeader('Authorization-token', jwtBearerToken);
                 return res.json({ result: true, id: user });
             }
         });

@@ -36,10 +36,10 @@ const io = require('socket.io')(httpServer, {
 io.on('connection', (socket) => {
   console.log('a user connected');
 
-  socket.on('message', (room, user, message) => {
+  socket.on('message', (roomId, user, message) => {
     console.log(message);
-    io.emit('message', room._id, `${user.name} said ${message}`);
-    messageController.create(room, user, message);
+    io.emit('message', roomId, `${user.name} said ${message}`);
+    messageController.create(roomId, user._id, message);
   });
 
   // socket.on("message", (anotherSocketId, msg) => {
