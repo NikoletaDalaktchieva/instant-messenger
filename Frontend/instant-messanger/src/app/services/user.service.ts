@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Router } from '@angular/router';
 import { ErrorService } from "../services/error.service";
-import { AppComponent } from "./app.component";
+import { AppComponent } from "../app.component";
 import * as moment from "moment";
 
 @Injectable({
