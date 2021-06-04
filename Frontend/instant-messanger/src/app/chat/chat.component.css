@@ -25,6 +25,12 @@
     padding-right: 2%;
 }
 
+#search-bar {
+    text-align: left;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.1rem;
+}   
+
 #chatbox {
     text-align: left;
     margin-left: 60px;
