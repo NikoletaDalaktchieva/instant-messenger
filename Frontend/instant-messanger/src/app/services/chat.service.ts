@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { io } from "socket.io-client";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
+import jwt_decode from 'jwt-decode';
 
 
 @Injectable({
@@ -37,19 +38,19 @@ export class ChatService {
 
   public sendMessage(message: any) {
     if (this.roomId === null) return;
-    const user = {
-      _id: localStorage.getItem('id_user'),
-      name: localStorage.getItem('name_user')
-    }
-    this.socket.emit('message', this.roomId, user, message);
+    
+    const tokenId = localStorage.getItem('id_token');
+    if(tokenId === null) return;
+    const token = jwt_decode(tokenId);
+    this.socket.emit('message', localStorage.getItem('id_token'), this.roomId, message);
   }
 
   public getNewMessage = () => {
-    this.socket.on('message', (roomId, user, message) => {
+    this.socket.on('message', (roomId, userName, message) => {
       console.log(roomId);
       if (roomId === this.roomId) {
         console.log(message);
-        this.message$.next(message);
+        this.message$.next(userName + ":" + message);
       }
     });
 

@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors');
+const jwt_decode = require('jwt-decode');
+const jwt = require('jsonwebtoken')
 const { userRouter } = require('./routes/userRouter');
 const { chatRouter } = require('./routes/chatRouter');
 const { messageRouter } = require('./routes/messageRouter');
@@ -13,7 +15,7 @@ app.use(cors({
 }));
 app.use('/user', userRouter);
 app.use('/chat', authMiddleware, chatRouter);
-app.use('/message',authMiddleware, messageRouter);
+app.use('/message', authMiddleware, messageRouter);
 app.use(authMiddleware)
 require('dotenv').config();
 
@@ -35,16 +37,12 @@ const io = require('socket.io')(httpServer, {
 io.on('connection', (socket) => {
   console.log('a user connected');
 
-  socket.on('message', (roomId, user, message) => {
-    console.log(message);
-    io.emit('message', roomId, user, message);
-    messageController.create(roomId, user._id, message);
+  socket.on('message', (tokenId, roomId, message) => {
+    const token = jwt_decode(tokenId);
+    console.log(token);
+    io.emit('message', roomId, token.name, message);
+    messageController.create(roomId, token.id, message);
   });
-
-  // socket.on("message", (anotherSocketId, msg) => {
-  //   socket.to(anotherSocketId).emit("message", anotherSocketId, msg);
-  // });
-
   socket.on('disconnect', () => {
     console.log('a user disconnected!');
   });
