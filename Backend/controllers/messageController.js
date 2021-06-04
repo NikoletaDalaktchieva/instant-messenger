@@ -11,8 +11,9 @@ exports.getMessage = function (req, res) {
 }
 
 exports.sortMessagesByDate = function (req, res) {
+    const sortDate = { dispatchDate: 1 }
     Message.find()
-        .sort({ name: 1 })
+        .sort(sortDate)
         .populate('message')
         .exec(function (error, list_messages) {
             if (error) {
