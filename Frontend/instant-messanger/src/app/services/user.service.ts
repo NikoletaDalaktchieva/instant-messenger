@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ErrorService } from "../services/error.service";
 import { AppComponent } from "../app.component";
 import * as moment from "moment";
-import { User } from '../models.ts/userModel';
+import { User } from '../models/userModel';
 
 @Injectable({
   providedIn: 'root'

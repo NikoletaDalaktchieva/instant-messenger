@@ -1,14 +1,20 @@
 <section>
     <div class="chat-module">
         <div id="info-group">
-            <p><a id="chat-info" href="#">Information</a></p>
+            <input type="text" id="search-bar"  placeholder="Search" [(ngModel)]="searchMessage">
             <p><a id="create-group" href="#">Create Group</a></p>
         </div>
         
-        <div id="chatbox"></div>
+        <div id="chatbox">
+            <div *ngFor="let message of messageList">
+                <ng-container *ngIf="message.includes(searchMessage)">
+                    <li [title]="message">{{ message }}</li>
+                </ng-container>
+            </div>
+        </div>
         <form name="message" id="form" action="">
-            <input name="usermsg" type="text" id="usermsg" />
-            <input name="submitmsg" type="submit" id="submitmsg" value="Send" />
+            <input [(ngModel)]="newMessage" (keyup)="$event.keyCode == 13 && sendMessage()" name="usermsg" type="text" id="usermsg" />
+            <input (click)="sendMessage()" name="submitmsg" type="submit" id="submitmsg" value="Send" />
         </form>
     </div>
 </section>
