@@ -1,12 +1,11 @@
 export class User {
-    id!: number;
-    name!: string;
-    /*isActive!: boolean;
-    isRead!: boolean;
-    lastMessage!: string;
-    time!: Date;*/
+    id: number;
+    name: string;
 
-    // constructor
+    constructor(id: number, name: string) {
+        this.id = id;
+        this.name = name;
+    }
 }
 
 export const USERS: User[] = [
