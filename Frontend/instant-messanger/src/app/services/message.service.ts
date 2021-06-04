@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
+import { Message } from '../models/messageModel';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,6 @@ export class MessageService {
     const httpOptions = {
       headers: headers_object
     };
-    return this.http.get(environment.serveUrl + "/message?chatId" + chatId, httpOptions);
+    return this.http.get<Message>(environment.serveUrl + "/message?chatId" + chatId, httpOptions);
   }
 }

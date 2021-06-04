@@ -4,6 +4,7 @@ import { io } from "socket.io-client";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
 import jwt_decode from 'jwt-decode';
+import { Chat } from '../models/chatModel';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,7 @@ export class ChatService {
     const httpOptions = {
       headers: headers_object
     };
-    return this.http.get(environment.serveUrl + "/chat", httpOptions);
+    return this.http.get<Chat>(environment.serveUrl + "/chat", httpOptions);
   }
 
   public setChatId(roomId: any) {
