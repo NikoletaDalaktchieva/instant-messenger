@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  title = environment.serveUrl;
+  title = environment.appTitle;
   socialUser: SocialUser = new SocialUser;
 
   constructor(private userService: UserService,

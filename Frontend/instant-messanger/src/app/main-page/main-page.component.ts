@@ -14,11 +14,14 @@ export class MainPageComponent implements OnInit {
   chats;
   chatSearch = '';
   userName;
+  name = '';
+  currentChat;
 
   constructor(private userService: UserService,
     private router: Router,
     private chatService: ChatService,
-    private errorService: ErrorService) {
+    private errorService: ErrorService,
+  ) {
   }
 
   ngOnInit(): void {
@@ -41,6 +44,7 @@ export class MainPageComponent implements OnInit {
           if (result.result) {
             console.log(result.chat_list);
             this.chats = result.chat_list;
+            this.currentChat = this.chats[0];
           } else {
             if (result.logout) {
               this.userService.logout();
@@ -59,7 +63,7 @@ export class MainPageComponent implements OnInit {
   }
 
   openChat(chat: any) {
-    this.chatService.setChatId(chat._id)
+    this.currentChat = chat;
   }
 
 
