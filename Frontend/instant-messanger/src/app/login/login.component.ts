@@ -6,6 +6,7 @@ import { SocialAuthService, GoogleLoginProvider, SocialUser } from 'angularx-soc
 
 import { AppComponent } from "../app.component";
 import { UserService } from "../services/user.service";
+import { ErrorService } from "../services/error.service";
 
 @Component({
   selector: 'app-login',
@@ -17,29 +18,40 @@ export class LoginComponent implements OnInit {
   socialUser: SocialUser = new SocialUser;
 
   constructor(private userService: UserService,
-    private formBuilder: FormBuilder,
     private socialAuthService: SocialAuthService,
     private router: Router,
+    private errorService: ErrorService,
   ) {
   }
 
   ngOnInit() {
-    this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-
-    this.socialAuthService.authState.subscribe((user) => {
-      this.socialUser = user;
-      console.log(this.socialUser);
-      this.router.navigateByUrl('chat');
-    });
+    if (this.userService.isLoggedIn()) {
+      this.router.navigateByUrl('');
+    }
   }
 
 
   loginUser(name: string, password: string) {
-    this.userService.logIn(name, password);
+    var result;
+    this.userService.logIn(name, password).
+      subscribe(
+        response => {
+          result = response;
+          console.log('result');
+          console.log(result);
+          if (result.result) {
+            this.userService.setSession(response);
+            this.router.navigateByUrl('');
+          } else {
+            console.log(result.message);
+            this.errorService.showError(result.message);
+          }
+        },
+        error => { this.errorService.showError(); },
+        () => { }
+      );
   }
+
 
   loginWithGoogle(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);

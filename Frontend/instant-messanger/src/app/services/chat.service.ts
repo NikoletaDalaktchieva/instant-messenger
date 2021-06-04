@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { io } from "socket.io-client";
-import { AppComponent } from './app.component';
+import { AppComponent } from '../app.component';
+import { HttpClient } from "@angular/common/http";
 
 
 @Injectable({
@@ -9,27 +10,35 @@ import { AppComponent } from './app.component';
 })
 export class ChatService {
 
-  id = 0;
+  chat = {
+    id : null,
+    name : null
+  };
   socket = io(AppComponent.url);
   public message$: BehaviorSubject<string> = new BehaviorSubject('');
 
-  constructor() {
+  constructor( private http: HttpClient) {
+  }
+
+  load() {
+    return this.http.get(AppComponent.url + "/chat")
   }
 
 
-  public setId(id: any) {
-    this.id = id;
+  public setChat(chat: any) {
+    this.chat = chat;
   }
 
 
   public sendMessage(message: any) {
-    this.socket.emit('message', this.id, message);
+    if(this.chat.id === null) return;
+    this.socket.emit('message', this.chat, message);
   }
 
   public getNewMessage = () => {
-    this.socket.on('message', (roomNo, message) => {
-      if (roomNo === this.id) {
-        console.log(roomNo);
+    this.socket.on('message', (room, message) => {
+      console.log(room._id);
+      if (room._id === this.chat.id) {   
         console.log(message);
         this.message$.next(message);
       }
