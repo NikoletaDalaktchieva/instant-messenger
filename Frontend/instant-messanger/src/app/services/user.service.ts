@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Router } from '@angular/router';
+import { ErrorService } from "../services/error.service";
 import { AppComponent } from "./app.component";
-import * as moment from "moment"
+import * as moment from "moment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient, private errorService: ErrorService) { }
 
   logIn(name: string, password: string) {
     var result;
@@ -26,10 +27,10 @@ export class UserService {
             this.router.navigateByUrl('chat');
           } else {
             console.log(result.message);
-            AppComponent.showError(result.message);
+            this.errorService.showError(result.message);
           }
         },
-        error => { AppComponent.showError(); },
+        error => { this.errorService.showError(); },
         () => { }
       );
 
@@ -54,10 +55,10 @@ export class UserService {
               this.router.navigateByUrl('chat');
             } else {
               console.log(result.message);
-              AppComponent.showError(result.message);
+              this.errorService.showError(result.message);
             }
           },
-          error => { AppComponent.showError(); },
+          error => { this.errorService.showError(); },
           () => { }
         );
     });

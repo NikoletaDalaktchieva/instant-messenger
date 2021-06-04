@@ -50,7 +50,7 @@ exports.login = function (req, res) {
 }
 
 exports.getUsers = function (_req, res) {
-    User.find({})
+    User.find()
         .populate('user')
         .exec(function (error, list_users) {
             if (error) {
