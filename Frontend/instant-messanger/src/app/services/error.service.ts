@@ -4,6 +4,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ErrorService {
 
   constructor() { }

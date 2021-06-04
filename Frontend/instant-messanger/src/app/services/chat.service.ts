@@ -4,19 +4,19 @@ import { io } from "socket.io-client";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
 import jwt_decode from 'jwt-decode';
-
+import { Chat } from '../models/chatModel';
+import { Message } from '../models/messageModel';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ChatService {
 
+export class ChatService {
   roomId = null;
   socket = io(environment.serveUrl);
-  public message$: BehaviorSubject<string> = new BehaviorSubject('');
+  public message$: BehaviorSubject<Message> = new BehaviorSubject(new Message('', '', new Date()));
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) { }
 
   load() {
     var headers_object = new HttpHeaders({
@@ -26,14 +26,12 @@ export class ChatService {
     const httpOptions = {
       headers: headers_object
     };
-    return this.http.get(environment.serveUrl + "/chat", httpOptions)
+    return this.http.get<Chat>(environment.serveUrl + "/chat", httpOptions);
   }
-
 
   public setChatId(roomId: any) {
     this.roomId = roomId;
   }
-
 
   public sendMessage(message: any) {
     if (this.roomId === null) return;
@@ -45,9 +43,9 @@ export class ChatService {
   }
 
   public getNewMessage = () => {
-    this.socket.on('message', (roomId, userName, message) => {
+    this.socket.on('message', (roomId, message: Message) => {
       if (roomId === this.roomId) {
-        this.message$.next(userName + ":" + message);
+        this.message$.next(message);
       }
     });
 

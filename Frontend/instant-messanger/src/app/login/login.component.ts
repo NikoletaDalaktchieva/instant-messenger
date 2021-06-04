@@ -25,17 +25,14 @@ export class LoginComponent implements OnInit {
     private socialAuthService: SocialAuthService,
     private router: Router,
     private errorService: ErrorService,
-  ) {
-  }
+  ) { }
 
   ngOnInit() {
-    
     console.log(this.userService.isLoggedIn())
      if (this.userService.isLoggedIn()) {
        this.router.navigateByUrl('');
      }
   }
-
 
   loginUser(name: string, password: string) {
     var result;
@@ -58,7 +55,6 @@ export class LoginComponent implements OnInit {
       );
   }
 
-
   loginWithGoogle(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
@@ -66,5 +62,4 @@ export class LoginComponent implements OnInit {
   logOut(): void {
     this.socialAuthService.signOut();
   }
-
 }

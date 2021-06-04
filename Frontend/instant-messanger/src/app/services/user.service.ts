@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Router } from '@angular/router';
-import { ErrorService } from "../services/error.service";
 import { environment } from '../../environments/environment';
+import { User } from '../models/userModel';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
-  constructor(private router: Router, private http: HttpClient, private errorService: ErrorService) { }
+  constructor(private router: Router, 
+    private http: HttpClient) { }
 
   logIn(name: string, password: string) {
-    return this.http.post(environment.serveUrl + "/user/login",
+    return this.http.post<User>(environment.serveUrl + "/user/login",
       {
         user: name,
         password: password
@@ -19,7 +21,7 @@ export class UserService {
   }
 
   create(user: string, email: string, password: string) {
-    return this.http.post(environment.serveUrl + "/user",
+    return this.http.post<User>(environment.serveUrl + "/user",
       {
         user: user,
         email: email,
@@ -28,7 +30,7 @@ export class UserService {
   }
 
   load() {
-    return this.http.get(environment.serveUrl + "/user")
+    return this.http.get<User>(environment.serveUrl + "/user");
   }
 
   setSession(authResult) {
@@ -49,7 +51,6 @@ export class UserService {
   }
 
   isLoggedOut() {
-    return  localStorage.getItem('id_token') === undefined || localStorage.getItem('id_token') === null;;
+    return  localStorage.getItem('id_token') === undefined || localStorage.getItem('id_token') === null;
   }
-
 }

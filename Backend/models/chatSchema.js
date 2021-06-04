@@ -1,4 +1,4 @@
-const mongoose = require('mongoose'), Schema = mongoose.Schema;
+const mongoose = require('mongoose');
 
 const chatSchema = mongoose.Schema({
     name: { type: String, require: true },

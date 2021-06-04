@@ -9,8 +9,8 @@
         
         <div id="chatbox">
             <div *ngFor="let message of messageList">
-                <ng-container *ngIf="message.startsWith(searchMessage)">
-                    <li>{{ message }}</li>
+                <ng-container *ngIf="message.text.includes(searchMessage)">
+                    <li>{{ message.sender + " say: " + message.text }}</li>
                 </ng-container>
             </div>
         </div>

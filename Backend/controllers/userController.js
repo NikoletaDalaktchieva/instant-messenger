@@ -10,11 +10,11 @@ exports.create = function (req, res) {
     });
     user.save().then(
         (createdUser) => {
-            res.json(jsonTokenBody(createdUser))
+            res.json(jsonTokenBody(createdUser));
         }
     ).catch(
         (error) => {
-            console.log(error)
+            console.log(error);
             res.status(500).json({ result: false, message: 'Cannot create this user', error: error });
         }
     );
@@ -36,7 +36,7 @@ exports.login = function (req, res) {
                 }, 'scrt', {
                     expiresIn: '1h'
                 });
-                res.json({ result: true, user: user, token: token })
+                res.json({ result: true, user: user, token: token });
             }
         });
 }

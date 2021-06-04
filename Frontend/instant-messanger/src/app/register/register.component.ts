@@ -12,35 +12,34 @@ import { environment } from 'src/environments/environment';
 })
 export class RegisterComponent implements OnInit {
   title = environment.appTitle;
-  constructor(private userService: UserService,
-    private router: Router,
-    private errorService: ErrorService) { }
-
   email = '';
   username = '';
   password = '';
   confirmed_password = '';
+
+  constructor(private userService: UserService,
+    private router: Router,
+    private errorService: ErrorService) { }
+
   ngOnInit(): void {
     if (this.userService.isLoggedIn()) {
       this.router.navigateByUrl('');
     }
   }
 
-
   registerUser(user: string, email: string, password: string, confirmed_password: string) {
     if (password != confirmed_password) {
       this.errorService.showError('Different passwords');
       return;
     }
-
     var result;
-    this.userService.create(user, email, password).
-      subscribe(
+    this.userService.create(user, email, password)
+    .subscribe(
         response => {
           result = response;
           console.log(result);
           if (result.result) {
-            this.userService.setSession(response)
+            this.userService.setSession(response);
             this.router.navigateByUrl('');
           } else {
             this.errorService.showError(result.message);
