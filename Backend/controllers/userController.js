@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/userSchema');
 
 exports.create = function (req, res) {
-    User.init();
+    console.log(req);
     const user = new User({
         name: req.body.user,
         email: req.body.email,
@@ -10,7 +10,7 @@ exports.create = function (req, res) {
     });
     user.save().then(
         (createdUser) => {
-            res.status(200).json({ result: true, user: createdUser });
+            res.json(jsonTokenBody(createdUser))
         }
     ).catch(
         (error) => {
@@ -21,10 +21,6 @@ exports.create = function (req, res) {
 }
 
 exports.login = function (req, res) {
-
-    console.log("user requested");
-    console.log(req.body);
-
     User.findOne({ $or: [{ 'email': req.body.user }, { 'name': req.body.user }], 'password': req.body.password })
         .populate('user')
         .exec(function (err, user) {
@@ -34,17 +30,13 @@ exports.login = function (req, res) {
                 res.json({ result: false, message: 'User not Found' });
             }
             else {
-                const jwtBearerToken = jwt.sign({
+                const token = jwt.sign({
+                    id: user.id,
                     name: user.name,
-                  }, 'secreett', {
+                }, 'scrt', {
                     expiresIn: '1h'
-                  }, {
-                      algorithm : 'HS256'
-                  });
-
-                  res.setHeader('Authorization-token', jwtBearerToken);
-
-                return res.json({ result: true, id: user._id });
+                });
+                res.json({ result: true, user: user, token: token })
             }
         });
 }

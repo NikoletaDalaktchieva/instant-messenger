@@ -1,17 +1,16 @@
 const jwt = require('jsonwebtoken')
 
-exports.authMiddleware = async function (req,res, next) {
+exports.authMiddleware = async function (req,res,next) {
   const token = req.headers.authorization;
   if (!token) {
     res.sendStatus(401);
   } else {
     try {
-      const verified = jwt.verify(token, 'secreett');
+      const verified = jwt.verify(token, 'scrt');
       next();
         
     } catch (error) {
-      res.sendStatus(403).send('Your token has expired');
+      res.json({result: false, logout: true, message:'Your session has expired'});
     }
-    
   }
 }

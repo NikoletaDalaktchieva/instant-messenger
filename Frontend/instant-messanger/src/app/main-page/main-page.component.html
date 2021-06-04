@@ -2,26 +2,26 @@
     <section class="main-page-container">
         <div class="personal-info">
             <img src="assets/person-photo.jpg" alt="Personal picture">
-            <h1 id="nameInfo">Kristina Tsekova</h1>
-            <button id="settings" (click)="getSettings($event)">
+            <h1 id="nameInfo">{{userName}}</h1>
+            <button id="settings">
                 <img src="assets/button-settings.jpg" alt="Settings">
                 <span class="tooltiptext">Settings</span>
             </button>
         </div>
 
-        <input type="text" id="search-bar" placeholder="Search" [(ngModel)]="userSearch">
+        <input type="text" id="search-bar" placeholder="Search" [(ngModel)]="chatSearch">
 
-        <div class="chat-history" *ngFor="let user of users">
-            <ng-container *ngIf="user.name.include(userSearch)">
-                <div class="history-list" (click)="openChat(user.id, user.name)">
+        <div class="chat-history" *ngFor="let chat of chats">
+            <ng-container *ngIf="chat.name.startsWith(chatSearch)">
+                <div class="history-list" (click)="openChat(chat)">
                     <img src="assets/chat-icon.jpg" alt="Person icon" />
-                    <a id="name" [title]="user.name">{{ user.name }}</a>
+                    <a id="name" [title]="chat.name">{{ chat.name }}</a>
                 </div>
             </ng-container>
         </div>
     </section>
-
-    <section class="chat-module"><app-chat></app-chat></section>
-    <section class="chat-module-info">Chat info</section>
-    <!-- <p>{{userSearch}}</p> -->
+    <section class="chat-module"><app-chat [chat]="currentChat"></app-chat></section>
+    
+    <button (click)="logout()">LOGOUT</button>
+    <!--<section class="chat-module-info">Chat info</section> -->
 </main>

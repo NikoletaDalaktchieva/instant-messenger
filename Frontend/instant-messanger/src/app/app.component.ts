@@ -6,6 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  static title = 'Instant messanger';
-  static url = 'http://localhost:8080'
+ 
 }
