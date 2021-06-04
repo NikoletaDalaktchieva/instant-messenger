@@ -14,8 +14,8 @@ app.use(cors({
   origin: '*'
 }));
 app.use('/user', userRouter);
-app.use('/chat', authMiddleware, chatRouter);
-app.use('/message', authMiddleware, messageRouter);
+app.use('/chat',  chatRouter);
+app.use('/message', messageRouter);
 app.use(authMiddleware)
 require('dotenv').config();
 

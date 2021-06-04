@@ -5,6 +5,7 @@ import { MessageService } from '../services/message.service';
 import { UserService } from "../services/user.service";
 import { Router } from '@angular/router';
 import { ErrorService } from "../services/error.service";
+import { Message } from '../models/messageModel';
 
 @Component({
   selector: 'app-chat',
@@ -14,7 +15,7 @@ import { ErrorService } from "../services/error.service";
 export class ChatComponent implements OnInit {
   private _chat;
   newMessage: string = "";
-  messageList: string[] = [];
+  messageList: Message[] = [];
   searchMessage: string = "";
 
   constructor(private userService: UserService,
@@ -25,7 +26,7 @@ export class ChatComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.chatService.getNewMessage().subscribe((message: string) => {
+    this.chatService.getNewMessage().subscribe((message: Message) => {
       this.messageList.push(message);
     })
   }
@@ -47,7 +48,7 @@ export class ChatComponent implements OnInit {
           console.log(result);
           if (result.result) {
             console.log(result.message_list);
-            //this.messageList = result.message_list;
+            this.messageList = result.message_list;
           } else {
             if (result.logout) {
               this.userService.logout();
@@ -68,5 +69,6 @@ export class ChatComponent implements OnInit {
   sendMessage() {
     this.chatService.sendMessage(this.newMessage);
     this.newMessage = '';
+    console.log("text");
   }
 }

@@ -11,8 +11,6 @@ exports.getChat = function (req, res) {
         })
 }
 
-
-
 exports.create = function (req, res) {
     const chat = new Chat({
         name: req.body.name,

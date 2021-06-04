@@ -18,6 +18,6 @@ export class MessageService {
     const httpOptions = {
       headers: headers_object
     };
-    return this.http.get<Message>(environment.serveUrl + "/message?chatId" + chatId, httpOptions);
+    return this.http.get<Message>(environment.serveUrl + "/message?chatId=" + chatId, httpOptions);
   }
 }

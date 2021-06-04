@@ -31,13 +31,13 @@ exports.create = function (chatId, tokenId, text, io, roomId) {
     const message = new Message({
         text: text,
         chat: chatId,
-        sender: token.id,
+        sender: token.name,
         dispatchDate: Date.now(),
     });
     message.save().then(
         (created) => {
             console.log(created)
-            io.emit('message', roomId, token.name, created);
+            io.emit('message', roomId, created);
         }
     ).catch(
         (error) => {
