@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Router } from '@angular/router';
 import { ErrorService } from "../services/error.service";
-import * as moment from "moment";
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -51,15 +50,6 @@ export class UserService {
 
   isLoggedOut() {
     return  localStorage.getItem('id_token') === undefined || localStorage.getItem('id_token') === null;;
-  }
-
-  getExpiration() {
-    const expiration = localStorage.getItem("expires_at");
-    if (expiration !== null) {
-      var expiresAt = JSON.parse(expiration);
-      return moment(expiresAt);
-    }
-    return null;
   }
 
 }
