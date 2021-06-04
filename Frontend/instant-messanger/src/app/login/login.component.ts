@@ -17,9 +17,9 @@ export class LoginComponent implements OnInit {
   socialUser: SocialUser = new SocialUser;
 
   constructor(private userService: UserService,
+    private router: Router,
     private formBuilder: FormBuilder,
     private socialAuthService: SocialAuthService,
-    private router: Router,
   ) {
   }
 
@@ -31,8 +31,6 @@ export class LoginComponent implements OnInit {
 
     this.socialAuthService.authState.subscribe((user) => {
       this.socialUser = user;
-      console.log(this.socialUser);
-      this.router.navigateByUrl('chat');
     });
   }
 
