@@ -12,7 +12,7 @@
         <input type="text" id="search-bar" placeholder="Search" [(ngModel)]="userSearch">
 
         <div class="chat-history" *ngFor="let user of users">
-            <ng-container *ngIf="user.name.startsWith(userSearch)">
+            <ng-container *ngIf="user.name.include(userSearch)">
                 <div class="history-list" (click)="openChat(user.id, user.name)">
                     <img src="assets/chat-icon.jpg" alt="Person icon" />
                     <a id="name" [title]="user.name">{{ user.name }}</a>
@@ -23,5 +23,5 @@
 
     <section class="chat-module"><app-chat></app-chat></section>
     <section class="chat-module-info">Chat info</section>
-    <p>{{userSearch}}</p>
+    <!-- <p>{{userSearch}}</p> -->
 </main>

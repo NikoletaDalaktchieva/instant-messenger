@@ -10,6 +10,12 @@ import { ErrorService } from "../services/error.service";
 })
 export class RegisterComponent implements OnInit {
   title = AppComponent.title;
+
+  email = '';
+  username = '';
+  password = '';
+  confirmed_password = '';
+
   constructor(private userService: UserService, private errorService: ErrorService) { }
 
   ngOnInit(): void {
