@@ -1,0 +1,141 @@
+.popup{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: #ad9ce7;
+    width: 500px;
+    max-width: 70%;
+}
+
+.popup.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popup-header{
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid black;
+}
+
+.popup-header .title{
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.popup-header .data-user-close-button{
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+
+#overlay{
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:#00000080;
+    pointer-events: none;
+}
+
+#overlay.active{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.popup-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1%;
+    width: 100%;
+}
+
+.search-box{
+    display: flex;
+    margin-top: 5px;
+    justify-content: center;
+}
+
+.search-box #usr-search-box{
+    width: 95%;
+    text-align: left;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.15rem;
+    border: 2px solid #eaecfe;
+    border-radius: 12px;
+}
+
+.users-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5%;
+    width: 90%;
+}
+
+.person {
+    display:grid;
+    grid-template-columns: 10% 75% 10%;
+    column-gap: 6px;
+    width: 100%;
+    margin-top: 1%;
+    min-height: 30px;
+    border: 2px solid rgba(61, 134, 128, 0.315);
+    background-color: #a295cf;
+}
+
+.person .person-name{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+.single-usr-check{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+  
+.person img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #444446;
+    border-radius: 25px;
+    width: 100%;
+}
+
+.popup-footer{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-right: 2%;
+}
+
+.popup-footer button{
+    background-color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    margin: 3px;
+}
