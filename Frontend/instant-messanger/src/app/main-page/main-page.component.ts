@@ -13,7 +13,7 @@ import { ChatService } from '../chat.service';
 
 export class MainPageComponent implements OnInit {
   users = USERS;
-  title = "Undefine"
+  title = "Undefine";
   userSearch = '';
 
   constructor(private chatService: ChatService, private router: Router, private userService: UserService, private errorService: ErrorService) {
