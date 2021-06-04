@@ -4,8 +4,7 @@ import { User, USERS } from 'src/user';
 import { UserService } from "../services/user.service";
 import { ErrorService } from "../services/error.service";
 import { AppComponent } from "../app.component";
-import { UserService } from "../user.service";
-import { ChatService } from '../chat.service';
+import { ChatService } from '../services/chat.service';
 
 @Component({
   selector: 'app-main-page',
@@ -20,7 +19,9 @@ export class MainPageComponent implements OnInit {
   newMessage: string = "";
   messageList: string[] = [];
 
-  constructor(private router: Router, private userService: UserService, private errorService: ErrorService) {
+  constructor(private router: Router, private userService: UserService, 
+    private errorService: ErrorService,
+    private chatService: ChatService) {
     
   }
 
@@ -44,34 +45,13 @@ export class MainPageComponent implements OnInit {
       );
     
     }
-  
-  constructor(private chatService: ChatService, private router: Router, private userService: UserService) {
-  }
 
-  ngOnInit() {
+  // ngOnInit() {
 
-    this.chatService.getNewMessage().subscribe((message: string) => {
-      this.messageList.push(message);
-    })
-
-    // var result;
-    // this.userService.load().
-    //   subscribe(
-    //     response => {
-    //       result = response;
-    //       console.log(result);
-    //       if (result.result === true) {
-    //         console.log(result.users);
-    //         this.users = result.users;
-    //       } else {
-    //         console.log(result.message);
-    //         AppComponent.showError(result.message);
-    //       }
-    //     },
-    //     error => { AppComponent.showError(); },
-    //     () => { }
-    //   );
-  }
+  //   this.chatService.getNewMessage().subscribe((message: string) => {
+  //     this.messageList.push(message);
+  //   })
+  // }
 
 
   sendMessage() {
