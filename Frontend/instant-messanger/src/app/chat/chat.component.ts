@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+
+import { Component, OnInit, Input  } from '@angular/core';
 import { ChatService } from '../services/chat.service';
 import { MessageService } from '../services/message.service';
 import { UserService } from "../services/user.service";
@@ -14,6 +15,7 @@ export class ChatComponent implements OnInit {
   private _chat;
   newMessage: string = "";
   messageList: string[] = [];
+  searchMessage: string = "";
 
   constructor(private userService: UserService,
     private router: Router,
@@ -21,6 +23,7 @@ export class ChatComponent implements OnInit {
     private messageService: MessageService,
     private errorService: ErrorService,
   ) { }
+
   ngOnInit(): void {
     this.chatService.getNewMessage().subscribe((message: string) => {
       this.messageList.push(message);
@@ -44,7 +47,7 @@ export class ChatComponent implements OnInit {
           console.log(result);
           if (result.result) {
             console.log(result.message_list);
-            this.messageList = result.message_list;
+            //this.messageList = result.message_list;
           } else {
             if (result.logout) {
               this.userService.logout();

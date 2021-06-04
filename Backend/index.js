@@ -39,7 +39,6 @@ io.on('connection', (socket) => {
 
   socket.on('message', (tokenId, roomId, message) => {
     const token = jwt_decode(tokenId);
-    console.log(token);
     io.emit('message', roomId, token.name, message);
     messageController.create(roomId, token.id, message);
   });

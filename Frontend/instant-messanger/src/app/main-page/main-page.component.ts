@@ -21,8 +21,8 @@ export class MainPageComponent implements OnInit {
     private router: Router,
     private chatService: ChatService,
     private errorService: ErrorService,
-  ) {
-  }
+  ) { }
+
 
   ngOnInit(): void {
 
@@ -40,7 +40,6 @@ export class MainPageComponent implements OnInit {
       subscribe(
         response => {
           result = response;
-          console.log(result);
           if (result.result) {
             console.log(result.chat_list);
             this.chats = result.chat_list;
@@ -61,11 +60,10 @@ export class MainPageComponent implements OnInit {
         () => { }
       );
   }
-
+  
   openChat(chat: any) {
     this.currentChat = chat;
   }
-
 
   getSettings(event) {
     alert("There is no such name in the history list!");

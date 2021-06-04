@@ -3,13 +3,15 @@
     <div class="chat-module">
         <div id="info-group">
             <h3>{{chat.name}}</h3>
+            <input type="text" id="search-bar"  placeholder="Search" [(ngModel)]="searchMessage">
+            <!-- <p><a id="create-group" href="#">Create Group</a></p> -->
         </div>
         
         <div id="chatbox">
             <div *ngFor="let message of messageList">
-                <li>
-                    {{message}}
-                </li>
+                <ng-container *ngIf="message.startsWith(searchMessage)">
+                    <li>{{ message }}</li>
+                </ng-container>
             </div>
         </div>
         <form name="message" id="form" action="">

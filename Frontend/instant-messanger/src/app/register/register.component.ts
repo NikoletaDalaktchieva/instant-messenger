@@ -39,7 +39,6 @@ export class RegisterComponent implements OnInit {
             this.userService.setSession(response)
             this.router.navigateByUrl('');
           } else {
-            console.log(result.message);
             this.errorService.showError(result.message);
           }
         },

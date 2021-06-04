@@ -11,7 +11,6 @@ export class MessageService {
 
 
   load(chatId) {
-    console.log(localStorage.getItem('id_token'))
     var headers_object = new HttpHeaders({
       'Authorization': "" + localStorage.getItem('id_token')
     });

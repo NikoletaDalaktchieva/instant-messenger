@@ -19,7 +19,6 @@ export class ChatService {
   }
 
   load() {
-    console.log(localStorage.getItem('id_token'))
     var headers_object = new HttpHeaders({
       'Authorization': "" + localStorage.getItem('id_token')
     });
@@ -47,9 +46,7 @@ export class ChatService {
 
   public getNewMessage = () => {
     this.socket.on('message', (roomId, userName, message) => {
-      console.log(roomId);
       if (roomId === this.roomId) {
-        console.log(message);
         this.message$.next(userName + ":" + message);
       }
     });

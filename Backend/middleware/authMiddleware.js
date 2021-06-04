@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken')
 
 exports.authMiddleware = async function (req,res,next) {
   const token = req.headers.authorization;
-  console.log(token)
   if (!token) {
     res.sendStatus(401);
   } else {
