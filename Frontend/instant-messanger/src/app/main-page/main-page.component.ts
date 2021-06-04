@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User, USERS } from 'src/user';
-
+import { UserService } from "../services/user.service";
+import { ErrorService } from "../services/error.service";
 import { AppComponent } from "../app.component";
 import { UserService } from "../user.service";
 import { ChatService } from '../chat.service';
@@ -17,6 +18,31 @@ export class MainPageComponent implements OnInit {
   title = "Undefine"
   userSearch = '';
 
+  constructor(private router: Router, private userService: UserService, private errorService: ErrorService) {
+    
+  }
+
+  ngOnInit(): void {
+    var result;
+    this.userService.load().
+      subscribe(
+        response => {
+          result = response;
+          console.log(result);
+          if (result.result === true) {
+            console.log(result.users);
+            this.users = result.users;
+          } else {
+            console.log(result.message);
+            this.errorService.showError(result.message);
+          }
+        },
+        error => { this.errorService.showError(); },
+        () => { }
+      );
+    
+    }
+  
   constructor(private chatService: ChatService, private router: Router, private userService: UserService) {
   }
 
@@ -42,8 +68,6 @@ export class MainPageComponent implements OnInit {
     //     () => { }
     //   );
   }
-
-
 
 
   getSettings(event) {

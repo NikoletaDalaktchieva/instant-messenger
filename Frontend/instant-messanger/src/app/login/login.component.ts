@@ -5,7 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { SocialAuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 
 import { AppComponent } from "../app.component";
-import { UserService } from "../user.service";
+import { UserService } from "../services/user.service";
 
 @Component({
   selector: 'app-login',
