@@ -5,10 +5,16 @@
             <p><a id="create-group" href="#">Create Group</a></p>
         </div>
         
-        <div id="chatbox"></div>
+        <div id="chatbox">
+            <div *ngFor="let message of messageList">
+                <li>
+                    {{message}}
+                </li>
+            </div>
+        </div>
         <form name="message" id="form" action="">
-            <input name="usermsg" type="text" id="usermsg" />
-            <input name="submitmsg" type="submit" id="submitmsg" value="Send" />
+            <input [(ngModel)]="newMessage" (keyup)="$event.keyCode == 13 && sendMessage()" name="usermsg" type="text" id="usermsg" />
+            <input (click)="sendMessage()" name="submitmsg" type="submit" id="submitmsg" value="Send" />
         </form>
     </div>
 </section>

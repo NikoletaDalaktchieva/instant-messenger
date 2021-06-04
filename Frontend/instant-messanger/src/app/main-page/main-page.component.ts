@@ -17,8 +17,6 @@ export class MainPageComponent implements OnInit {
   users = USERS;
   title = "Undefine"
   userSearch = '';
-  newMessage: string = "";
-  messageList: string[] = [];
 
   constructor(private router: Router, private userService: UserService, private errorService: ErrorService) {
     
@@ -50,9 +48,7 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit() {
 
-    this.chatService.getNewMessage().subscribe((message: string) => {
-      this.messageList.push(message);
-    })
+  
 
     // var result;
     // this.userService.load().
@@ -73,11 +69,6 @@ export class MainPageComponent implements OnInit {
     //   );
   }
 
-
-  sendMessage() {
-    this.chatService.sendMessage(this.newMessage);
-    this.newMessage = '';
-  }
 
   getSettings(event) {
     alert("There is no such name in the history list!");
