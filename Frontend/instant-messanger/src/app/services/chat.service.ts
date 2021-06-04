@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { io } from "socket.io-client";
-import { AppComponent } from '../app.component';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -11,7 +11,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 export class ChatService {
 
   roomId = null;
-  socket = io(AppComponent.url);
+  socket = io(environment.serveUrl);
   public message$: BehaviorSubject<string> = new BehaviorSubject('');
 
   constructor(private http: HttpClient) {
@@ -26,7 +26,7 @@ export class ChatService {
     const httpOptions = {
       headers: headers_object
     };
-    return this.http.get(AppComponent.url + "/chat", httpOptions)
+    return this.http.get(environment.serveUrl + "/chat", httpOptions)
   }
 
 

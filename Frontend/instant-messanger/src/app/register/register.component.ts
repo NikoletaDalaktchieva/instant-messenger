@@ -3,6 +3,7 @@ import { AppComponent } from "../app.component";
 import { UserService } from "../services/user.service";
 import { ErrorService } from "../services/error.service";
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./../login/login.component.css']
 })
 export class RegisterComponent implements OnInit {
-  title = AppComponent.title;
+  title = environment.appTitle;
   constructor(private userService: UserService,
     private router: Router,
     private errorService: ErrorService) { }

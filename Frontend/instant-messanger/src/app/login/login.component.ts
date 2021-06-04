@@ -7,6 +7,7 @@ import { SocialAuthService, GoogleLoginProvider, SocialUser } from 'angularx-soc
 import { AppComponent } from "../app.component";
 import { UserService } from "../services/user.service";
 import { ErrorService } from "../services/error.service";
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ import { ErrorService } from "../services/error.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  title = AppComponent.title;
+  title = environment.serveUrl;
   socialUser: SocialUser = new SocialUser;
 
   constructor(private userService: UserService,

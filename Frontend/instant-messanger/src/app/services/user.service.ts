@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Router } from '@angular/router';
 import { ErrorService } from "../services/error.service";
-import { AppComponent } from "../app.component";
 import * as moment from "moment";
-import { BehaviorSubject } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,7 @@ export class UserService {
   constructor(private router: Router, private http: HttpClient, private errorService: ErrorService) { }
 
   logIn(name: string, password: string) {
-    return this.http.post(AppComponent.url + "/user/login",
+    return this.http.post(environment.serveUrl + "/user/login",
       {
         user: name,
         password: password
@@ -21,7 +20,7 @@ export class UserService {
   }
 
   create(user: string, email: string, password: string) {
-    return this.http.post(AppComponent.url + "/user",
+    return this.http.post(environment.serveUrl + "/user",
       {
         user: user,
         email: email,
@@ -30,7 +29,7 @@ export class UserService {
   }
 
   load() {
-    return this.http.get(AppComponent.url + "/user")
+    return this.http.get(environment.serveUrl + "/user")
   }
 
   setSession(authResult) {
