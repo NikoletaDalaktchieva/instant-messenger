@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from "../app.component";
+import { UserService } from "../user.service";
 
 @Component({
   selector: 'app-register',
@@ -8,15 +9,18 @@ import { AppComponent } from "../app.component";
 })
 export class RegisterComponent implements OnInit {
   title = AppComponent.title;
-  constructor() { }
+  constructor(private userService: UserService,) { }
 
   ngOnInit(): void {
   }
 
   
-  registerUser(username: string, email: string, password: string, confirmed_password: string) {
-    alert(username + '\n' + email + '\n' + password + '\n' + confirmed_password);
-    //call server
+  registerUser(user: string, email: string, password: string, confirmed_password: string) {
+    if(password != confirmed_password) {
+      AppComponent.showError('Different passwords');
+      return;
+    }
+    this.userService.create(user, email, password);
   }
 
 
