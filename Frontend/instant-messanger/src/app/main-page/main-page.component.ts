@@ -35,7 +35,7 @@ export class MainPageComponent implements OnInit {
     this.userName = localStorage.getItem('id_name');
     var result;
     this.chatService.load()
-    .subscribe(
+      .subscribe(
         response => {
           result = response;
           if (result.result) {
@@ -43,12 +43,7 @@ export class MainPageComponent implements OnInit {
             this.chats = result.chat_list;
             this.currentChat = this.chats[0];
           } else {
-            if (result.logout) {
-              this.userService.logout();
-              this.router.navigateByUrl('/login');
-            } else {
-              this.errorService.showError(result.message);
-            }
+            this.errorService.hanleError(result);
           }
         },
         error => {

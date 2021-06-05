@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { FormBuilder, Validators } from '@angular/forms';
 import { SocialAuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
-
-import { AppComponent } from "../app.component";
 import { UserService } from "../services/user.service";
 import { ErrorService } from "../services/error.service";
 import { environment } from 'src/environments/environment';
@@ -29,9 +25,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.userService.isLoggedIn())
-     if (this.userService.isLoggedIn()) {
-       this.router.navigateByUrl('');
-     }
+    if (this.userService.isLoggedIn()) {
+      this.router.navigateByUrl('');
+    }
   }
 
   loginUser(name: string, password: string) {
@@ -59,6 +55,7 @@ export class LoginComponent implements OnInit {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 
+  //TODO move in user service
   logOut(): void {
     this.socialAuthService.signOut();
   }

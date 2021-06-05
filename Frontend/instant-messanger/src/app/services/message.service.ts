@@ -11,7 +11,7 @@ export class MessageService {
   constructor(private http: HttpClient) { }
 
   load(chatId) {
-    var headers_object = new HttpHeaders({
+    const headers_object = new HttpHeaders({
       'Authorization': "" + localStorage.getItem('id_token')
     });
 

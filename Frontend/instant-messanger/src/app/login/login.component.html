@@ -1,8 +1,8 @@
 <section class="auth-form" id="login-form">
     <h1 class="auth-title">{{title}}</h1>
 
-    <input type="text" placeholder="Username or Email" class="auth-input" [(ngModel)]="name" />
-    <input type="password" placeholder="Password" class="auth-input" [(ngModel)]="password" />
+    <input type="text" placeholder="Username or Email" class="auth-input" [(ngModel)]="name" required/>
+    <input type="password" placeholder="Password" class="auth-input" [(ngModel)]="password" required />
     <section class="checkbox">
         <input type="checkbox">
         <label class="auth-text">Save my password</label>

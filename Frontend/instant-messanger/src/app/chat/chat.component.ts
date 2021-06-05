@@ -2,8 +2,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ChatService } from '../services/chat.service';
 import { MessageService } from '../services/message.service';
-import { UserService } from "../services/user.service";
-import { Router } from '@angular/router';
 import { ErrorService } from "../services/error.service";
 import { Message } from '../models/messageModel';
 
@@ -18,17 +16,16 @@ export class ChatComponent implements OnInit {
   messageList: Message[] = [];
   searchMessage: string = "";
 
-  constructor(private userService: UserService,
-    private router: Router,
+  constructor(
     private chatService: ChatService,
     private messageService: MessageService,
     private errorService: ErrorService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.chatService.getNewMessage().subscribe((message: Message) => {
       this.messageList.push(message);
-    })
+    });
   }
 
   ngOnDestroy(): void {
@@ -49,17 +46,10 @@ export class ChatComponent implements OnInit {
       .subscribe(
         response => {
           result = response;
-          console.log(result);
           if (result.result) {
-            console.log(result.message_list);
             this.messageList = result.message_list;
           } else {
-            if (result.logout) {
-              this.userService.logout();
-              this.router.navigateByUrl('/login');
-            } else {
-              this.errorService.showError(result.message);
-            }
+            this.errorService.hanleError(result);
           }
         },
         error => {
@@ -71,7 +61,7 @@ export class ChatComponent implements OnInit {
   }
 
   sendMessage() {
-    if(this.newMessage === '') return;  
+    if (this.newMessage === '') return;
     this.chatService.sendMessage(this.newMessage);
     this.newMessage = '';
   }

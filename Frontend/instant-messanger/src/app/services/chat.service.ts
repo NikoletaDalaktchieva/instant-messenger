@@ -19,7 +19,7 @@ export class ChatService {
   constructor(private http: HttpClient) { }
 
   load() {
-    var headers_object = new HttpHeaders({
+    const headers_object = new HttpHeaders({
       'Authorization': "" + localStorage.getItem('id_token')
     });
 
