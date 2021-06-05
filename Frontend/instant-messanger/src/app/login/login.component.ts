@@ -31,6 +31,15 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(name: string, password: string) {
+
+    name.trim();
+    password.trim();
+
+    if (name === "" || password === ""){
+      this.errorService.showError('Please fill in all fields');
+      return;
+    }
+
     var result;
     this.userService.logIn(name, password).
       subscribe(

@@ -27,13 +27,40 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser(user: string, email: string, password: string, confirmed_password: string) {
+
+    user.trim();
+    email.trim();
+    password.trim();
+    confirmed_password.trim();
+    if (user === "" || email === "" || password === "" || confirmed_password === "") {
+      this.errorService.showError('Please fill in all fields');
+      return;
+    }
+
+    //very basic regex for the email
+    if (!email.match("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")) {
+      this.errorService.showError('Invalid email');
+      return;
+    }
+
+    if (password.length < 6 || !password.includes('.') && !password.includes('!')) {
+      this.errorService.showError('Weak password');
+      return;
+    }
+
     if (password != confirmed_password) {
       this.errorService.showError('Different passwords');
       return;
     }
+
+
+
+    //whitespaces validator
+
+
     var result;
     this.userService.create(user, email, password)
-    .subscribe(
+      .subscribe(
         response => {
           result = response;
           console.log(result);
