@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/userSchema');
 
 exports.create = function (req, res) {
-    console.log(req);
+    console.log(req.body);
     const user = new User({
         name: req.body.user,
         email: req.body.email,
@@ -10,7 +10,7 @@ exports.create = function (req, res) {
     });
     user.save().then(
         (createdUser) => {
-            res.json(jsonTokenBody(createdUser));
+            res.json({ result: true, user: createdUser});
         }
     ).catch(
         (error) => {
