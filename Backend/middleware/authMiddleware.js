@@ -6,9 +6,8 @@ exports.authMiddleware = async function (req,res,next) {
     res.sendStatus(401);
   } else {
     try {
-      const verified = jwt.verify(token, 'scrt');
+      jwt.verify(token, 'scrt');
       next();
-        
     } catch (error) {
       res.json({result: false, logout: true, message:'Your session has expired'});
     }

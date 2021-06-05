@@ -1,22 +1,19 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors');
-const jwt = require('jsonwebtoken')
 const { userRouter } = require('./routes/userRouter');
 const { chatRouter } = require('./routes/chatRouter');
 const { messageRouter } = require('./routes/messageRouter');
 const messageController = require('./controllers/messageController');
 const { authMiddleware } = require('./middleware/authMiddleware');
-const jwt_decode = require('jwt-decode');
 const app = express();
 app.use(express.json());
 app.use(cors({
   origin: '*'
 }));
 app.use('/user', userRouter);
-app.use('/chat',  chatRouter);
-app.use('/message', messageRouter);
-app.use(authMiddleware)
+app.use('/chat', authMiddleware, chatRouter);
+app.use('/message', authMiddleware, messageRouter);
 require('dotenv').config();
 
 //Set up mongoose connection
@@ -37,8 +34,9 @@ io.on('connection', (socket) => {
   console.log('a user connected');
 
   socket.on('message', (tokenId, roomId, message) => {
-    messageController.create(roomId, tokenId, message, io, roomId);
+    messageController.create(roomId, tokenId, message, io);
   });
+
   socket.on('disconnect', () => {
     console.log('a user disconnected!');
   });

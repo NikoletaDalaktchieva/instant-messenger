@@ -35,15 +35,11 @@ export class UserService {
 
   setSession(authResult) {
     localStorage.setItem('id_token', authResult.token);
-    localStorage.setItem('id_user', authResult.user._id);
-    localStorage.setItem('id_name', authResult.user.name);
   }
 
 
   logout() {
     localStorage.removeItem("id_token");
-    localStorage.removeItem('id_user');
-    localStorage.removeItem('id_name');
   }
 
   public isLoggedIn() {

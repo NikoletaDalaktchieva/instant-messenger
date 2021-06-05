@@ -39,7 +39,7 @@ export class ChatService {
     const tokenId = localStorage.getItem('id_token');
     if(tokenId === null) return;
     const token = jwt_decode(tokenId);
-    this.socket.emit('message', localStorage.getItem('id_token'), this.roomId, message);
+    this.socket.emit('message', tokenId, this.roomId, message);
   }
 
   public getNewMessage = () => {

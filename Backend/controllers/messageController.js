@@ -26,7 +26,7 @@ exports.sortMessagesByDate = function (req, res) {
         })
 }
 
-exports.create = function (chatId, tokenId, text, io, roomId) {
+exports.create = function (chatId, tokenId, text, io) {
     const token = jwt_decode(tokenId);
     const message = new Message({
         text: text,
@@ -36,12 +36,10 @@ exports.create = function (chatId, tokenId, text, io, roomId) {
     });
     message.save().then(
         (created) => {
-            console.log(created)
-            io.emit('message', roomId, created);
+            io.emit('message', chatId, created);
         }
     ).catch(
         (error) => {
-            
             console.log(error)
             return error;
         }
