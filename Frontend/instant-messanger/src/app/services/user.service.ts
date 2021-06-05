@@ -21,6 +21,7 @@ export class UserService {
   }
 
   create(user: string, email: string, password: string) {
+    //if (email.includes('@')){}
     return this.http.post<User>(environment.serveUrl + "/user",
       {
         user: user,
