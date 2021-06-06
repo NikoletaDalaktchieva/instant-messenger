@@ -26,7 +26,7 @@ export class ChatService {
     const httpOptions = {
       headers: headers_object
     };
-    return this.http.get<Chat>(environment.serveUrl + "/chat", httpOptions);
+    return this.http.get<any>(environment.serveUrl + "/chat", httpOptions);
   }
 
   public setChatId(roomId: any) {

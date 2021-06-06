@@ -33,13 +33,10 @@ export class MainPageComponent implements OnInit {
 
   loadChats() {
     this.userName = localStorage.getItem('id_name');
-    var result;
     this.chatService.load()
       .subscribe(
-        response => {
-          result = response;
+        result => {
           if (result.result) {
-            console.log(result.chat_list);
             this.chats = result.chat_list;
             this.currentChat = this.chats[0];
           } else {

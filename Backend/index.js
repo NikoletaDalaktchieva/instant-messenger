@@ -12,8 +12,10 @@ app.use(cors({
   origin: '*'
 }));
 app.use('/user', userRouter);
-app.use('/chat', authMiddleware, chatRouter);
-app.use('/message', authMiddleware, messageRouter);
+app.use(authMiddleware);
+app.use('/chat', chatRouter);
+app.use('/message', messageRouter);
+
 require('dotenv').config();
 
 //Set up mongoose connection
