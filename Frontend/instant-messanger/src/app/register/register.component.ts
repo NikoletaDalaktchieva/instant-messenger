@@ -56,16 +56,11 @@ export class RegisterComponent implements OnInit {
 
 
     //whitespaces validator
-
-
-    var result;
     this.userService.create(user, email, password)
       .subscribe(
-        response => {
-          result = response;
-          console.log(result);
+        result => {
           if (result.result) {
-            this.userService.setSession(response);
+            this.userService.setSession(result);
             this.router.navigateByUrl('');
           } else {
             this.errorService.showError(result.message);

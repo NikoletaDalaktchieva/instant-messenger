@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.userService.isLoggedIn())
     if (this.userService.isLoggedIn()) {
       this.router.navigateByUrl('');
     }
@@ -39,19 +38,13 @@ export class LoginComponent implements OnInit {
       this.errorService.showError('Please fill in all fields');
       return;
     }
-
-    var result;
     this.userService.logIn(name, password).
       subscribe(
-        response => {
-          result = response;
-          console.log('result');
-          console.log(result);
+        result => {
           if (result.result) {
-            this.userService.setSession(response);
+            this.userService.setSession(result);
             this.router.navigateByUrl('');
           } else {
-            console.log(result.message);
             this.errorService.showError(result.message);
           }
         },
