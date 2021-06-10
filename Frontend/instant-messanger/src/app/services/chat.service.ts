@@ -3,8 +3,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { io } from "socket.io-client";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
-import jwt_decode from 'jwt-decode';
-import { Chat } from '../models/chatModel';
 import { Message } from '../models/messageModel';
 
 @Injectable({
@@ -31,24 +29,20 @@ export class ChatService {
 
   public setChatId(roomId: any) {
     this.roomId = roomId;
+    this.socket.emit('setRoom', this.roomId);
   }
 
   public sendMessage(message: any) {
     if (this.roomId === null) return;
-    
     const tokenId = localStorage.getItem('id_token');
-    if(tokenId === null) return;
-    const token = jwt_decode(tokenId);
     this.socket.emit('message', tokenId, this.roomId, message);
   }
 
   public getNewMessage = () => {
     this.socket.on('message', (roomId, message: Message) => {
-      if (roomId === this.roomId) {
-        this.message$.next(message);
-      }
+      console.log(message.text);
+      this.message$.next(message);
     });
-
     return this.message$.asObservable();
   };
 

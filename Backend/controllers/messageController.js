@@ -35,7 +35,7 @@ exports.create = function (chatId, tokenId, text, io) {
     });
     message.save().then(
         (created) => {
-            io.emit('message', chatId, created);
+            io.to(chatId).emit('message', chatId, created);
         }
     ).catch(
         (error) => {
