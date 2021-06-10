@@ -1,22 +1,19 @@
-<section>
-   
-    <div class="chat-module">
-        <div id="info-group">
-            <h3>{{chat.name}}</h3>
-            <input type="text" id="search-bar"  placeholder="Search" [(ngModel)]="searchMessage">
-            <!-- <p><a id="create-group" href="#">Create Group</a></p> -->
+<section class="col-2">
+    <div class="info-group">
+        <h3>{{chat.name}}</h3>
+        <input class="input_search" type="text" id="search-bar" placeholder="Search" [(ngModel)]="searchMessage">
+        <!-- <p><a id="create-group" href="#">Create Group</a></p> -->
+    </div>
+    <div class="chatbox">
+        <div *ngFor="let message of messageList">
+            <ng-container *ngIf="message.text.includes(searchMessage)">
+                <h1>{{ message.sender + " say: " + message.text }}</h1>
+            </ng-container>
         </div>
-        
-        <div id="chatbox">
-            <div *ngFor="let message of messageList">
-                <ng-container *ngIf="message.text.includes(searchMessage)">
-                    <li>{{ message.sender + " say: " + message.text }}</li>
-                </ng-container>
-            </div>
-        </div>
-        <form name="message" id="form" action="">
-            <input [(ngModel)]="newMessage" (keyup)="$event.keyCode == 13 && sendMessage()" name="usermsg" type="text" id="usermsg" />
-            <input (click)="sendMessage()" name="submitmsg" type="submit" id="submitmsg" value="Send" />
-        </form>
+    </div>
+    <div class="text-area">
+        <input [(ngModel)]="newMessage" (keyup)="$event.keyCode == 13 && sendMessage()" name="usermsg" type="text"
+            id="usermsg" />
+        <input (click)="sendMessage()" name="submitmsg" type="submit" id="submitmsg" value="Send" />
     </div>
 </section>
