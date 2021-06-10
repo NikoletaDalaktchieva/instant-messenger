@@ -41,11 +41,9 @@ export class ChatComponent implements OnInit {
   }
 
   loadMessages() {
-    var result;
     this.messageService.load(this.chat._id)
       .subscribe(
-        response => {
-          result = response;
+        result => {
           if (result.result) {
             this.messageList = result.message_list;
           } else {

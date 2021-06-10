@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/userSchema');
 
 exports.create = function (req, res) {
-    console.log(req.body);
     const user = new User({
         name: req.body.user,
         email: req.body.email,
@@ -25,11 +24,10 @@ exports.login = function (req, res) {
         .populate('user')
         .exec(function (err, user) {
             if (err) {
-                return res.status(500).send();
+                res.status(500).send();
             } else if (user == null) {
                 res.json({ result: false, message: 'User not Found' });
-            }
-            else {
+            } else {
                 const token = jwt.sign({
                     id: user.id,
                     name: user.name,

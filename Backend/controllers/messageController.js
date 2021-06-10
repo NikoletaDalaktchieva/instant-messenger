@@ -13,7 +13,6 @@ exports.getMessage = function (req, res) {
 }
 
 exports.sortMessagesByDate = function (req, res) {
-    console.log('Here:', req.query.chatId);
     const sortDate = { dispatchDate: 1 }
     Message.find({ 'chat': req.query.chatId })
         .sort(sortDate)
