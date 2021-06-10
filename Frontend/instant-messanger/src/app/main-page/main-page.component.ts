@@ -15,7 +15,7 @@ export class MainPageComponent implements OnInit {
   chatSearch = '';
   userName;
   name = '';
-  currentChat;
+  currentChat = null;
 
   constructor(private userService: UserService,
     private router: Router,

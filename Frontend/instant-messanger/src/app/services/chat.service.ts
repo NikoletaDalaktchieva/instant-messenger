@@ -39,8 +39,7 @@ export class ChatService {
   }
 
   public getNewMessage = () => {
-    this.socket.on('message', (roomId, message: Message) => {
-      console.log(message.text);
+    this.socket.on('message', (message: Message) => {
       this.message$.next(message);
     });
     return this.message$.asObservable();
