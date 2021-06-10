@@ -42,7 +42,7 @@ export class UserService {
     localStorage.removeItem("id_token");
   }
 
-  public isLoggedIn() {
+  isLoggedIn() {
     return ! this.isLoggedOut();
   }
 
