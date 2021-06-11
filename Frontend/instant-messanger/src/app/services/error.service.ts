@@ -17,12 +17,4 @@ export class ErrorService {
     Swal.fire(text, '', 'error')
   }
 
-  hanleError(result: any) {
-    if (result.logout) {
-      this.userService.logout();
-      this.router.navigateByUrl('/login');
-    } else {
-      this.showError(result.message);
-    }
-  }
 }

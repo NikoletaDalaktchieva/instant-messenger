@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   title = environment.appTitle;
   socialUser: SocialUser = new SocialUser;
 
@@ -22,12 +22,6 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private errorService: ErrorService,
   ) { }
-
-  ngOnInit() {
-    if (this.userService.isLoggedIn()) {
-      this.router.navigateByUrl('');
-    }
-  }
 
   loginUser(name: string, password: string) {
 

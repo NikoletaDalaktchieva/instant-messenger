@@ -24,11 +24,7 @@ export class MainPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (!this.userService.isLoggedIn()) {
-      this.router.navigateByUrl('login');
-    } else {
       this.loadChats();
-    }
   }
 
   loadChats() {
@@ -40,7 +36,7 @@ export class MainPageComponent implements OnInit {
             this.chats = result.chat_list;
             this.currentChat = this.chats[0];
           } else {
-            this.errorService.hanleError(result);
+            this.errorService.showError(result.message);
           }
         },
         error => {

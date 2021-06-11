@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './register.component.html',
   styleUrls: ['./../login/login.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   title = environment.appTitle;
   email = '';
   username = '';
@@ -19,12 +19,6 @@ export class RegisterComponent implements OnInit {
   constructor(private userService: UserService,
     private router: Router,
     private errorService: ErrorService) { }
-
-  ngOnInit(): void {
-    if (this.userService.isLoggedIn()) {
-      this.router.navigateByUrl('');
-    }
-  }
 
   registerUser(user: string, email: string, password: string, confirmed_password: string) {
 
