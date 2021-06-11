@@ -11,6 +11,12 @@ app.use(express.json());
 app.use(cors({
   origin: '*'
 }));
+app.use(function * (next) {
+    this.response.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    this.response.set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    this.response.set('Access-Control-Allow-Origin', '*');
+    yield * next;
+});
 app.use('/user', userRouter);
 app.use(authMiddleware);
 app.use('/chat', chatRouter);
@@ -23,6 +29,8 @@ const mongoDB = process.env.DB_URL;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+//console.log(db.db.listCollections);
 
 const port = process.env.PORT || 8080;
 const httpServer = require('http').createServer(app);
