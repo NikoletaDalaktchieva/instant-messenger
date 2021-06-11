@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ErrorService } from "../services/error.service";
 import { ChatService } from '../services/chat.service';
 import { UserService } from "../services/user.service";
+import jwt_decode from "jwt-decode";
+import { User } from '../models/userModel';
 
 @Component({
   selector: 'app-main-page',
@@ -27,12 +29,22 @@ export class MainPageComponent implements OnInit {
     if (!this.userService.isLoggedIn()) {
       this.router.navigateByUrl('login');
     } else {
+      this.loadUser();
       this.loadChats();
     }
   }
 
+  loadUser() {
+    const tokenId = localStorage.getItem('id_token');
+    if(tokenId === null) {
+      return;
+    }
+    const token:User = jwt_decode(tokenId);
+    this.userName = token.name;
+  }
+
   loadChats() {
-    this.userName = localStorage.getItem('id_name');
+    var result;
     this.chatService.load()
       .subscribe(
         result => {
