@@ -21,12 +21,12 @@
         </div>
     </section>
 
-   
-        <section class="chat-module">
-            <ng-container *ngIf="currentChat !== null">
+
+    <section class="chat-module">
+        <ng-container *ngIf="currentChat !== null">
             <app-chat [chat]="currentChat"></app-chat>
         </ng-container>
-        </section>
+    </section>
 
     <button (click)="logout()">LOGOUT</button>
 </main>
