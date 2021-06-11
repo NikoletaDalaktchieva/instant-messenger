@@ -1,17 +1,13 @@
-<section>
-   
-    <div class="chat-module">
-        <div id="info-group">
-            <h3>{{chat.name}}</h3>
-            <input type="text" id="search-bar"  placeholder="Search" [(ngModel)]="searchMessage">
-        </div>
-        
-        <div id="chatbox">
-            <div *ngFor="let message of messageList">
-                <ng-container *ngIf="message.text.includes(searchMessage)">
-                    <li>{{ message.sender + " say: " + message.text }}</li>
-                </ng-container>
-            </div>
+<section class="col-2">
+    <div class="info-group">
+        <h3>{{chat.name}}</h3>
+        <input class="input_search" type="text" id="search-bar" placeholder="Search" [(ngModel)]="searchMessage">
+    </div>
+    <div class="chatbox">
+        <div *ngFor="let message of messageList">
+            <ng-container *ngIf="message.text.includes(searchMessage)">
+                <h1>{{ message.sender + " say: " + message.text }}</h1>
+            </ng-container>
         </div>
     </div>
     <div class="text-area">

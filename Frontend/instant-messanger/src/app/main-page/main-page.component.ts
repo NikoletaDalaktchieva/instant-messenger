@@ -45,7 +45,6 @@ export class MainPageComponent implements OnInit {
 
   loadChats() {
     var result;
-    this.userName = localStorage.getItem('id_name');
     this.chatService.load()
       .subscribe(
         result => {
