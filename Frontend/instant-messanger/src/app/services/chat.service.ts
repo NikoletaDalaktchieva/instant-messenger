@@ -27,12 +27,12 @@ export class ChatService {
     return this.http.get<any>(environment.serveUrl + "/chat", httpOptions);
   }
 
-  public setChatId(roomId: any) {
+  setChatId(roomId: any) {
     this.roomId = roomId;
     this.socket.emit('setRoom', this.roomId);
   }
 
-  public sendMessage(message: any) {
+  sendMessage(message: any) {
     if (this.roomId === null) return;
     const tokenId = localStorage.getItem('id_token');
     this.socket.emit('message', tokenId, this.roomId, message);
@@ -45,7 +45,7 @@ export class ChatService {
     return this.message$.asObservable();
   };
 
-  public socketDisconect() {
+  socketDisconect() {
     console.log('disconect')
     this.socket.disconnect();
   }

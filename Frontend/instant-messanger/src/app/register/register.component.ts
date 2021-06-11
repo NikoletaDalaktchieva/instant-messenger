@@ -47,8 +47,6 @@ export class RegisterComponent {
       return;
     }
 
-
-
     //whitespaces validator
     this.userService.create(user, email, password)
       .subscribe(

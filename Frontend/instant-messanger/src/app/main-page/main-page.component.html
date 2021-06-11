@@ -1,16 +1,10 @@
 <main class="container">
-    <section class="main-page-container">
+    <section class="col-1">
         <div class="personal-info">
             <img src="assets/person-photo.jpg" alt="Personal picture">
             <h1 id="nameInfo">{{userName}}</h1>
-            <button id="settings">
-                <img src="assets/button-settings.jpg" alt="Settings">
-                <span class="tooltiptext">Settings</span>
-            </button>
         </div>
-
         <input type="text" id="search-bar" placeholder="Search" [(ngModel)]="chatSearch">
-
         <div class="chat-history" *ngFor="let chat of chats">
             <ng-container *ngIf="chat.name.startsWith(chatSearch)">
                 <div class="history-list" (click)="openChat(chat)">
@@ -20,13 +14,14 @@
             </ng-container>
         </div>
     </section>
-
-   
-        <section class="chat-module">
-            <ng-container *ngIf="currentChat !== null">
+    <section class="col-2">
+        <ng-container *ngIf="currentChat !== null">
             <app-chat [chat]="currentChat"></app-chat>
         </ng-container>
-        </section>
-
-    <button (click)="logout()">LOGOUT</button>
+    </section>
+    <section class="col-3">
+        <button id="logout" (click)="logout()">
+            Log out
+        </button>
+    </section>
 </main>
