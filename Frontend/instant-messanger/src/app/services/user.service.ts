@@ -3,7 +3,6 @@ import { HttpClient } from "@angular/common/http";
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -36,7 +35,6 @@ export class UserService {
   setSession(authResult) {
     localStorage.setItem('id_token', authResult.token);
   }
-
 
   logout() {
     localStorage.removeItem("id_token");

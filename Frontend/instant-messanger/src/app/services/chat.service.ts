@@ -4,7 +4,6 @@ import { io } from "socket.io-client";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
 import jwt_decode from 'jwt-decode';
-import { Chat } from '../models/chatModel';
 import { Message } from '../models/messageModel';
 
 @Injectable({

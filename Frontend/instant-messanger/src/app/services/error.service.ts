@@ -8,8 +8,6 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 })
 
 export class ErrorService {
-
-
   constructor(private userService: UserService,
     private router: Router,) { }
 
