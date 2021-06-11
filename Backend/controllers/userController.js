@@ -34,7 +34,7 @@ exports.login = function (req, res) {
                 }, 'scrt', {
                     expiresIn: '1h'
                 });
-		res.header("Access-Control-Allow-Origin", "*");
+		        res.header("Access-Control-Allow-Origin", "*");
                 res.json({ result: true, user: user, token: token });
             }
         });
