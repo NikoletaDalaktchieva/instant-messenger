@@ -53,7 +53,6 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    //whitespaces validator
     this.userService.create(user, email, password)
       .subscribe(
         result => {
