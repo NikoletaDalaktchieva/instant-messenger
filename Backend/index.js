@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:8080");
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header('Access-Control-Allow-Methods','GET,PUT,POST,DELETE');
  next();
@@ -33,8 +33,9 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 //console.log(db.db.listCollections);
 
 const port = process.env.PORT || 8080;
+var HOST = '62.44.101.120';
 const httpServer = require('http').createServer(app);
-httpServer.listen(port, () => console.log(`listening on port ${port}`));
+httpServer.listen(port,HOST , () => console.log(`listening on ${HOST} ${port}`));
 
 const io = require('socket.io')(httpServer, {
   cors: { origin: '*' }

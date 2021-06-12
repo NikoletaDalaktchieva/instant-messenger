@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serveUrl: 'http://localhost:8080',
+  serveUrl: 'http://62.44.101.120:8080',
   appTitle: 'Instant messanger'
 };
 

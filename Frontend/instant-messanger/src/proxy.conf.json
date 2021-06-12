@@ -1,6 +1,6 @@
 {
   "/user": {
-    "target": "http://localhost:8080",
+    "target": "http://62.44.101.120:8080/",
     "secure": false
   }
 }
