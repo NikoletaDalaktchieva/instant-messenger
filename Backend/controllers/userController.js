@@ -1,11 +1,15 @@
+import bcrypt from 'bcrypt';
 const jwt = require('jsonwebtoken');
 const User = require('../models/userSchema');
 
+const SALT_ROUNDS = 5; //cost factor
+
 exports.create = function (req, res) {
+    const hashedPass = await bcrypt.hash(req.body.password, SALT_ROUNDS);
     const user = new User({
         name: req.body.user,
         email: req.body.email,
-        password: req.body.password
+        password: hashedPass
     });
     user.save().then(
         (createdUser) => {
@@ -20,7 +24,8 @@ exports.create = function (req, res) {
 }
 
 exports.login = function (req, res) {
-    User.findOne({ $or: [{ 'email': req.body.user }, { 'name': req.body.user }], 'password': req.body.password })
+    const hashedPass = await bcrypt.hash(req.body.password, SALT_ROUNDS);
+    User.findOne({ $or: [{ 'email': req.body.user }, { 'name': req.body.user }], 'password': hashedPass })
         .populate('user')
         .exec(function (err, user) {
             if (err) {
