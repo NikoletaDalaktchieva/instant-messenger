@@ -37,12 +37,24 @@ var HOST = '62.44.101.120';
 const httpServer = require('http').createServer(app);
 httpServer.listen(port,HOST , () => console.log(`listening on ${HOST} ${port}`));
 
+
+//socket
+let socketsMap = new Map()
 const io = require('socket.io')(httpServer, {
   cors: { origin: '*' }
 });
 
 io.on('connection', (socket) => {
   console.log('a user connected');
+
+  socket.on('setRoom', (roomId) => {
+    const oldRoomId = socketsMap.get(socket.id);
+    if(oldRoomId !== undefined && oldRoomId !== roomId) {
+      socket.leave(oldRoomId);
+    }
+    socketsMap.set(socket.id, roomId)
+    socket.join(roomId);
+  });
 
   socket.on('message', (tokenId, roomId, message) => {
     messageController.create(roomId, tokenId, message, io);
