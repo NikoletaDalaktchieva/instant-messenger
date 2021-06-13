@@ -28,7 +28,7 @@ export class LoginComponent {
     name.trim();
     password.trim();
 
-    if (name === "" || password === ""){
+    if (name === '' || password === ''){
       this.errorService.showError('Please fill in all fields');
       return;
     }
@@ -51,7 +51,6 @@ export class LoginComponent {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 
-  //TODO move in user service
   logOut(): void {
     this.socialAuthService.signOut();
   }
