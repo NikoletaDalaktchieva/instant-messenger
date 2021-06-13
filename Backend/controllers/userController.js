@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userSchema');
+require('dotenv').config();
 
 const SALT_ROUNDS = 5; //cost factor
 
@@ -17,7 +18,10 @@ exports.create = async function (req, res) {
         }
     ).catch(
         (error) => {
-            res.status(500).json({ result: false, message: 'Cannot create this user', error: error });
+            if (error.name === 'MongoError' && error.code === 11000) {
+                return res.status(422).send({ result: false, message: 'User already exist!' });
+            }
+            res.status(400).json({ result: false, message: 'Cannot create this user', error: error });
         }
     );
 }
@@ -38,7 +42,7 @@ exports.login = async function (req, res) {
                     const token = jwt.sign({
                         id: user.id,
                         name: user.name,
-                    }, 'scrt', {
+                    }, process.env.tocken_secret, {
                         expiresIn: '1h'
                     });
                     res.header("Access-Control-Allow-Origin", "*");

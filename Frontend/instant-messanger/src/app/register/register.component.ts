@@ -26,8 +26,9 @@ export class RegisterComponent {
     email.trim();
     password.trim();
     confirmed_password.trim();
-    if (user === "" || email === "" || password === "" || confirmed_password === "") {
-      this.errorService.showError('Please fill in all fields');
+    
+    if (user === '' || email === '' || password === '' || confirmed_password === '') {
+      this.errorService.showError('Please, fill in all fields');
       return;
     }
 
@@ -58,8 +59,11 @@ export class RegisterComponent {
           }
         },
         error => {
-          console.log(error);
-          this.errorService.showError();
+          if(error.error.result !== undefined) {
+            this.errorService.showError(error.error.message);
+          } else {
+            this.errorService.showError();
+          }
         },
         () => { }
       );

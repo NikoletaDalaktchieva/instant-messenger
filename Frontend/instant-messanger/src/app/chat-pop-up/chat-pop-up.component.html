@@ -1,0 +1,6 @@
+<section class="pop-up-form">
+    <h1 class="auth-title">Create new room</h1>
+    <input type="text" placeholder="Chat name" class="auth-input" [(ngModel)]="roomName" required />
+    <button id="add-button" (click)="addChat(roomName)">Add</button>
+    <button id="decline-button" (click)="closeForm()">Cancel</button>
+</section>

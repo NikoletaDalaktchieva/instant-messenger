@@ -137,3 +137,19 @@ input::placeholder {
   margin-right: 3%;
   width: auto;
 }
+
+#create-chat {
+  font-family: Comic Sans, Comic Sans MS, cursive;
+  cursor: pointer;
+  background: rgb(105, 228, 240);
+  border: 2px solid #2e4849;
+  color: rgb(27, 24, 24);
+  font-weight: medium;
+  border-radius: 1rem;
+  font-size: x-large;
+  text-align: center;
+  margin-top: 5%;
+  margin-left: 2%;
+  margin-right: 3%;
+  width: auto;
+}
