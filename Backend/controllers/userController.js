@@ -13,18 +13,17 @@ exports.create = async function (req, res) {
     });
     user.save().then(
         (createdUser) => {
-            res.json({ result: true, user: createdUser});
+            res.json({ result: true, user: createdUser });
         }
     ).catch(
         (error) => {
-            console.log(error);
             res.status(500).json({ result: false, message: 'Cannot create this user', error: error });
         }
     );
 }
 
 exports.login = async function (req, res) {
-    User.findOne({ $or: [{ 'email': req.body.user }, { 'name': req.body.user }]})
+    User.findOne({ $or: [{ 'email': req.body.user }, { 'name': req.body.user }] })
         .populate('user')
         .exec(async function (err, user) {
             if (err) {
@@ -32,21 +31,21 @@ exports.login = async function (req, res) {
             } else if (user == null) {
                 res.json({ result: false, message: 'User not Found' });
             } else {
-		
-		const pass = await bcrypt.compare(req.body.password, user.password);
-		if(pass){
 
-                const token = jwt.sign({
-                    id: user.id,
-                    name: user.name,
-                }, 'scrt', {
-                    expiresIn: '1h'
-                });
-		        res.header("Access-Control-Allow-Origin", "*");
-                res.json({ result: true, user: user, token: token });
-		} else {
-		res.json({ result: false, message: 'User not Found' });
-		}
+                const pass = await bcrypt.compare(req.body.password, user.password);
+                if (pass) {
+
+                    const token = jwt.sign({
+                        id: user.id,
+                        name: user.name,
+                    }, 'scrt', {
+                        expiresIn: '1h'
+                    });
+                    res.header("Access-Control-Allow-Origin", "*");
+                    res.json({ result: true, user: user, token: token });
+                } else {
+                    res.json({ result: false, message: 'User not Found' });
+                }
             }
         });
 }

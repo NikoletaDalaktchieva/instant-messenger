@@ -5,7 +5,6 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
 import { Message } from '../models/messageModel';
 import { ErrorService } from './error.service';
-import { errorMonitor } from 'node:stream';
 
 @Injectable({
   providedIn: 'root',
@@ -37,7 +36,7 @@ export class ChatService {
     this.socket.emit('setRoom', this.roomId);
     this.socket.on('error', (err) => {
       this.errorService.showError(err);
-  });
+    });
   }
 
   sendMessage(message: any) {
@@ -61,7 +60,6 @@ export class ChatService {
   };
 
   socketDisconect() {
-    console.log('disconect')
     this.socket.disconnect();
   }
 }

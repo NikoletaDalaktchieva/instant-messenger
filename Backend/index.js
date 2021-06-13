@@ -51,7 +51,7 @@ io.use(function (socket, next) {
 
   socket.on('setRoom', (roomId) => {
     const oldRoomId = socketsMap.get(socket.id);
-    if(oldRoomId !== undefined && oldRoomId !== roomId) {
+    if (oldRoomId !== undefined && oldRoomId !== roomId) {
       socket.leave(oldRoomId);
     }
     socketsMap.set(socket.id, roomId)

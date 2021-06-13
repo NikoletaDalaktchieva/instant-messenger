@@ -1,17 +1,5 @@
-const mongoose = require('mongoose'), Schema = mongoose.Schema;
 const Message = require('../models/messageSchema');
-const User = require('../models/userSchema');
 const jwt_decode = require('jwt-decode');
-
-exports.getMessage = function (req, res) {
-    const id = req.params.id;
-    Message.findById(id, function (error, list_messages) {
-        if (error) {
-            res.status(500).json({ result: false, message: 'Cannot find such chat!', error: error });
-        }
-        res.status(200).json({ result: true, message_list: list_messages });
-    });
-}
 
 exports.sortMessagesByDate = function (req, res) {
     const sortDate = { dispatchDate: 1 }
@@ -21,14 +9,13 @@ exports.sortMessagesByDate = function (req, res) {
         .exec(function (error, messages) {
             if (error) {
                 return res.status(500).json({ result: false, message: 'Cannot get message list!', error: error });
-                
             }
             res.status(200).json({ result: true, message_list: compact_list(messages) });
         })
 }
 
 const compact_list = function (messages) {
-    if(messages === undefined) {
+    if (messages === undefined) {
         return [];
     }
     compact = [];
@@ -54,7 +41,6 @@ exports.create = function (chatId, tokenId, text, io) {
         }
     ).catch(
         (error) => {
-            console.log(error)
             return error;
         }
     );

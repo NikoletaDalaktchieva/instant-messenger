@@ -40,7 +40,6 @@ export class MainPageComponent implements OnInit {
   }
 
   loadChats() {
-    var result;
     this.chatService.load()
       .subscribe(
         result => {
