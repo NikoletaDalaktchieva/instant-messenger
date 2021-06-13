@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SocialAuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 import { UserService } from "../services/user.service";
 import { ErrorService } from "../services/error.service";
 import { environment } from 'src/environments/environment';
@@ -12,13 +11,11 @@ import { environment } from 'src/environments/environment';
 })
 export class LoginComponent {
   title = environment.appTitle;
-  socialUser: SocialUser = new SocialUser;
 
   name = '';
   password = '';
 
   constructor(private userService: UserService,
-    private socialAuthService: SocialAuthService,
     private router: Router,
     private errorService: ErrorService,
   ) { }
@@ -45,13 +42,5 @@ export class LoginComponent {
         error => { this.errorService.showError(); },
         () => { }
       );
-  }
-
-  loginWithGoogle(): void {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
-  }
-
-  logOut(): void {
-    this.socialAuthService.signOut();
   }
 }
