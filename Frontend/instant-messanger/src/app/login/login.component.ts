@@ -1,50 +1,58 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { FormBuilder, Validators } from '@angular/forms';
 import { SocialAuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
-
-import { AppComponent } from "../app.component";
-import { UserService } from "../user.service";
+import { UserService } from "../services/user.service";
+import { ErrorService } from "../services/error.service";
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-  title = AppComponent.title;
+export class LoginComponent {
+  title = environment.appTitle;
   socialUser: SocialUser = new SocialUser;
 
+  name = '';
+  password = '';
+
   constructor(private userService: UserService,
-    private router: Router,
-    private formBuilder: FormBuilder,
     private socialAuthService: SocialAuthService,
-  ) {
-  }
-
-  ngOnInit() {
-    this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-
-    this.socialAuthService.authState.subscribe((user) => {
-      this.socialUser = user;
-    });
-  }
-
+    private router: Router,
+    private errorService: ErrorService,
+  ) { }
 
   loginUser(name: string, password: string) {
-    this.userService.logIn(name, password);
+
+    name.trim();
+    password.trim();
+
+    if (name === "" || password === ""){
+      this.errorService.showError('Please fill in all fields');
+      return;
+    }
+    this.userService.logIn(name, password).
+      subscribe(
+        result => {
+          if (result.result) {
+            this.userService.setSession(result);
+            this.router.navigateByUrl('');
+          } else {
+            this.errorService.showError(result.message);
+          }
+        },
+        error => { this.errorService.showError(); },
+        () => { }
+      );
   }
 
   loginWithGoogle(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 
+  //TODO move in user service
   logOut(): void {
     this.socialAuthService.signOut();
   }
-
 }

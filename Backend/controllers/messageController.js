@@ -1,0 +1,51 @@
+const Message = require('../models/messageSchema');
+const jwt_decode = require('jwt-decode');
+
+exports.sortMessagesByDate = function (req, res) {
+    const sortDate = { dispatchDate: 1 }
+    Message.find({ 'chat': req.query.chatId })
+        .sort(sortDate)
+        .populate('sender')
+        .exec(function (error, messages) {
+            if (error) {
+                return res.status(500).json({ result: false, message: 'Cannot get message list!', error: error });
+            }
+            res.status(200).json({ result: true, message_list: compact_list(messages) });
+        })
+}
+
+const compact_list = function (messages) {
+    if (messages === undefined) {
+        return [];
+    }
+    compact = [];
+    messages.forEach(msg => compact.push({
+        text: msg.text,
+        sender: msg.sender.name,
+        dispatchDate: msg.dispatchDate
+    }));
+    return compact;
+}
+
+exports.create = function (chatId, tokenId, text, io) {
+    const token = jwt_decode(tokenId);
+    const message = new Message({
+        text: text,
+        chat: chatId,
+        sender: token.id,
+        dispatchDate: Date.now(),
+    });
+    message.save().then(
+        (created) => {
+            io.to(chatId).emit('message', {
+                text: created.text,
+                sender: token.name,
+                dispatchDate: created.dispatchDate
+            });
+        }
+    ).catch(
+        (error) => {
+            return error;
+        }
+    );
+}

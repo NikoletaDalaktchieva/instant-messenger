@@ -1,15 +1,15 @@
-<form class="auth-form" id="login-form">
+<section class="auth-form" id="login-form">
     <h1 class="auth-title">{{title}}</h1>
 
-
-    <input type="text" placeholder="Email" class="auth-input" #email required />
-    <input type="text" placeholder="Username" class="auth-input" #username req required />
-    <input type="password" placeholder="Password" class="auth-input" #password required />
-    <input type="text" placeholder="Confirm password" class="auth-input" #confirmed_password required />
+    <input type="text" placeholder="Email" class="auth-input" [(ngModel)]="email" required />
+    <input type="text" placeholder="Username" class="auth-input" [(ngModel)]="username" required />
+    <input type="password" placeholder="Password" class="auth-input" [(ngModel)]="password" required />
+    <input type="password" placeholder="Confirm password" class="auth-input" [(ngModel)]="confirmed_password" required />
+   
     <section class="auth-actions">
         <button class="auth-button"
-            (click)="registerUser(username.value, email.value, password.value, confirmed_password.value)">Register</button>
+            (click)="registerUser(username, email, password, confirmed_password)">Register</button>
         <a routerLink="/login" title="Already have account" class="auth-link">Already have account</a>
     </section>
 
-</form>
+</section>

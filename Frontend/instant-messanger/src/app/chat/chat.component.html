@@ -1,0 +1,18 @@
+<section id="chat">
+    <div>
+        <h3>{{chat.name}}</h3>
+        <input class="input_search" type="text" id="search-bar" placeholder="Search" [(ngModel)]="searchMessage">
+    </div>
+    <div class="chatbox">
+        <div *ngFor="let message of messageList">
+            <ng-container *ngIf="message.text.includes(searchMessage)">
+                <h1>{{ message.sender + " say: " + message.text }}</h1>
+            </ng-container>
+        </div>
+    </div>
+    <div class="text-area">
+        <input [(ngModel)]="newMessage" (keyup)="$event.keyCode == 13 && sendMessage()" name="usermsg" type="text"
+            id="usermsg" />
+        <input (click)="sendMessage()" name="submitmsg" type="submit" id="submitmsg" value="Send" />
+    </div>
+</section>

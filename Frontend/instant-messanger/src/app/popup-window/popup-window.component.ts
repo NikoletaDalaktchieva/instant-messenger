@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-popup-window',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopupWindowComponent implements OnInit {
 
-  constructor() { }
+  constructor(private el: ElementRef) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.el.nativeElement.addEventListener('click', ()=> {
+      this.closePopup()
+    })
+  }
+
+  closePopup() {
+    this.el.nativeElement.classList.remove('overlay.active')
   }
 
 }

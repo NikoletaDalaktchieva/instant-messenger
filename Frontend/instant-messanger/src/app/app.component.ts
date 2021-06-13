@@ -5,7 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  static title = 'Instant messanger';
-  static url = 'http://localhost:8080'
-}
+export class AppComponent { }

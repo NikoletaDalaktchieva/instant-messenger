@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  serveUrl: 'http://localhost:8080',
+  appTitle: 'Instant messanger'
 };
 
 /*
