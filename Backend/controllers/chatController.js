@@ -21,7 +21,10 @@ exports.create = function (req, res) {
         }
     ).catch(
         (error) => {
-            res.status(500).json({ result: false, message: 'Cannot create this chat', error: error });
+            if (error.name === 'MongoError' && error.code === 11000) {
+                return res.status(422).send({ result: false, message: ' Chat already exist!' });
+            }
+            res.status(400).json({ result: false, message: 'Cannot create this chat', error: error });
         }
     );
 }

@@ -58,8 +58,11 @@ export class RegisterComponent {
           }
         },
         error => {
-          console.log(error);
-          this.errorService.showError();
+          if(error.error.result !== undefined) {
+            this.errorService.showError(error.error.message);
+          } else {
+            this.errorService.showError();
+          }
         },
         () => { }
       );
