@@ -26,20 +26,15 @@ export class MainPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (!this.userService.isLoggedIn()) {
-      this.router.navigateByUrl('login');
-    } else {
-      this.loadUser();
-      this.loadChats();
-    }
+    this.loadChats();
   }
 
   loadUser() {
     const tokenId = localStorage.getItem('id_token');
-    if(tokenId === null) {
+    if (tokenId === null) {
       return;
     }
-    const token:User = jwt_decode(tokenId);
+    const token: User = jwt_decode(tokenId);
     this.userName = token.name;
   }
 
@@ -52,7 +47,7 @@ export class MainPageComponent implements OnInit {
             this.chats = result.chat_list;
             this.currentChat = this.chats[0];
           } else {
-            this.errorService.hanleError(result);
+            this.errorService.showError(result.message);
           }
         },
         error => {

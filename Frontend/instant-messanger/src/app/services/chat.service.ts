@@ -29,6 +29,7 @@ export class ChatService {
 
   setChatId(roomId: any) {
     this.roomId = roomId;
+    this.socket.emit('setRoom', this.roomId);
   }
 
   sendMessage(message: any) {
@@ -50,13 +51,10 @@ export class ChatService {
     // });
   }
 
-  getNewMessage = () => {
-    this.socket.on('message', (roomId, message: Message) => {
-      if (roomId === this.roomId) {
-        this.message$.next(message);
-      }
+  public getNewMessage = () => {
+    this.socket.on('message', (message: Message) => {
+      this.message$.next(message);
     });
-
     return this.message$.asObservable();
   };
 

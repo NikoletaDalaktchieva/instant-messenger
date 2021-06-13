@@ -14,7 +14,11 @@
             </ng-container>
         </div>
     </section>
-    <section class="col-2"><app-chat [chat]="currentChat"></app-chat></section>
+    <section class="col-2">
+        <ng-container *ngIf="currentChat !== null">
+            <app-chat [chat]="currentChat"></app-chat>
+        </ng-container>
+    </section>
     <section class="col-3">
         <button id="logout" (click)="logout()">
             Log out
