@@ -58,7 +58,13 @@ export class RegisterComponent {
             this.errorService.showError(result.message);
           }
         },
-        error => { this.errorService.showError(); },
+        error => {
+          if(error.error.result !== undefined) {
+            this.errorService.showError(error.error.message);
+          } else {
+            this.errorService.showError();
+          }
+        },
         () => { }
       );
   }

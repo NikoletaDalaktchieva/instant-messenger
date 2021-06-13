@@ -28,7 +28,6 @@ import { ChatPopUpComponent } from './chat-pop-up/chat-pop-up.component';
     ReactiveFormsModule,
     FormsModule,
     SocialLoginModule,
-    FormsModule,
     HttpClientModule,
   ],
   providers: [

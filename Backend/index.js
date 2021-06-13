@@ -13,7 +13,7 @@ app.use(cors({
   origin: '*'
 }));
 app.use('/user', userRouter);
-// app.use(authMiddleware);
+app.use(authMiddleware);
 app.use('/chat', chatRouter);
 app.use('/message', messageRouter);
 
@@ -37,7 +37,7 @@ const io = require('socket.io')(httpServer, {
 io.use(function (socket, next) {
   if (socket.handshake.query !== undefined && socket.handshake.query.token !== undefined) {
     try {
-      jwt.verify(socket.handshake.query.token, 'scrt');
+      jwt.verify(socket.handshake.query.token,  process.env.tocken_secret);
       next();
     } catch (error) {
       next(new Error('Authentication error'));

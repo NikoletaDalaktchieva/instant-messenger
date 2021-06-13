@@ -31,7 +31,7 @@ export class ChatPopUpComponent implements OnInit {
     this.chatService.createChatRoom(name)
       .subscribe(result => {
         Swal.fire("Added successfully", '', 'info');
-        this.router.navigateByUrl('/');
+        this.roomName = '';
       },
         error => {
           if(error.error.result !== undefined) {
