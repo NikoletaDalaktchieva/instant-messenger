@@ -37,7 +37,11 @@ exports.create = function (chatId, tokenId, text, io) {
     });
     message.save().then(
         (created) => {
-            io.to(chatId).emit('message', created);
+            io.to(chatId).emit('message', {
+                text: created.text,
+                sender: token.name,
+                dispatchDate: created.dispatchDate
+            });
         }
     ).catch(
         (error) => {

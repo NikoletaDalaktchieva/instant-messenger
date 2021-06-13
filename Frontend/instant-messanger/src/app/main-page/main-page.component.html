@@ -15,7 +15,7 @@
         </div>
     </section>
     <section class="col-2">
-        <ng-container *ngIf="currentChat !== null">
+        <ng-container *ngIf="currentChat !== undefined">
             <app-chat [chat]="currentChat"></app-chat>
         </ng-container>
     </section>

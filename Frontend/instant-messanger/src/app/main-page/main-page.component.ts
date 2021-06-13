@@ -49,7 +49,7 @@ export class MainPageComponent implements OnInit {
           } else {
             this.errorService.showError(result.message);
           }
-        },
+        }, 
         error => {
           console.log(error);
           this.errorService.showError();
