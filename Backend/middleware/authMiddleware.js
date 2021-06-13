@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 exports.authMiddleware = async function (req, res, next) {
   const token = req.headers.authorization;
@@ -6,10 +7,10 @@ exports.authMiddleware = async function (req, res, next) {
     res.sendStatus(401);
   } else {
     try {
-      jwt.verify(token, 'scrt');
+      jwt.verify(token, process.env.tocken_secret);
       next();
     } catch (error) {
-      res.json({ result: false, message: 'Your session has expired' });
+      res.status(401).json({ result: false, message: 'Your session has expired' });
     }
   }
 }

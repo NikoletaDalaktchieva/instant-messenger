@@ -21,7 +21,7 @@ exports.create = function (req, res) {
         }
     ).catch(
         (error) => {
-            res.status(500).json({ result: false, message: 'Cannot create this chat', error: error });
+            res.status(400).json({ result: false, message: 'Cannot create this chat', error: error });
         }
     );
 }
