@@ -13,11 +13,11 @@ import { User } from '../models/userModel';
 })
 
 export class MainPageComponent implements OnInit {
-  chats;
   chatSearch = '';
   userName;
   name = '';
-  currentChat = null;
+  currentChat;
+  chats;
 
   constructor(private userService: UserService,
     private router: Router,
@@ -26,25 +26,20 @@ export class MainPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (!this.userService.isLoggedIn()) {
-      this.router.navigateByUrl('login');
-    } else {
-      this.loadUser();
-      this.loadChats();
-    }
+    this.loadUser();
+    this.loadChats();
   }
 
   loadUser() {
     const tokenId = localStorage.getItem('id_token');
-    if(tokenId === null) {
+    if (tokenId === null) {
       return;
     }
-    const token:User = jwt_decode(tokenId);
+    const token: User = jwt_decode(tokenId);
     this.userName = token.name;
   }
 
   loadChats() {
-    var result;
     this.chatService.load()
       .subscribe(
         result => {
@@ -52,9 +47,9 @@ export class MainPageComponent implements OnInit {
             this.chats = result.chat_list;
             this.currentChat = this.chats[0];
           } else {
-            this.errorService.hanleError(result);
+            this.errorService.showError(result.message);
           }
-        },
+        }, 
         error => {
           console.log(error);
           this.errorService.showError();
@@ -65,10 +60,6 @@ export class MainPageComponent implements OnInit {
 
   openChat(chat: any) {
     this.currentChat = chat;
-  }
-
-  getSettings(event) {
-    alert("Not implemented!");
   }
 
   logout() {

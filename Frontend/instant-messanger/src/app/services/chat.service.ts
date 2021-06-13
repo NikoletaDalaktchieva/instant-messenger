@@ -4,6 +4,7 @@ import { io } from "socket.io-client";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
 import { Message } from '../models/messageModel';
+import { ErrorService } from './error.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,10 +12,13 @@ import { Message } from '../models/messageModel';
 
 export class ChatService {
   roomId = null;
-  socket = io(environment.serveUrl);
+
+  socket = io(environment.serveUrl, {
+    query: { token: '' + localStorage.getItem('id_token') }
+  });
   public message$: BehaviorSubject<Message> = new BehaviorSubject(new Message('', '', new Date()));
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private errorService: ErrorService) { }
 
   load() {
     const headers_object = new HttpHeaders({
@@ -30,11 +34,21 @@ export class ChatService {
   setChatId(roomId: any) {
     this.roomId = roomId;
     this.socket.emit('setRoom', this.roomId);
+    this.socket.on('error', (err) => {
+      this.errorService.showError(err);
+    });
   }
 
   sendMessage(message: any) {
-    if (this.roomId === null) return;
+    if (this.roomId === null) {
+      return;
+    }
+
     const tokenId = localStorage.getItem('id_token');
+    if (tokenId === null) {
+      return;
+    }
+
     this.socket.emit('message', tokenId, this.roomId, message);
   }
 
@@ -46,7 +60,6 @@ export class ChatService {
   };
 
   socketDisconect() {
-    console.log('disconect')
     this.socket.disconnect();
   }
 }

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -8,8 +7,7 @@ import { environment } from '../../environments/environment';
 })
 
 export class UserService {
-  constructor(private router: Router, 
-    private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   logIn(name: string, password: string) {
     return this.http.post<any>(environment.serveUrl + "/user/login",

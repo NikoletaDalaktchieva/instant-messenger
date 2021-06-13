@@ -6,6 +6,7 @@ const { chatRouter } = require('./routes/chatRouter');
 const { messageRouter } = require('./routes/messageRouter');
 const messageController = require('./controllers/messageController');
 const { authMiddleware } = require('./middleware/authMiddleware');
+const jwt = require('jsonwebtoken');
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -37,19 +38,29 @@ var HOST = '62.44.101.120';
 const httpServer = require('http').createServer(app);
 httpServer.listen(port,HOST , () => console.log(`listening on ${HOST} ${port}`));
 
-
-//socket
 let socketsMap = new Map()
 const io = require('socket.io')(httpServer, {
   cors: { origin: '*' }
 });
 
-io.on('connection', (socket) => {
+io.use(function (socket, next) {
+  if (socket.handshake.query !== undefined && socket.handshake.query.token !== undefined) {
+    try {
+      jwt.verify(socket.handshake.query.token, 'scrt');
+      next();
+    } catch (error) {
+      next(new Error('Authentication error'));
+    }
+  }
+  else {
+    next(new Error('Authentication error'));
+  }
+}).on('connection', (socket) => {
   console.log('a user connected');
 
   socket.on('setRoom', (roomId) => {
     const oldRoomId = socketsMap.get(socket.id);
-    if(oldRoomId !== undefined && oldRoomId !== roomId) {
+    if (oldRoomId !== undefined && oldRoomId !== roomId) {
       socket.leave(oldRoomId);
     }
     socketsMap.set(socket.id, roomId)

@@ -47,7 +47,7 @@ export class ChatComponent implements OnInit {
           if (result.result) {
             this.messageList = result.message_list;
           } else {
-            this.errorService.hanleError(result);
+            this.errorService.showError(result.message);
           }
         },
         error => {

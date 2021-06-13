@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './register.component.html',
   styleUrls: ['./../login/login.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   title = environment.appTitle;
   email = '';
   username = '';
@@ -19,12 +19,6 @@ export class RegisterComponent implements OnInit {
   constructor(private userService: UserService,
     private router: Router,
     private errorService: ErrorService) { }
-
-  ngOnInit(): void {
-    if (this.userService.isLoggedIn()) {
-      this.router.navigateByUrl('');
-    }
-  }
 
   registerUser(user: string, email: string, password: string, confirmed_password: string) {
 
@@ -53,18 +47,20 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    //whitespaces validator
     this.userService.create(user, email, password)
       .subscribe(
         result => {
           if (result.result) {
             this.userService.setSession(result);
-            this.router.navigateByUrl('');
+            this.router.navigateByUrl('/login');
           } else {
             this.errorService.showError(result.message);
           }
         },
-        error => { this.errorService.showError(); },
+        error => {
+          console.log(error);
+          this.errorService.showError();
+        },
         () => { }
       );
   }
