@@ -60,7 +60,7 @@ export class ChatService {
   };
 
   socketDisconect() {
-    this.socket.disconnect();
+    this.socket.off('message')
   }
 
   createChatRoom(name: string) {
