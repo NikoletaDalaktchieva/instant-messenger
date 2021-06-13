@@ -52,7 +52,7 @@ export class RegisterComponent {
         result => {
           if (result.result) {
             this.userService.setSession(result);
-            this.router.navigateByUrl('');
+            this.router.navigateByUrl('/login');
           } else {
             this.errorService.showError(result.message);
           }
