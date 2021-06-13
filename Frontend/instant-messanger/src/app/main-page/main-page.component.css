@@ -1,48 +1,52 @@
 * {
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
+}
 
 .container {
-    display: grid;
-    grid-template-columns: 25% 65% 10%;
-    background: -webkit-linear-gradient(right, #a2f2f1, #b19afe);
-    align-items: flex-start;
-    height: auto;
+  display: grid;
+  grid-template-columns: 25% 65% 10%;
+  background: -webkit-linear-gradient(right, #a2f2f1, #b19afe);
+  align-items: flex-start;
+  height: auto;
 }
 
 section {
-    display: grid;
-    margin: 1%;
-    border-radius: 1.0rem;
+  display: grid;
+  margin: 1%;
+  border-radius: 1rem;
 }
 
-.col-1 {   
-    grid-template-rows: auto auto auto;
-    align-self: flex-start;
-    padding: 2%;
-    width: auto;
-    height: auto;
+.col-1 {
+  grid-template-rows: auto auto auto;
+  align-self: flex-start;
+  padding: 2%;
+  width: auto;
+  height: auto;
+}
+
+.col-2 {
+  height: 100%;
 }
 
 .personal-info {
-    display: grid;
-    grid-template-columns: 40% 50%;
-    grid-column-gap: 3%;
-    padding-bottom: 5%;
+  display: grid;
+  grid-template-columns: 40% 50%;
+  grid-column-gap: 3%;
+  padding-bottom: 5%;
 }
 
-.personal-info img{
-    border: 0.125rem solid #eaecfe;
-    border-radius: 1.5rem;
-    width: 100%;
-    max-width: 70%;
+.personal-info img {
+  border: 0.125rem solid #eaecfe;
+  border-radius: 1.5rem;
+  width: 100%;
+  max-width: 70%;
 }
 
 #nameInfo {
-    font-size: x-large;
-    font-family: Comic Sans, Comic Sans MS, cursive;
-    font-weight: normal;
-    margin-top: 15%;
+  font-size: x-large;
+  font-family: Comic Sans, Comic Sans MS, cursive;
+  font-weight: normal;
+  margin-top: 15%;
 }
 
 input {
@@ -55,82 +59,81 @@ input {
 }
 
 #search-bar {
-    text-align: left;
-    width: 100%;
-    height: 100%;
-    font-family: Comic Sans, Comic Sans MS, cursive;
-    font-size: large;
-}   
+  text-align: left;
+  width: 100%;
+  height: 100%;
+  font-family: Comic Sans, Comic Sans MS, cursive;
+  font-size: large;
+  padding: 0 3%;
+}
 
 input::placeholder {
-    font-size: auto;
+  font-size: auto;
 }
 
 #search-bar:focus {
-    border-color: #d09cf3;
-    box-shadow: 0 1px 0 0 #9b53cc;
+  border-color: #d09cf3;
+  box-shadow: 0 1px 0 0 #9b53cc;
 }
 
 .chat-history {
-    display: grid;
-    grid-template-rows: auto;
-    grid-row-gap: 5%;
-    border-radius: 1.0rem;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    max-height: 50%;
-    padding-top: 5%;
+  display: grid;
+  grid-template-rows: auto;
+  grid-row-gap: 5%;
+  border-radius: 1rem;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 50%;
+  padding-top: 5%;
 }
 
-.history-list{
-    display: grid;
-    grid-template-columns: 40% 60%;
-    grid-column-gap: 3%;
-    cursor: pointer;
-    border-radius: 1.0rem;
-    background-color: #ada0df; 
-    height: 80%;
-    width: auto;
+.history-list {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-column-gap: 3%;
+  cursor: pointer;
+  border-radius: 1rem;
+  background-color: #ada0df;
+  height: 80%;
+  width: auto;
 }
 
-.history-list img{
-    align-self: flex-start;
-    border: 0.125rem solid #444446;
-    border-radius: 1.563rem;
-    width: auto;
-    max-width: 70%;
-    height: auto;
-    max-height: 80%;
+.history-list img {
+  align-self: flex-start;
+  border: 0.125rem solid #444446;
+  border-radius: 1.563rem;
+  width: auto;
+  max-width: 70%;
+  height: auto;
+  max-height: 80%;
 }
 
-.history-list #name {
-    align-self: center;
-    justify-self: baseline;
-    font-size: x-large;
-    font-family: Comic Sans, Comic Sans MS, cursive;
-    font-weight: normal;
-    padding-right: 50px;  
+.name {
+  align-self: center;
+  font-size: x-large;
+  font-family: Comic Sans, Comic Sans MS, cursive;
+  font-weight: normal;
 }
 
 .col-3 {
-    display: grid;
-    width:auto;
-    height: auto;
+  display: grid;
+  width: auto;
+  height: auto;
 }
 
 #logout {
-    font-family: Comic Sans, Comic Sans MS, cursive;
-    cursor: pointer;
-    background: rgb(105, 228, 240);
-    border: 2px solid #2e4849;
-    color: rgb(27, 24, 24);
-    font-weight: medium;
-    border-radius: 1.0rem;
-    font-size: x-large;
-    text-align: center;
-    margin-top: 5%;
-    margin-left: 2%;
-    margin-right: 3%;
-    width: auto;
+  font-family: Comic Sans, Comic Sans MS, cursive;
+  cursor: pointer;
+  background: rgb(105, 228, 240);
+  border: 2px solid #2e4849;
+  color: rgb(27, 24, 24);
+  font-weight: medium;
+  border-radius: 1rem;
+  font-size: x-large;
+  text-align: center;
+  margin-top: 5%;
+  margin-left: 2%;
+  margin-right: 3%;
+  width: auto;
 }

@@ -57,7 +57,10 @@ export class RegisterComponent {
             this.errorService.showError(result.message);
           }
         },
-        error => { this.errorService.showError(); },
+        error => {
+          console.log(error);
+          this.errorService.showError();
+        },
         () => { }
       );
   }

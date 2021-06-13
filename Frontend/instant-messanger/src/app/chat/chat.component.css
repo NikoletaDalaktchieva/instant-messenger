@@ -1,114 +1,82 @@
 section {
-    display: grid;
-    border-radius: 1.0rem;
-    background-image: url(../../assets/chat-back.jpg);
-    background-size: cover;
-}
-
-.col-2 {
-    grid-template-rows: 10% 75% 10%; 
-    width: auto;
-    align-self: flex-start;
-    padding: 1%;
-    max-height: 60%;
-}
-
-.info-group{
-    align-self: flex-start;
-    height: auto;
-    max-height: 10%;
-    width: auto;
-    margin-bottom: 1%;
-} 
-
-h3 {
-    align-self: flex-start;
-    font-size: x-large;
-    font-family: Comic Sans, Comic Sans MS, cursive;
-    font-weight: medium;
-    margin-bottom: 1%;
-}
-
-input {
-    box-shadow: rgb(119, 126, 224);
-    border: 0.125rem solid #eaecfe;
-    border-radius: 0.65rem;
-    margin-bottom: 2%;
-    font-family: Comic Sans, Comic Sans MS, cursive;
-}
-
-#search-bar {
-    text-align: left;
-    width: 100%;
-    height: 40%;
-    font-size: x-large;
-}   
-
-input::placeholder {
-    font-size: auto;
-}
-
-#search-bar:focus {
-    border-color: #d09cf3;
-    box-shadow: 0 1px 0 0 #9b53cc;
-}
-
-.chatbox {
-    overflow: scroll;
-    scroll-snap-type: y proximity;
-    text-align: left;
-    margin-top: 2%;
-    margin-left: 5%;
-    height: auto;
-    max-height: 95%;
-    width: auto;
-    max-width: 100%;
-    overflow: auto;
-    align-self: flex-start;
-    font-size: large;
-    font-family: Comic Sans, Comic Sans MS, cursive;
-    font-weight: normal;
+  display: grid;
+  border-radius: 1rem;
+  background-image: url(../../assets/chat-back.jpg);
+  background-size: cover;
+  padding: 2%;
+  height: 100%;
+  grid-template-rows: 6vw 32vw 2vw; 
 }
 
 h1 {
-    font-size: large;
-    font-family: Comic Sans, Comic Sans MS, cursive;
-    font-weight: normal;
-    margin-bottom: 1%;
+  font-size: large;
+  font-family: Comic Sans, Comic Sans MS, cursive;
+  font-weight: normal;
+  margin-bottom: 1%;
+}
+
+h3 {
+  font-size: x-large;
+  font-family: Comic Sans, Comic Sans MS, cursive;
+  font-weight: medium;
+  margin-bottom: 1%;
+}
+
+input {
+  box-shadow: rgb(119, 126, 224);
+  border: 0.125rem solid #eaecfe;
+  border-radius: 0.65rem;
+  margin-bottom: 2%;
+  font-family: Comic Sans, Comic Sans MS, cursive;
+}
+
+#search-bar {
+  text-align: left;
+  width: 100%;
+  padding: 1% 1%;
+  font-size: medium;
+}
+
+input::placeholder {
+  font-size: auto;
+}
+
+#search-bar:focus {
+  border-color: #d09cf3;
+  box-shadow: 0 1px 0 0 #9b53cc;
+}
+
+.chatbox {
+  overflow-y: scroll;
+  text-align: left;
+  margin: 3% 2%;
+  width: 98%;
+  font-family: Comic Sans, Comic Sans MS, cursive;
+  font-weight: normal;
 }
 
 .text-area {
-    display: grid;
-    grid-template-columns: 90% 10%;
-    height: auto;
-    width: auto;
-    max-width: 100%;
-    margin-top: 2%;
-
+  display: grid;
+  grid-template-columns: 80% 20%;
+  width: 100%;
 }
 
 #usermsg {
-    text-align: left;
-    margin-left: 5%;
-    width: auto;
-    max-width: 90%;
-    height: auto;
-    font-size: medium;
-    padding-top: 1%;
-    padding-bottom: 1%;
+  text-align: left;
+  font-size: medium;
+  margin: 0;
+  padding: 0 2%;
 }
 
-#submitmsg{
-    background: rgb(52, 206, 218);
-    border: 2px solid #149da7;
-    color: rgb(27, 24, 24);
-    padding-bottom: 3%;
-    padding-top: 3%;
-    margin-right: 3%;
-    font-weight: medium;
-    border-radius: 1.0rem;
-    align-self: baseline;
-    font-size: x-large;
-    text-align: center;
-    cursor: pointer;
-}  
+#submitmsg {
+  background: rgb(52, 206, 218);
+  border: 2px solid #149da7;
+  color: rgb(27, 24, 24);
+  font-weight: medium;
+  border-radius: 1rem;
+  align-self: baseline;
+  font-size: x-large;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 5%;
+}
