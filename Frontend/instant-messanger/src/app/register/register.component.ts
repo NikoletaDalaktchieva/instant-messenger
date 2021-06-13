@@ -26,8 +26,9 @@ export class RegisterComponent {
     email.trim();
     password.trim();
     confirmed_password.trim();
-    if (user === "" || email === "" || password === "" || confirmed_password === "") {
-      this.errorService.showError('Please fill in all fields');
+    
+    if (user === '' || email === '' || password === '' || confirmed_password === '') {
+      this.errorService.showError('Please, fill in all fields');
       return;
     }
 

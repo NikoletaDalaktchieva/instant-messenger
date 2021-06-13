@@ -66,4 +66,7 @@ export class MainPageComponent implements OnInit {
     this.userService.logout();
     this.router.navigateByUrl('login');
   }
+
+  openPopUp() {
+    this.router.navigateByUrl('chat');  }
 }

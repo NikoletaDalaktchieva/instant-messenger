@@ -38,13 +38,6 @@ section {
     max-width: 70%;
 }
 
-#nameInfo {
-    font-size: x-large;
-    font-family: Comic Sans, Comic Sans MS, cursive;
-    font-weight: normal;
-    margin-top: 15%;
-}
-
 input {
   box-shadow: rgb(119, 126, 224);
   border: 0.125rem solid #eaecfe;
@@ -52,6 +45,13 @@ input {
   padding: auto;
   margin-top: 1%;
   margin-bottom: 2%;
+}
+
+.chat-name {
+    font-size: x-large;
+    font-family: Comic Sans, Comic Sans MS, cursive;
+    font-weight: normal;
+    margin-top: 15%;
 }
 
 #search-bar {
@@ -132,5 +132,21 @@ input::placeholder {
     margin-top: 5%;
     margin-left: 2%;
     margin-right: 3%;
+    width: auto;
+}
+
+#create-chat {
+    font-family: Comic Sans, Comic Sans MS, cursive;
+    cursor: pointer;
+    background: rgb(105, 228, 240);
+    border: 2px solid #2e4849;
+    color: rgb(27, 24, 24);
+    font-weight: medium;
+    border-radius: 1.0rem;
+    font-size: large;
+    text-align: center;
+    margin-top: 15%;
+    margin-left: 2%;
+    margin-right: 2%;
     width: auto;
 }
