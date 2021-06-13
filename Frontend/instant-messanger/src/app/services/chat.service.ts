@@ -62,4 +62,15 @@ export class ChatService {
   socketDisconect() {
     this.socket.disconnect();
   }
+
+  createChatRoom(name: string) {
+    const headers_object = new HttpHeaders({
+      'Authorization': "" + localStorage.getItem('id_token')
+    });
+
+    const httpOptions = {
+      headers: headers_object
+    };
+    return this.http.post<any>(environment.serveUrl + "/chat", {name: name}, httpOptions);
+  }
 }

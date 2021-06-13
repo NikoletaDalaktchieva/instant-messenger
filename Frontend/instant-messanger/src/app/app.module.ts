@@ -10,6 +10,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { RegisterComponent } from './register/register.component';
 import { ChatComponent } from './chat/chat.component';
 import { PopupWindowComponent } from './popup-window/popup-window.component';
+import { ChatPopUpComponent } from './chat-pop-up/chat-pop-up.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PopupWindowComponent } from './popup-window/popup-window.component';
     RegisterComponent,
     PopupWindowComponent,
     ChatComponent,
+    ChatPopUpComponent,
   ],
   imports: [
     BrowserModule,
