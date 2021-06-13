@@ -6,11 +6,11 @@ section {
 }
 
 .col-2 {
-    grid-template-rows: 10% 60% 15%; 
+    grid-template-rows: 10% 75% 10%; 
     width: auto;
     align-self: flex-start;
     padding: 1%;
-    max-height: 77%;
+    max-height: 60%;
 }
 
 .info-group{
@@ -60,7 +60,7 @@ input::placeholder {
     margin-top: 2%;
     margin-left: 5%;
     height: auto;
-    max-height: 90%;
+    max-height: 95%;
     width: auto;
     max-width: 100%;
     overflow: auto;
@@ -83,8 +83,8 @@ h1 {
     height: auto;
     width: auto;
     max-width: 100%;
-    margin-top: 1%;
-    margin-bottom: 7%;
+    margin-top: 2%;
+
 }
 
 #usermsg {
@@ -94,6 +94,8 @@ h1 {
     max-width: 90%;
     height: auto;
     font-size: medium;
+    padding-top: 1%;
+    padding-bottom: 1%;
 }
 
 #submitmsg{

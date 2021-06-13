@@ -45,37 +45,6 @@ section {
     margin-top: 15%;
 }
 
-/* .personal-info #settings {
-    background-color: initial;
-    align-self: flex-start;
-    border-radius: 50%;
-    width: 70%;
-    cursor: pointer;
-    border: none;
-} */
-
-/* .personal-info #settings img { 
-    width: auto;
-    max-width: 50%;
-    height: auto;
-    border: none;
-} */
-/* 
-.tooltiptext {
-    visibility: hidden;
-    color: rgb(49, 48, 48);
-    background-color: #e7e6e9;
-    text-align: center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1.0rem;
-    border-radius: 0.5rem;
-    padding-bottom: 10%;
-  }
-  
-  #settings:hover .tooltiptext {
-    visibility: visible;
-  } */
-
 input {
   box-shadow: rgb(119, 126, 224);
   border: 0.125rem solid #eaecfe;

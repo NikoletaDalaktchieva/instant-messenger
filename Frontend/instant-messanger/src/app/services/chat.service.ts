@@ -33,9 +33,22 @@ export class ChatService {
   }
 
   sendMessage(message: any) {
-    if (this.roomId === null) return;
+    if (this.roomId === null) {
+      return;
+    }
+
+    // const {token} = sessionStorage;
     const tokenId = localStorage.getItem('id_token');
+    if (tokenId === null) {
+      return;
+    }
+
+    //const token = jwt_decode(tokenId);
     this.socket.emit('message', tokenId, this.roomId, message);
+
+    // const socket = io.connect(serverUrl, {
+    //   query: {token}
+    // });
   }
 
   public getNewMessage = () => {

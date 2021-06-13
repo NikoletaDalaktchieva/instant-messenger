@@ -13,11 +13,11 @@ import { User } from '../models/userModel';
 })
 
 export class MainPageComponent implements OnInit {
-  chats;
   chatSearch = '';
   userName;
   name = '';
-  currentChat = null;
+  currentChat;
+  chats;
 
   constructor(private userService: UserService,
     private router: Router,
@@ -60,10 +60,6 @@ export class MainPageComponent implements OnInit {
 
   openChat(chat: any) {
     this.currentChat = chat;
-  }
-
-  getSettings(event) {
-    alert("Not implemented!");
   }
 
   logout() {
