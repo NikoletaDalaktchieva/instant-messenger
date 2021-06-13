@@ -20,13 +20,17 @@ exports.sortMessagesByDate = function (req, res) {
         .populate('sender')
         .exec(function (error, messages) {
             if (error) {
-                res.status(500).json({ result: false, message: 'Cannot get message list!', error: error });
+                return res.status(500).json({ result: false, message: 'Cannot get message list!', error: error });
+                
             }
             res.status(200).json({ result: true, message_list: compact_list(messages) });
         })
 }
 
 const compact_list = function (messages) {
+    if(messages === undefined) {
+        return [];
+    }
     compact = [];
     messages.forEach(msg => compact.push({
         text: msg.text,
