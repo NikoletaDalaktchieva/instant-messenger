@@ -13,7 +13,7 @@ app.use(cors({
   origin: '*'
 }));
 app.use('/user', userRouter);
-// app.use(authMiddleware);
+app.use(authMiddleware);
 app.use('/chat', chatRouter);
 app.use('/message', messageRouter);
 
