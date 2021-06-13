@@ -14,5 +14,4 @@ export class ErrorService {
   showError(text = 'Something went wrong!') {
     Swal.fire(text, '', 'error')
   }
-
 }

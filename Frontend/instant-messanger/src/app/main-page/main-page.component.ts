@@ -26,6 +26,7 @@ export class MainPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.loadUser();
     this.loadChats();
   }
 
