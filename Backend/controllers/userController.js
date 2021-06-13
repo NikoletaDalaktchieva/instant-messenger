@@ -18,6 +18,9 @@ exports.create = async function (req, res) {
         }
     ).catch(
         (error) => {
+            if (error.name === 'MongoError' && error.code === 11000) {
+                return res.status(422).send({ result: false, message: 'User already exist!' });
+            }
             res.status(400).json({ result: false, message: 'Cannot create this user', error: error });
         }
     );
